@@ -1,0 +1,50 @@
+drop table alloc
+;
+CREATE TABLE IF NOT EXISTS alloc (
+id     varchar(10) NOT NULL,
+dt     varchar(8)  NOT NULL,
+mid    varchar(10) NOT NULL,
+seatid varchar(10) NOT NULL,
+delkb  varchar(1)  ,
+PRIMARY KEY(id     ,dt     ,mid    )
+)
+;
+
+alter table ALLOC add updtime datetime;
+
+drop table member
+;
+CREATE TABLE IF NOT EXISTS member (
+id    varchar(10) NOT NULL,
+mid   varchar(10) NOT NULL,
+name  text        NOT NULL,
+kana  text        NOT NULL,
+phone text ,
+seat_range text ,
+biko1  text,
+biko2  text,
+biko3  text,
+PRIMARY KEY(id     ,mid    )
+)
+;
+drop table seat
+;
+CREATE TABLE IF NOT EXISTS seat (
+id     varchar(10) NOT NULL,
+seatid varchar(10) NOT NULL,
+mid    text        NOT NULL,
+biko1  text,
+biko2  text,
+biko3  text,
+PRIMARY KEY(id     ,seatid    )
+)
+;
+drop table settei
+;
+CREATE TABLE IF NOT EXISTS settei (
+id    varchar(10)  NOT NULL,
+param varchar(100) NOT NULL,
+val   varchar(100) NOT NULL,
+PRIMARY KEY(id     ,param    )
+)
+;

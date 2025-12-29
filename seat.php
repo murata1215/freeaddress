@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="UTF-8"><title>フリーアドレス メニュー</title></head>
+<body>
+<form id='form' name='form' action="seat_lottery.php" >
+<?php require "framework_head.php"; ?>
+<?php require "framework_body.php"; ?>
+
+	<script type="text/javascript">
+		document.getElementById("dt").value = "";
+	    function goServletB(){
+	        document.getElementById('form').action="seat_away.php";
+	    }
+
+	    function goServletC(){
+	        document.getElementById('form').action="seat_seat.php";
+	    }
+
+	    function goServletD(){
+	        document.getElementById('form').action="seat_result.php";
+	    }
+
+	    function goServletE(){
+	        document.getElementById('form').action="seat_member.php";
+	    }
+
+	    function goServletF(){
+	        document.getElementById('form').action="seat_upload.php";
+	    }
+
+	    function goServletG(){
+	        document.getElementById('form').action="seat_regist.php";
+	    }
+
+	    function goServletH(){
+	        document.getElementById('form').action="seat_manage.php";
+	    }
+	</script>
+
+	<style>
+	  html, body, form, div { height: 98% }
+	</style>
+
+	<style type="text/css">
+
+		input.example {
+			font-size:  50pt;
+			height:     120;
+			width:      100%;
+		}
+
+		button.BTN11 {
+			font-size:  50pt;
+			height:100%;
+			width:99%;
+			border-style:none;
+			background-color:#3498db;
+			text-align:centert;
+			color:white;
+		}
+
+		button.BTN21 {
+			font-size:  50pt;
+			height:99%;
+			width:      98%;
+			border-style:none;
+			background-color:#3498db;
+			text-align:   centert;
+			color:white;
+		}
+
+		button.BTN22 {
+			font-size:  50pt;
+			height:99%;
+			width:      98%;
+			border-style:none;
+			background-color:#e8aa00;
+			text-align:  center;
+			color:white;
+		}
+
+		button.BTN23 {
+			font-size: 50pt;
+			height:99%;
+			width:      98%;
+			border-style:none;
+			background-color:green;
+			text-align:   center;
+			color:white;
+		}
+
+		button.BTN31 {
+			font-size: 33pt;
+			height:95%;
+			width:      98%;
+			border-style:none;
+			background-color:#8e18a5;
+			text-align:   center;
+			color:white;
+		}
+
+		button.BTN32 {
+			font-size:  40pt;
+			height:99%;
+			width:      98%;
+			border-style:none;
+			background-color:#69c621;
+		    text-align:   centert;
+			color:white;
+		}
+
+		button.BTN41 {
+			font-size: 33pt;
+			height:95%;
+			width:      98%;
+			border-style:none;
+			background-color:red;
+			text-align:   center;
+			color:white;
+		}
+
+		button.BTN42 {
+			font-size: 50pt;
+			height:95%;
+			width:      99%;
+			border-style:none;
+			background-color:#808000;
+			text-align:   center;
+			color:white;
+		}
+
+
+		table{
+			table-layout: fixed;
+		}
+
+		td.td11{
+			height:100%;
+			width:33%;
+			text-align:center;
+			padding-top:10px;
+		}
+
+		td.td21{
+			height:70%;
+			width:33%;
+			text-align:center;
+			padding-top:10px;
+		}
+
+		td.td22{
+			height:100%;
+			width:33%;
+			text-align:center;
+			padding-top:10px;
+		}
+
+		td.td23{
+			height:70%;
+			width:33%;
+			text-align:center;
+			padding-top:10px;
+		}
+
+		td.td31{
+			height:30%;
+			width:33%;
+			text-align:center;
+			padding-top:5px;
+		}
+
+		td.td32{
+			height:30%;
+			width:33%;
+			text-align:center;
+			padding-top:5px;
+		}
+
+		td.td41{
+			height:100%;
+			width:50%;
+			text-align:center;
+			padding-top:5px;
+		}
+
+		td.td42{
+			height:100%;
+			width:50%;
+			text-align:center;
+			padding-top:5px;
+		}
+
+	</style>
+
+
+
+
+
+<?php 
+
+if (strcmp($id,"")==0) { echo "
+
+	<table align='center' width='100%' height='90%' style='display:none;'>
+
+		<tr>
+			<td colspan='3' class='td11'>
+				<button type='submit' class='BTN11' onclick='goServletG();'>利用者登録をする</button>
+			</td>
+		</tr>
+
+	</table>
+
+";}
+
+else if (strcmp($manage,"true")==0) { echo "
+
+<table align='center' width='100%' height='30%'>
+
+		<tr>
+			<td colspan='3' class='td42'>
+				<button type='submit' class='BTN42' onclick='goServletH();'>管理者ページ</button>
+			</td>
+		</tr>
+
+</table>
+
+<table align='center' width='100%' height='70%'>
+
+	<tr>
+		<td class='td21'>
+			<button type='submit' class='BTN21' onclick='goServletE();'>席・内線を<br>確認する</button>
+		</td>
+		<td rowspan='2' class='td22'>
+			<button type='submit' class='BTN22'>フリーアドレスの<br>抽選を行う</button>
+		</td>
+		<td class='td23'>
+			<button type='submit' class='BTN23' onclick='goServletD();'>着席を確認する</button>
+		</td>
+	</tr>
+	<tr>
+		<td class='td31'>
+			<button type='submit' class='BTN31' onclick='goServletB();'>外出(席を開放する)</button>
+		</td>
+		<td class='td32'>
+			<button type='submit' class='BTN32' onclick='goServletC();'>座席表を見る</button>
+		</td>
+	</tr>
+
+</table>
+
+";}
+
+else { echo "
+
+	<table align='center' width='100%' height='100%'>
+
+		<tr>
+			<td class='td21'>
+				<button type='submit' class='BTN21' onclick='goServletE();'>席を確認する</button>
+			</td>
+			<td rowspan='2' class='td22'>
+				<button type='submit' class='BTN22'>フリーアドレスの<br>抽選を行う</button>
+			</td>
+			<td class='td23'>
+				<button type='submit' class='BTN23' onclick='goServletD();'>着席を確認する</button>
+			</td>
+		</tr>
+		<tr>
+			<td class='td31'>
+				<button type='submit' class='BTN31' onclick='goServletB();'>外出(席を開放する)</button>
+			</td>
+			<td class='td32'>
+				<button type='submit' class='BTN32' onclick='goServletC();'>座席表を見る</button>
+			</td>
+		</tr>
+
+	</table>
+
+";} ?>
+
+
+
+
+<?php require "framework_tail.php"; ?>
+
+
+</form>
+
+
+</body>
+
+</html>
+
