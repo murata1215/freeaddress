@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>フリーアドレス 離籍</title>
 <style>
 :root {
@@ -28,19 +29,30 @@
 	box-sizing: border-box;
 }
 
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
 body {
 	background: var(--background);
-	margin: 0;
-	padding: 20px;
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-	min-height: 100vh;
 	display: flex;
+	flex-direction: column;
+}
+
+form {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	padding: 3vh 3vw;
 }
 
 .page-container {
-	max-width: 500px;
+	max-width: 800px;
 	width: 100%;
 }
 
@@ -48,24 +60,24 @@ body {
 	background: var(--card-bg);
 	border-radius: var(--radius);
 	box-shadow: var(--shadow);
-	padding: 32px;
+	padding: 4vh 4vw;
 	text-align: center;
 }
 
 .page-title {
-	font-size: 24px;
+	font-size: clamp(24px, 5vw, 40px);
 	font-weight: 700;
 	color: var(--text-primary);
-	margin: 0 0 24px 0;
-	padding-bottom: 16px;
+	margin: 0 0 3vh 0;
+	padding-bottom: 2vh;
 	border-bottom: 3px solid var(--danger-color);
 }
 
 .result-message {
-	padding: 20px 24px;
+	padding: 3vh 4vw;
 	border-radius: var(--radius);
-	margin-bottom: 24px;
-	font-size: 18px;
+	margin-bottom: 3vh;
+	font-size: clamp(18px, 4vw, 32px);
 	font-weight: 600;
 	line-height: 1.5;
 }
@@ -86,8 +98,8 @@ body {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	padding: 16px 48px;
-	font-size: 18px;
+	padding: 2.5vh 8vw;
+	font-size: clamp(18px, 3.5vw, 28px);
 	font-weight: 600;
 	border: none;
 	border-radius: var(--radius);
@@ -99,6 +111,12 @@ body {
 
 .close-btn:hover {
 	background: #475569;
+}
+
+@media (min-width: 1200px) {
+	.page-container {
+		max-width: 800px;
+	}
 }
 </style>
 </head>
