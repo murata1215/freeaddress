@@ -1,79 +1,121 @@
 <!doctype html>
 <html lang="ja">
-<head><meta charset="UTF-8"><title>フリーアドレス 離籍</title></head>
+<head>
+<meta charset="UTF-8">
+<title>フリーアドレス 離籍</title>
+<style>
+:root {
+	--primary-color: #2563eb;
+	--primary-hover: #1d4ed8;
+	--secondary-color: #64748b;
+	--success-color: #059669;
+	--success-bg: #ecfdf5;
+	--success-border: #a7f3d0;
+	--warning-color: #d97706;
+	--warning-bg: #fffbeb;
+	--warning-border: #fde68a;
+	--danger-color: #dc2626;
+	--background: #f8fafc;
+	--card-bg: #ffffff;
+	--text-primary: #1e293b;
+	--text-secondary: #64748b;
+	--border-color: #e2e8f0;
+	--shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+	--radius: 8px;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background: var(--background);
+	margin: 0;
+	padding: 20px;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.page-container {
+	max-width: 500px;
+	width: 100%;
+}
+
+.page-card {
+	background: var(--card-bg);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
+	padding: 32px;
+	text-align: center;
+}
+
+.page-title {
+	font-size: 24px;
+	font-weight: 700;
+	color: var(--text-primary);
+	margin: 0 0 24px 0;
+	padding-bottom: 16px;
+	border-bottom: 3px solid var(--danger-color);
+}
+
+.result-message {
+	padding: 20px 24px;
+	border-radius: var(--radius);
+	margin-bottom: 24px;
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 1.5;
+}
+
+.result-success {
+	background: var(--success-bg);
+	border: 1px solid var(--success-border);
+	color: var(--success-color);
+}
+
+.result-warning {
+	background: var(--warning-bg);
+	border: 1px solid var(--warning-border);
+	color: var(--warning-color);
+}
+
+.close-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 16px 48px;
+	font-size: 18px;
+	font-weight: 600;
+	border: none;
+	border-radius: var(--radius);
+	cursor: pointer;
+	transition: all 0.2s;
+	background: var(--secondary-color);
+	color: white;
+}
+
+.close-btn:hover {
+	background: #475569;
+}
+</style>
+</head>
 <body>
 <form action="seat.php">
 <?php require "framework_head.php"; ?>
 <?php require "framework_body.php"; ?>
 
-
-
-<style type="text/css">
-	input.example1 {
-	font-size:  80pt;
-	height:     150;
-	width:      20%;
-	padding-top:50px;
-	color:		red;
-	text-align: left;
-	border-style:none;
-	}
-	
-	input.example2 {
-	font-size:  50pt;
-	height:     120;
-	width:      30%;
-	border-style: none;
-	}
-	
-	input.tenKey {
-	font-size:  50pt;
-	height:     100%;
-	width:      100%;
-	}
-	
-	td.td1{
-	font-size:  50pt;
-	text-align: center;
-	height:     120;
-	width:      80%;
-	padding:       .1em 0 .5em .1em;
-	border-left:   20px solid #3498db;
-	border-bottom: 2px solid #ccc;
-	}
-	
-	td.tdx{
-	font-size:  40pt;
-	text-align: center;
-	height:     80;
-	width:      10%;
-	}
-	
-	td.td3{
-	font-size:  40pt;
-	text-align: center;
-	height:     80;
-	width:      100%;
-	}
-	
-	
-</style>
-<script type="text/javascript"><!--
+<script type="text/javascript">
 function close_window(){
-window.open('about:blank','_self').close();
+	window.open('about:blank','_self').close();
 } 
-// --></script>
+</script>
 
-
-
-<table height="150px"><tr><td></td></tr></table>
-	<table align="center" width="100%">
-	<tr>
-		<td class="tdx"></td>
-		<td class="td1">
-
-
-
+<div class="page-container">
+	<div class="page-card">
+		<h1 class="page-title">外出（席開放）</h1>
 
 <?php
 $dao = new db();
@@ -88,7 +130,6 @@ if(isset($_GET['mid'])) {
 $sql = "";
 $sql = $sql." select delkb,id,upper(seatid) as seatid from alloc where id='".$id."' and dt='".$date."' AND mid='".$mid."' ";
 $dao->select($sql);
-//var_dump($sql);
 
 
 if ($dao->next()){
@@ -99,45 +140,31 @@ if ($dao->next()){
 
 	if ( strcmp($delkb,"D") == 0 ) {
 
-		echo "すでに退席済みです";
+		echo "<div class='result-message result-warning'>すでに退席済みです</div>";
 
 	} else {
 
 		$sql = " update alloc set delkb='d' where id='".$id."' and dt='".$date."' and mid='".$mid."' ";
 		$dao->exec($sql);
-		echo $name."今日の席 ".$kettei_seatid." を開放しました";
+		echo "<div class='result-message result-success'>".$name."今日の席 <strong>".$kettei_seatid."</strong> を開放しました</div>";
 
 	}
 
 } else {
 
-	echo $mid."今日は席が抽選されていません";
-
+	echo "<div class='result-message result-warning'>".$mid." 今日は席が抽選されていません</div>";
 
 }
-
-
 
 $dao->close();
 
 ?>
 
-
-
-</td>
-		<td class="tdx"></td>
-	</tr>
-	<tr>
-		<td colspan="3" align="center" class="td3">
-			<br>
-			<input type="submit" class="example2" value="閉じる" onclick="close_window();"/>
-		</td>
-	</tr>
-</table>
-
+		<input type="submit" class="close-btn" value="閉じる" onclick="close_window();"/>
+	</div>
+</div>
 
 <?php require "framework_tail.php"; ?>
 </form>
 </body>
 </html>
-
