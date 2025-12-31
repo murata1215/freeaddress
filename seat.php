@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>フリーアドレス メニュー</title>
 <style>
 :root {
@@ -31,23 +32,40 @@
 	box-sizing: border-box;
 }
 
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
 body {
 	background: var(--background);
-	margin: 0;
-	padding: 20px;
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+form {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
 }
 
 .menu-container {
-	max-width: 800px;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 3vh 3vw;
+	max-width: 100%;
 	margin: 0 auto;
-	padding: 20px;
+	width: 100%;
 }
 
 .menu-grid {
 	display: grid;
-	gap: 16px;
+	gap: 2vh;
+	width: 100%;
 }
 
 .menu-grid-2col {
@@ -62,8 +80,8 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 32px 24px;
-	font-size: 24px;
+	padding: 4vh 3vw;
+	font-size: clamp(18px, 4vw, 36px);
 	font-weight: 700;
 	border: none;
 	border-radius: var(--radius);
@@ -72,8 +90,8 @@ body {
 	text-decoration: none;
 	color: white;
 	text-align: center;
-	line-height: 1.4;
-	min-height: 120px;
+	line-height: 1.3;
+	min-height: 15vh;
 	box-shadow: var(--shadow);
 }
 
@@ -143,9 +161,8 @@ body {
 }
 
 .menu-btn-large {
-	font-size: 28px;
-	padding: 40px 24px;
-	min-height: 140px;
+	font-size: clamp(22px, 5vw, 42px);
+	min-height: 20vh;
 }
 
 .menu-btn-full {
@@ -153,33 +170,32 @@ body {
 }
 
 .menu-section {
-	margin-bottom: 24px;
+	margin-bottom: 2vh;
 }
 
 .menu-section-title {
-	font-size: 14px;
+	font-size: clamp(12px, 2vw, 16px);
 	font-weight: 600;
 	color: var(--text-secondary);
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
-	margin-bottom: 12px;
+	margin-bottom: 1.5vh;
 	padding-left: 4px;
 }
 
 @media (max-width: 600px) {
-	.menu-btn {
-		font-size: 18px;
-		padding: 24px 16px;
-		min-height: 100px;
+	.menu-grid-3col {
+		grid-template-columns: repeat(2, 1fr);
 	}
 	
 	.menu-btn-large {
-		font-size: 22px;
-		padding: 32px 16px;
+		grid-column: 1 / -1;
 	}
-	
-	.menu-grid-3col {
-		grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 1200px) {
+	.menu-container {
+		max-width: 1200px;
 	}
 }
 </style>

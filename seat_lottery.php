@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>フリーアドレス 抽選</title>
 <style>
 :root {
@@ -23,53 +24,69 @@
 	box-sizing: border-box;
 }
 
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
 body {
 	background: var(--background);
-	margin: 0;
-	padding: 20px;
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+form {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
 }
 
 .page-container {
-	max-width: 600px;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 2vh 3vw;
+	max-width: 800px;
 	margin: 0 auto;
+	width: 100%;
 }
 
 .page-card {
 	background: var(--card-bg);
 	border-radius: var(--radius);
 	box-shadow: var(--shadow);
-	padding: 32px;
-	margin-bottom: 20px;
+	padding: 3vh 4vw;
 }
 
 .page-title {
-	font-size: 24px;
+	font-size: clamp(20px, 4vw, 32px);
 	font-weight: 700;
 	color: var(--text-primary);
-	margin: 0 0 24px 0;
+	margin: 0 0 3vh 0;
 	text-align: center;
-	padding-bottom: 16px;
+	padding-bottom: 2vh;
 	border-bottom: 3px solid var(--warning-color);
 }
 
 .form-group {
-	margin-bottom: 24px;
+	margin-bottom: 3vh;
 }
 
 .form-label {
 	display: block;
-	font-size: 16px;
+	font-size: clamp(14px, 2.5vw, 20px);
 	font-weight: 600;
 	color: var(--text-secondary);
-	margin-bottom: 8px;
+	margin-bottom: 1vh;
 }
 
 .form-input {
 	width: 100%;
-	padding: 16px 20px;
-	font-size: 24px;
+	padding: 2vh 2vw;
+	font-size: clamp(24px, 5vw, 48px);
 	border: 2px solid var(--border-color);
 	border-radius: var(--radius);
 	text-align: center;
@@ -84,8 +101,8 @@ body {
 
 .form-actions {
 	display: flex;
-	gap: 12px;
-	margin-top: 24px;
+	gap: 2vw;
+	margin-top: 2vh;
 }
 
 .btn {
@@ -93,8 +110,8 @@ body {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	padding: 16px 24px;
-	font-size: 18px;
+	padding: 2.5vh 3vw;
+	font-size: clamp(16px, 3vw, 28px);
 	font-weight: 600;
 	border: none;
 	border-radius: var(--radius);
@@ -123,16 +140,16 @@ body {
 .tenkey-grid {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	gap: 8px;
-	margin-top: 24px;
+	gap: 1.5vw;
+	margin-top: 3vh;
 }
 
 .tenkey-btn {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 20px;
-	font-size: 28px;
+	padding: 3vh 2vw;
+	font-size: clamp(24px, 5vw, 48px);
 	font-weight: 700;
 	border: none;
 	border-radius: var(--radius);
@@ -140,6 +157,7 @@ body {
 	transition: all 0.2s;
 	background: var(--primary-color);
 	color: white;
+	min-height: 10vh;
 }
 
 .tenkey-btn:hover {
@@ -152,7 +170,13 @@ body {
 }
 
 .tenkey-btn-clear {
-	font-size: 16px;
+	font-size: clamp(14px, 2.5vw, 24px);
+}
+
+@media (min-width: 1200px) {
+	.page-container {
+		max-width: 800px;
+	}
 }
 </style>
 </head>
@@ -232,7 +256,7 @@ function initFocusSet() {
 			<button type="button" class="tenkey-btn" onclick="onTenkey('BS');initFocusSet();">BS</button>
 		</div>
 		
-		<div class="form-actions" style="margin-top: 16px;">
+		<div class="form-actions" style="margin-top: 2vh;">
 			<button type="button" class="btn btn-secondary" onclick="history.back()">戻る</button>
 		</div>
 	</div>
