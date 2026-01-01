@@ -2,7 +2,6 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>フリーアドレス メニュー</title>
 <style>
 :root {
@@ -32,40 +31,23 @@
 	box-sizing: border-box;
 }
 
-html, body {
-	height: 100%;
-	margin: 0;
-	padding: 0;
-}
-
 body {
 	background: var(--background);
+	margin: 0;
+	padding: 20px;
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-	display: flex;
-	flex-direction: column;
-}
-
-form {
-	flex: 1;
-	display: flex;
-	flex-direction: column;
+	min-height: 100vh;
 }
 
 .menu-container {
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	padding: 3vh 3vw;
-	max-width: 100%;
+	max-width: 800px;
 	margin: 0 auto;
-	width: 100%;
+	padding: 20px;
 }
 
 .menu-grid {
 	display: grid;
-	gap: 2vh;
-	width: 100%;
+	gap: 16px;
 }
 
 .menu-grid-2col {
@@ -80,8 +62,8 @@ form {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 4vh 3vw;
-	font-size: clamp(18px, 4vw, 36px);
+	padding: 32px 24px;
+	font-size: 24px;
 	font-weight: 700;
 	border: none;
 	border-radius: var(--radius);
@@ -90,8 +72,8 @@ form {
 	text-decoration: none;
 	color: white;
 	text-align: center;
-	line-height: 1.3;
-	min-height: 15vh;
+	line-height: 1.4;
+	min-height: 120px;
 	box-shadow: var(--shadow);
 }
 
@@ -161,8 +143,9 @@ form {
 }
 
 .menu-btn-large {
-	font-size: clamp(22px, 5vw, 42px);
-	min-height: 20vh;
+	font-size: 28px;
+	padding: 40px 24px;
+	min-height: 140px;
 }
 
 .menu-btn-full {
@@ -170,32 +153,33 @@ form {
 }
 
 .menu-section {
-	margin-bottom: 2vh;
+	margin-bottom: 24px;
 }
 
 .menu-section-title {
-	font-size: clamp(12px, 2vw, 16px);
+	font-size: 14px;
 	font-weight: 600;
 	color: var(--text-secondary);
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
-	margin-bottom: 1.5vh;
+	margin-bottom: 12px;
 	padding-left: 4px;
 }
 
 @media (max-width: 600px) {
-	.menu-grid-3col {
-		grid-template-columns: repeat(2, 1fr);
+	.menu-btn {
+		font-size: 18px;
+		padding: 24px 16px;
+		min-height: 100px;
 	}
 	
 	.menu-btn-large {
-		grid-column: 1 / -1;
+		font-size: 22px;
+		padding: 32px 16px;
 	}
-}
-
-@media (min-width: 1200px) {
-	.menu-container {
-		max-width: 1200px;
+	
+	.menu-grid-3col {
+		grid-template-columns: repeat(2, 1fr);
 	}
 }
 </style>
