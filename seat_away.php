@@ -2,7 +2,6 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>フリーアドレス 離籍</title>
 <style>
 :root {
@@ -24,69 +23,53 @@
 	box-sizing: border-box;
 }
 
-html, body {
-	height: 100%;
-	margin: 0;
-	padding: 0;
-}
-
 body {
 	background: var(--background);
+	margin: 0;
+	padding: 20px;
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-	display: flex;
-	flex-direction: column;
-}
-
-form {
-	flex: 1;
-	display: flex;
-	flex-direction: column;
+	min-height: 100vh;
 }
 
 .page-container {
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	padding: 2vh 3vw;
-	max-width: 800px;
+	max-width: 600px;
 	margin: 0 auto;
-	width: 100%;
 }
 
 .page-card {
 	background: var(--card-bg);
 	border-radius: var(--radius);
 	box-shadow: var(--shadow);
-	padding: 3vh 4vw;
+	padding: 32px;
+	margin-bottom: 20px;
 }
 
 .page-title {
-	font-size: clamp(20px, 4vw, 32px);
+	font-size: 24px;
 	font-weight: 700;
 	color: var(--text-primary);
-	margin: 0 0 3vh 0;
+	margin: 0 0 24px 0;
 	text-align: center;
-	padding-bottom: 2vh;
+	padding-bottom: 16px;
 	border-bottom: 3px solid var(--danger-color);
 }
 
 .form-group {
-	margin-bottom: 3vh;
+	margin-bottom: 24px;
 }
 
 .form-label {
 	display: block;
-	font-size: clamp(14px, 2.5vw, 20px);
+	font-size: 16px;
 	font-weight: 600;
 	color: var(--text-secondary);
-	margin-bottom: 1vh;
+	margin-bottom: 8px;
 }
 
 .form-input {
 	width: 100%;
-	padding: 2vh 2vw;
-	font-size: clamp(24px, 5vw, 48px);
+	padding: 16px 20px;
+	font-size: 24px;
 	border: 2px solid var(--border-color);
 	border-radius: var(--radius);
 	text-align: center;
@@ -101,8 +84,8 @@ form {
 
 .form-actions {
 	display: flex;
-	gap: 2vw;
-	margin-top: 2vh;
+	gap: 12px;
+	margin-top: 24px;
 }
 
 .btn {
@@ -110,8 +93,8 @@ form {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	padding: 2.5vh 3vw;
-	font-size: clamp(16px, 3vw, 28px);
+	padding: 16px 24px;
+	font-size: 18px;
 	font-weight: 600;
 	border: none;
 	border-radius: var(--radius);
@@ -140,16 +123,16 @@ form {
 .tenkey-grid {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	gap: 1.5vw;
-	margin-top: 3vh;
+	gap: 8px;
+	margin-top: 24px;
 }
 
 .tenkey-btn {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 3vh 2vw;
-	font-size: clamp(24px, 5vw, 48px);
+	padding: 20px;
+	font-size: 28px;
 	font-weight: 700;
 	border: none;
 	border-radius: var(--radius);
@@ -157,7 +140,6 @@ form {
 	transition: all 0.2s;
 	background: var(--danger-color);
 	color: white;
-	min-height: 10vh;
 }
 
 .tenkey-btn:hover {
@@ -170,13 +152,7 @@ form {
 }
 
 .tenkey-btn-clear {
-	font-size: clamp(14px, 2.5vw, 24px);
-}
-
-@media (min-width: 1200px) {
-	.page-container {
-		max-width: 800px;
-	}
+	font-size: 16px;
 }
 </style>
 </head>
@@ -256,7 +232,7 @@ function initFocusSet() {
 			<button type="button" class="tenkey-btn" onclick="onTenkey('BS')">BS</button>
 		</div>
 		
-		<div class="form-actions" style="margin-top: 2vh;">
+		<div class="form-actions" style="margin-top: 16px;">
 			<button type="button" class="btn btn-secondary" onclick="history.back()">戻る</button>
 		</div>
 	</div>
