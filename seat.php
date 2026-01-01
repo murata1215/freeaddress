@@ -8,6 +8,10 @@
 
 	<script type="text/javascript">
 		document.getElementById("dt").value = "";
+            function goServletA(){
+                document.getElementById('form').action="seat_lottery.php";
+            }
+
 	    function goServletB(){
 	        document.getElementById('form').action="seat_away.php";
 	    }
@@ -231,7 +235,7 @@ else if (strcmp($manage,"true")==0) { echo "
 			<button type='submit' class='BTN21' onclick='goServletE();'>席・内線を<br>確認する</button>
 		</td>
 		<td rowspan='2' class='td22'>
-			<button type='submit' class='BTN22'>フリーアドレスの<br>抽選を行う</button>
+			<button type='submit' class='BTN22' onclick='goServletA();'>フリーアドレスの<br>抽選を行う</button>
 		</td>
 		<td class='td23'>
 			<button type='submit' class='BTN23' onclick='goServletD();'>着席を確認する</button>
@@ -259,7 +263,7 @@ else { echo "
 				<button type='submit' class='BTN21' onclick='goServletE();'>席を確認する</button>
 			</td>
 			<td rowspan='2' class='td22'>
-				<button type='submit' class='BTN22'>フリーアドレスの<br>抽選を行う</button>
+				<button type='submit' class='BTN22' onclick='goServletA();'>フリーアドレスの<br>抽選を行う</button>
 			</td>
 			<td class='td23'>
 				<button type='submit' class='BTN23' onclick='goServletD();'>着席を確認する</button>
