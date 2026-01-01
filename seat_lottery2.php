@@ -1,137 +1,79 @@
 <!doctype html>
 <html lang="ja">
-<head>
-<meta charset="UTF-8">
-<title>フリーアドレス 抽選</title>
-<style>
-:root {
-	--primary-color: #2563eb;
-	--primary-hover: #1d4ed8;
-	--secondary-color: #64748b;
-	--success-color: #059669;
-	--success-bg: #ecfdf5;
-	--success-border: #a7f3d0;
-	--warning-color: #d97706;
-	--warning-bg: #fffbeb;
-	--warning-border: #fde68a;
-	--danger-color: #dc2626;
-	--danger-bg: #fef2f2;
-	--danger-border: #fecaca;
-	--background: #f8fafc;
-	--card-bg: #ffffff;
-	--text-primary: #1e293b;
-	--text-secondary: #64748b;
-	--border-color: #e2e8f0;
-	--shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-	--radius: 8px;
-}
-
-* {
-	box-sizing: border-box;
-}
-
-body {
-	background: var(--background);
-	margin: 0;
-	padding: 20px;
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-	min-height: 100vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.page-container {
-	max-width: 500px;
-	width: 100%;
-}
-
-.page-card {
-	background: var(--card-bg);
-	border-radius: var(--radius);
-	box-shadow: var(--shadow);
-	padding: 32px;
-	text-align: center;
-}
-
-.page-title {
-	font-size: 24px;
-	font-weight: 700;
-	color: var(--text-primary);
-	margin: 0 0 24px 0;
-	padding-bottom: 16px;
-	border-bottom: 3px solid var(--warning-color);
-}
-
-.result-message {
-	padding: 20px 24px;
-	border-radius: var(--radius);
-	margin-bottom: 24px;
-	font-size: 18px;
-	font-weight: 600;
-	line-height: 1.5;
-}
-
-.result-success {
-	background: var(--success-bg);
-	border: 1px solid var(--success-border);
-	color: var(--success-color);
-}
-
-.result-warning {
-	background: var(--warning-bg);
-	border: 1px solid var(--warning-border);
-	color: var(--warning-color);
-}
-
-.result-error {
-	background: var(--danger-bg);
-	border: 1px solid var(--danger-border);
-	color: var(--danger-color);
-}
-
-.seat-number {
-	display: block;
-	font-size: 48px;
-	font-weight: 800;
-	color: var(--danger-color);
-	margin: 16px 0;
-}
-
-.close-btn {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	padding: 16px 48px;
-	font-size: 18px;
-	font-weight: 600;
-	border: none;
-	border-radius: var(--radius);
-	cursor: pointer;
-	transition: all 0.2s;
-	background: var(--secondary-color);
-	color: white;
-}
-
-.close-btn:hover {
-	background: #475569;
-}
-</style>
-</head>
+<head><meta charset="UTF-8"><title>フリーアドレス 抽選</title></head>
 <body>
 <form action="seat.php">
 <?php require "framework_head.php"; ?>
 <?php require "framework_body.php"; ?>
 
-<script type="text/javascript">
-function close_window(){
-	window.open('about:blank','_self').close();
-} 
-</script>
 
-<div class="page-container">
-	<div class="page-card">
-		<h1 class="page-title">抽選結果</h1>
+<style type="text/css">
+	input.example1 {
+	font-size:  80pt;
+	height:     150;
+	width:      20%;
+	padding-top:50px;
+	color:		red;
+	text-align: left;
+	border-style:none;
+	}
+	
+	input.example2 {
+	font-size:  50pt;
+	height:     120;
+	width:      30%;
+	border-style: none;
+	}
+	
+	input.tenKey {
+	font-size:  50pt;
+	height:     100%;
+	width:      100%;
+	}
+	
+	td.td1{
+	font-size:  50pt;
+	text-align: center;
+	height:     120;
+	width:      80%;
+	padding:       .1em 0 .5em .1em;
+	border-left:   20px solid #3498db;
+	border-bottom: 2px solid #ccc;
+	}
+	
+	td.tdx{
+	font-size:  20pt;
+	text-align: center;
+	height:     80;
+	width:      10%;
+	}
+	
+	td.td3{
+	font-size:  20pt;
+	text-align: center;
+	height:     80;
+	width:      100%;
+	}
+	
+	
+</style>
+<script type="text/javascript"><!--
+function close_window(){
+window.open('about:blank','_self').close();
+} 
+// --></script>
+
+
+<?php  echo "
+
+      <table align='center' width='100%'>
+        <tr>
+          <td class='tdx'></td>
+          <td class='td1'>
+
+";
+
+?>
 
 <?php
 $dao = new db();
@@ -148,27 +90,33 @@ if(isset($_POST['mid'])) {
 	$mid = $_POST['mid'];
 }
 
+//5日前以前のデータは消す
 $sql = "";
 $sql = $sql." delete from alloc where id='".$id."' and dt<'".$date100."' ";
 $dao->exec($sql);
 
 
+//離籍確認を行い、離籍者の再抽選は行わないようにする
 $sql = "";
 $sql = $sql." select mid from alloc where id='".$id."' and dt='".$date."' and mid='".$mid."' and delkb='D' ";
 $dao->select($sql);
 
 if ($dao->next()){
 
-	echo "<div class='result-message result-warning'>今日は離籍済みです</div>";
+	//ALLOCにDELKB='D'の設定がある場合、離籍済みと判断
+	echo "今日は離籍済みです<p>";
 
 } else {
 
 
+	//メンバーＩＤの存在チェック
 	$sql = "";
 	$sql = $sql." select mid,seat_range from member where id='".$id."' and mid='".$mid."' ";
 	$dao->select($sql);
 	if ($dao->next()) {
 
+		//biko2に,区切りでseatidの頭を入れるとその範囲で検索するようにLIKEを組み立てる
+		//select * from seat where seatid like ('A%') or seatid like ('B%')
 		$range_like = "";
 		$range = $dao->get("seat_range");
 		$range_list = explode(',', $range);
@@ -181,6 +129,9 @@ if ($dao->next()){
 			}
 			next( $range_list );
 		}
+//		echo "[".$range."]";
+//		echo "[".$range_like."]";
+		//範囲で検索する場合、その席に空きがるか？
 		if ($range_like != "") {
 			$range_like = " AND (".$range_like.")";
 			$sql = "";
@@ -189,14 +140,19 @@ if ($dao->next()){
 			$sql = $sql."         left join alloc b ";
 			$sql = $sql."            on b.id = a.id and b.seatid = a.seatid and b.dt='".$date."' and b.delkb is null ";
 			$sql = $sql."  where a.id='".$id."' and (ifnull(a.mid,'') = '' and ifnull(b.mid,'') = '')  ".$range_like." ";
+//			echo $sql;
 			$dao->select($sql);
 			if ($dao->next()){
+				//空きあり
 				;
+//				echo "空きあり";
 			} else {
 				$range_like = "";
+//				echo "空きなし";
 			}
 		}
 
+		//席リストを取得する。着席、固定席の場合はメンバーＩＤも取得する
 		$sql = "";
 		$sql = $sql." select upper(a.seatid) as seatid,a.mid as seatmid, b.mid ";
 		$sql = $sql."  from seat a ";
@@ -206,6 +162,7 @@ if ($dao->next()){
 
 		$dao->select($sql);
 
+		//未割当のシートリスト
 		$seat_list = array();
 
 		$cnt = 0;
@@ -216,21 +173,25 @@ if ($dao->next()){
 			$seatmid = $dao->get("seatmid");
 			$allocmid = $dao->get("mid");
 
+			//未割当のシートリストを作成する
 			if ($allocmid == "" && $seatmid == "") {
 				$seat_list[] = $seatid;
 				$cnt = $cnt + 1;
 			}
 
+			//固定席の人の場合、シートIDを退避。抽選は行わない
 			if ($seatmid == $mid) {
 				$kettei_seatid = $seatid;
 			}
 
+			//すでに抽選されている場合、決定されたものを使用
 			if ($allocmid == $mid) {
 				$kettei_seatid = $seatid;
 			}
 
 		}
 
+		//メンバーマスタから名前を取得
 		$name = "";
 		$dao->select("SELECT name from member where id='".$id."' and mid='".$mid."' ");
 		if ($dao->next()){
@@ -238,22 +199,24 @@ if ($dao->next()){
 		}
 
 		if ($cnt == 0) {
-			echo "<div class='result-message result-warning'>".$name."さん<br>本日は満席です<br>打ち合わせコーナーをご利用ください</div>";
+			echo $name."さん 本日は満席です、打ち合わせコーナーをご利用ください<p>";
 			
 		} else {
+			//決定された席番号がない場合、抽選を行う
 			if ($kettei_seatid == "") {
 				$lottry = rand(0,($cnt-1));
 				$kettei_seatid = $seat_list[$lottry];
 				$dao->exec("insert into alloc (id, dt, mid, seatid, updtime) values ('".$id."', '".$date."','".$mid."','".$kettei_seatid."','".date("Y-m-d H:i:s")."')");
 			}
 
-			echo "<div class='result-message result-success'>".$name."さん<br>今日の席は<span class='seat-number'>".$kettei_seatid."</span>です</div>";
+			echo $name."さん 今日の席は <font color='red'>".$kettei_seatid."</font> です<p>";
 		}
 
 
 	} else {
 
-		echo "<div class='result-message result-error'>コードが存在しません [".$mid."]</div>";
+		//メンバーマスタに存在しなかった
+		echo "コードが存在しません[".$mid."]<p>";
 
 	}
 
@@ -265,9 +228,26 @@ $dao->close();
 
 ?>
 
-		<input type='submit' class='close-btn' value='閉じる' />
-	</div>
-</div>
+<?php  echo "
+
+		</td>
+          <td class='tdx'></td>
+        </tr>
+        <tr>
+          <td colspan='3' align='center' class='td3'>
+          	<br>
+			<input type='submit' class='example2' value='閉じる' />
+          </td>
+        </tr>
+      </table>
+
+";
+?>
+
+
+
+
+
 
 <?php require "framework_tail.php"; ?>
 </form>

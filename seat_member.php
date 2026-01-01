@@ -1,233 +1,164 @@
 <!doctype html>
 <html lang="ja">
-<head>
-<meta charset="UTF-8">
-<title>フリーアドレス メンバーリスト</title>
-<style>
-:root {
-	--primary-color: #2563eb;
-	--primary-hover: #1d4ed8;
-	--secondary-color: #64748b;
-	--background: #f8fafc;
-	--card-bg: #ffffff;
-	--text-primary: #1e293b;
-	--text-secondary: #64748b;
-	--border-color: #e2e8f0;
-	--shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-	--radius: 8px;
-}
-
-* {
-	box-sizing: border-box;
-}
-
-body {
-	background: var(--background);
-	margin: 0;
-	padding: 20px;
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-}
-
-.page-container {
-	max-width: 1200px;
-	margin: 0 auto;
-}
-
-.page-header {
-	background: var(--card-bg);
-	border-radius: var(--radius);
-	box-shadow: var(--shadow);
-	padding: 20px 24px;
-	margin-bottom: 20px;
-	text-align: center;
-}
-
-.page-date {
-	font-size: 24px;
-	font-weight: 700;
-	color: var(--text-primary);
-	margin: 0 0 16px 0;
-}
-
-.nav-buttons {
-	display: flex;
-	justify-content: center;
-	gap: 12px;
-	flex-wrap: wrap;
-}
-
-.nav-btn {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	padding: 12px 24px;
-	font-size: 16px;
-	font-weight: 600;
-	border: none;
-	border-radius: var(--radius);
-	cursor: pointer;
-	transition: all 0.2s;
-	text-decoration: none;
-}
-
-.nav-btn-primary {
-	background: var(--primary-color);
-	color: white;
-}
-
-.nav-btn-primary:hover {
-	background: var(--primary-hover);
-}
-
-.nav-btn-primary:disabled {
-	background: #cbd5e1;
-	cursor: not-allowed;
-}
-
-.nav-btn-secondary {
-	background: var(--secondary-color);
-	color: white;
-}
-
-.nav-btn-secondary:hover {
-	background: #475569;
-}
-
-.content-grid {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 20px;
-}
-
-@media (max-width: 768px) {
-	.content-grid {
-		grid-template-columns: 1fr;
-	}
-}
-
-.list-card {
-	background: var(--card-bg);
-	border-radius: var(--radius);
-	box-shadow: var(--shadow);
-	overflow: hidden;
-}
-
-.list-header {
-	background: var(--primary-color);
-	color: white;
-	padding: 16px 20px;
-	font-size: 18px;
-	font-weight: 600;
-}
-
-.list-table {
-	width: 100%;
-	border-collapse: collapse;
-}
-
-.list-table th,
-.list-table td {
-	padding: 12px 16px;
-	text-align: left;
-	border-bottom: 1px solid var(--border-color);
-}
-
-.list-table th {
-	background: #f1f5f9;
-	font-weight: 600;
-	color: var(--text-secondary);
-	font-size: 13px;
-	text-transform: uppercase;
-}
-
-.list-table td {
-	font-size: 14px;
-	color: var(--text-primary);
-}
-
-.list-table tr:hover {
-	background: #f8fafc;
-}
-
-.seat-id {
-	font-weight: 700;
-	color: var(--primary-color);
-}
-
-.member-id {
-	color: var(--text-secondary);
-	font-size: 13px;
-}
-
-.kana-index {
-	font-weight: 700;
-	color: var(--primary-color);
-	font-size: 16px;
-}
-
-.phone-number {
-	font-family: 'SF Mono', Monaco, monospace;
-	color: var(--text-secondary);
-}
-
-.biko-001 { background-color: #fecaca !important; }
-.biko-002 { background-color: #bbf7d0 !important; }
-.biko-003 { background-color: #ddd6fe !important; }
-.biko-004 { background-color: #bae6fd !important; }
-
-.footer-actions {
-	margin-top: 20px;
-	text-align: center;
-}
-
-.close-btn {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	padding: 16px 48px;
-	font-size: 18px;
-	font-weight: 600;
-	border: none;
-	border-radius: var(--radius);
-	cursor: pointer;
-	transition: all 0.2s;
-	background: var(--secondary-color);
-	color: white;
-}
-
-.close-btn:hover {
-	background: #475569;
-}
-</style>
-</head>
+<head><meta charset="UTF-8"><title>フリーアドレス メンバーリスト</title></head>
 <body>
 <form id='form' name='form' action="seat.php">
 <?php require "framework_head.php"; ?>
 <?php require "framework_body.php"; ?>
 
-<script type="text/javascript">
+
+<style type="text/css">
+	input.example {
+	font-size:  50pt;
+	height:     100%;
+	width:      20%;
+	border-style:none;
+	}
+	
+	input.tenKey {
+	font-size:  50pt;
+	height:     100%;
+	width:      100%;
+	}
+	
+	td.tds{
+	font-size:  30pt;
+	align:      center;
+	height:     50;
+	width:      40%;
+	padding: .40em 0 .5em .20em;
+	border-left: 20px solid #3498db;
+	border-bottom: 1px solid #ccc;
+	text-align:    left;
+	}
+	
+	td.tdx{
+	width:  20px;
+	}
+	
+	td.td1{
+	font-size:  50pt;
+	align:      center;
+	height:     100;
+	width:      40%;
+	}
+	td.td2{
+	font-size:  50pt;
+	align:      center;
+	height:     100;
+	width:      40%;
+	}
+	td.td3{
+	font-size:  50pt;
+	text-align: center;
+	height:     100;
+	width:      100%;
+	}
+	td.td4{
+	font-size:  20pt;
+	text-align: center;
+	height:     100;
+	width:      100%;
+	}
+	td.td5{
+	font-size:  20pt;
+	text-align: center;
+	height:     100;
+	width:      100%;
+	}
+	button.BTN31 {
+		font-size:  50pt;
+		border-style:none;
+		background-color:#3498db;
+		text-align:centert;
+		color:white;
+	}
+
+</style>
+
+<style type="text/css">
+	.D1  {
+		width:80px;
+		text-align:center;
+		background-color: #ADD8E6;
+		font-size:15pt;
+	}
+	.D2  {
+		width:100px;
+		text-align:center;
+		background-color: #f5f5f5;
+		font-size:13pt;
+	}
+	.D3  {
+		width:200px;
+		text-align:left;
+		background-color: #f5f5f5;
+		font-size:15pt;
+	}
+	.D4  {
+		width:70px;
+		text-align:center;
+		background-color: #ADD8E6;
+		font-size:15pt;
+	}
+	.D5  {
+		width:150px;
+		text-align:left;
+		background-color: #f5f5f5;
+		font-size:13pt;
+	}
+	.D6  {
+		width:180px;
+		text-align:center;
+		background-color: #ADD8E6;
+		font-size:15pt;
+	}
+	.D7  {
+		width:80px;
+		text-align:center;
+		background-color: #f5f5f5;
+		font-size:15pt;
+	}
+
+	.foo1 {
+		 vertical-align:top;
+		 width:100%
+		 text-align:center;
+	}
+	.foo2 {
+		 width:100%
+		 text-align:center;
+	}
+
+</style>
+
+<script type="text/javascript"><!--
 function close_window(){
 	window.open('about:blank','_self').close();
 } 
 function goServletA(){
+	// 前日ボタンの動作
 	var dt = document.getElementById("dt").value;
 	if (dt == "") {
 		dt = "0"
 	}
 	dt = Number(dt) - 1;
 	document.getElementById("dt").value = dt;
-	document.getElementById('form').action="seat_member.php";
+    document.getElementById('form').action="seat_member.php";
 }
 function goServletB(){
+	// 翌日ボタンの動作
 	var dt = document.getElementById("dt").value;
 	if (dt == "") {
 		dt = "0"
 	}
 	dt = Number(dt) + 1;
 	document.getElementById("dt").value = dt;
-	document.getElementById('form').action="seat_member.php";
+    document.getElementById('form').action="seat_member.php";
 }
-</script>
+
+// --></script>
+
 
 <?php
 	$date = date("Ymd");
@@ -237,18 +168,19 @@ function goServletB(){
 	}
 	$youbi = date('w', strtotime($date));
 	$week = [
-	  '日',
-	  '月',
-	  '火',
-	  '水',
-	  '木',
-	  '金',
-	  '土',
+	  '日', //0
+	  '月', //1
+	  '火', //2
+	  '水', //3
+	  '木', //4
+	  '金', //5
+	  '土', //6
 	];
 
 	$dao = new db();
 	$dao->connect();
 
+	//席順リストA1～
 	$sql = "";
 	$sql = $sql." SELECT   UPPER(A.SEATID) as SEATID ";
 	$sql = $sql." 		,UPPER(CASE  ";
@@ -290,6 +222,7 @@ function goServletB(){
 		$rows[] = $row;
 	}
 
+	//ｶﾅ順リスト～
 	$sql = "";
 	$sql = $sql." SELECT A.KANA,A.NAME,A.PHONE,UPPER(CASE WHEN B.SEATID IS NULL THEN C.SEATID ELSE B.SEATID END) AS SEATID,A.BIKO1 ";
 	$sql = $sql."  FROM member A ";
@@ -307,8 +240,12 @@ function goServletB(){
 		$row2 = array();
 
 		if (strcmp($dao->get("PHONE"),"")==0) {
+			//電話番号未設定の人は表示しない
 			;
 		} else {
+
+			//カナの１文字目を切り出す（表示インデックス）
+			//前のカナと同じだった場合SPACEにする
 			$kana = $dao->get("KANA");
 			$kana = mb_substr($kana,0,1);
 
@@ -317,100 +254,171 @@ function goServletB(){
 			} else {
 				$kana_mae = $kana;
 			}
+//	echo $dao->get("KANA")."/".$kana."  |";
 
 			$row2['SEATID'] = $dao->get("SEATID");
+//			$row2['MID'] = $dao->get("MID");
 			$row2['KANA'] = $kana;
 			$row2['NAME'] = $dao->get("NAME");
 			$row2['PHONE'] = $dao->get("PHONE");
 			$row2['BIKO1'] = $dao->get("BIKO1");
 
-			$rows2[] = $row2;
+	 		$rows2[] = $row2;
 		}
+
+
+//		//カナの１文字目を切り出す（表示インデックス）
+//		//前のカナと同じだった場合SPACEにする
+//		$kana = $dao->get("KANA");
+//		$kana = mb_substr($kana,0,1);
+//
+//		if (strcmp($kana, $kana_mae) == 0) {
+//			$kana = "";
+//		} else {
+//			$kana_mae = $kana;
+//		}
+//echo $dao->get("KANA")."/".$kana."  |";
+//
+//		$row2['SEATID'] = $dao->get("SEATID");
+//		$row2['MID'] = $dao->get("MID");
+//		$row2['KANA'] = $kana;
+//		$row2['NAME'] = $dao->get("NAME");
+//		$row2['PHONE'] = $dao->get("PHONE");
+//
+//		if (strcmp($row2['PHONE'],"")==0) {
+//			//電話番号未設定の人は表示しない
+//			;
+//		} else {
+//	 		$rows2[] = $row2;
+//		}
+
+
 	}
 
+
+
+
 	$dao->close();
+
 ?>
 
-<div class="page-container">
-	<div class="page-header">
-		<h1 class="page-date"><?php echo substr($date,0,4)."/".((int)substr($date,4,2))."/".((int)substr($date,6,2))." (".$week[$youbi].")" ?></h1>
-		<div class="nav-buttons">
+
+
+<table width="100%">
+	<tr>
+		<td colspan="3" class="td5">
+			<font face='ＭＳ Ｐゴシック' size='5'><CENTER><B>
+			<?php echo substr($date,0,4)."/".((int)substr($date,4,2))."/".((int)substr($date,6,2))." (".$week[$youbi].")" ?></td>
+			</B></CENTER>
+			</font>
+	</tr>
+	<tr>
+		<td colspan="3" class="td4">
+
 <?php 
 if (strcmp($dt,"")==0 or strcmp($dt,"0")==0) { echo "
-			<button type='submit' class='nav-btn nav-btn-primary' onclick='goServletA();'>&lt;&lt; 前日</button>
-			<input type='submit' class='nav-btn nav-btn-secondary' value='閉じる' />
-			<button type='submit' class='nav-btn nav-btn-primary' onclick='goServletB();' disabled>翌日 &gt;&gt;</button>
+			<button type='submit' class='BTN31' onclick='goServletA();'><<前日</button>
+			<input type='submit' class='example' value='閉じる' />
+			<button type='submit' class='BTN31' onclick='goServletB();' disabled>翌日>></button>
 ";}
+
 else { echo "
-			<button type='submit' class='nav-btn nav-btn-primary' onclick='goServletA();'>&lt;&lt; 前日</button>
-			<input type='submit' class='nav-btn nav-btn-secondary' value='閉じる' />
-			<button type='submit' class='nav-btn nav-btn-primary' onclick='goServletB();'>翌日 &gt;&gt;</button>
+			<button type='submit' class='BTN31' onclick='goServletA();'><<前日</button>
+			<input type='submit' class='example' value='閉じる' />
+			<button type='submit' class='BTN31' onclick='goServletB();'>翌日>></button>
 ";} ?>
-		</div>
-	</div>
 
-	<div class="content-grid">
-		<div class="list-card">
-			<div class="list-header">席順</div>
-			<table class="list-table">
-				<thead>
-					<tr>
-						<th>席ID</th>
-						<th>社員ID</th>
-						<th>名前</th>
-					</tr>
-				</thead>
-				<tbody>
-				<?php foreach($rows as $row){ ?> 
-					<tr> 
-						<td class="seat-id"><?php echo htmlspecialchars($row['SEATID'],ENT_QUOTES,'UTF-8'); ?></td> 
-						<td class="member-id"><?php echo htmlspecialchars($row['MID'],ENT_QUOTES,'UTF-8'); ?></td> 
-						<td><?php echo htmlspecialchars($row['NAME'],ENT_QUOTES,'UTF-8'); ?></td> 
-					</tr> 
-				<?php } ?>
-				</tbody>
-			</table>
-		</div>
+		</td>
+	</tr>
+	<tr>
+		<td class="tds">席順</td>
+		<td class="tdx"></td>
+		<td class="tds">名前順</td>
+	</tr>
+	<tr>
+		<td valign="top" class="td1" width="100%">
+			<div class="foo1"  >
 
-		<div class="list-card">
-			<div class="list-header">名前順</div>
-			<table class="list-table">
-				<thead>
-					<tr>
-						<th>カナ</th>
-						<th>名前</th>
-						<th>内線</th>
-						<th>席ID</th>
-					</tr>
-				</thead>
-				<tbody>
-				<?php foreach($rows2 as $row2){ 
-					$bikoClass = "";
-					if (strcmp($id,"111111111")==0) {
-						if (strcmp($row2['BIKO1'],"001")==0) { $bikoClass = "biko-001"; }
-						if (strcmp($row2['BIKO1'],"002")==0) { $bikoClass = "biko-002"; }
-						if (strcmp($row2['BIKO1'],"003")==0) { $bikoClass = "biko-003"; }
-						if (strcmp($row2['BIKO1'],"004")==0) { $bikoClass = "biko-004"; }
-					}
-				?> 
-					<tr class="<?php echo $bikoClass; ?>"> 
-						<td class="kana-index"><?php echo htmlspecialchars($row2['KANA'],ENT_QUOTES,'UTF-8'); ?></td> 
-						<td><?php echo htmlspecialchars($row2['NAME'],ENT_QUOTES,'UTF-8'); ?></td> 
-						<td class="phone-number"><?php echo htmlspecialchars($row2['PHONE'],ENT_QUOTES,'UTF-8'); ?></td> 
-						<td class="seat-id"><?php echo htmlspecialchars($row2['SEATID'],ENT_QUOTES,'UTF-8'); ?></td> 
-					</tr> 
-				<?php } ?>
-				</tbody>
-			</table>
-		</div>
-	</div>
 
-	<div class="footer-actions">
-		<input type="submit" class="close-btn" value="閉じる"/>
+<table>
+<tr>
+	<td valign="top">
+		<table>
+		 
+		<?php 
+		foreach($rows as $row){
+		?> 
+		<tr> 
+			<td class='D1'><?php echo htmlspecialchars($row['SEATID'],ENT_QUOTES,'UTF-8'); ?></td> 
+			<td class='D2'><?php echo htmlspecialchars($row['MID'],ENT_QUOTES,'UTF-8'); ?></td> 
+			<td class='D3'><?php echo htmlspecialchars($row['NAME'],ENT_QUOTES,'UTF-8'); ?></td> 
+		</tr> 
+		<?php 
+		} 
+		?>
+		 
+		</table>
+		
+	</td>
+</tr>
+</table>
+
+
 	</div>
-</div>
+</td>
+<td class="tdx"></td>
+<td valign="top" class="td2"  width="100%">
+	<div class="foo2">
+
+		<table>
+			<?php 
+			foreach($rows2 as $row2){
+			?> 
+				<tr> 
+					<td class='D4'><?php echo htmlspecialchars($row2['KANA'],ENT_QUOTES,'UTF-8'); ?></td> 
+					<td class='D5'><?php echo htmlspecialchars($row2['NAME'],ENT_QUOTES,'UTF-8'); ?></td> 
+					<td class='D6'><?php echo htmlspecialchars($row2['PHONE'],ENT_QUOTES,'UTF-8'); ?></td> 
+					<td class='D7' style="
+											<?php
+												if (strcmp($id,"111111111")==0) {
+													if (strcmp($row2['BIKO1'],"001")==0) {
+														echo "background-color: #FF7D7D;";
+													}
+													if (strcmp($row2['BIKO1'],"002")==0) {
+														echo "background-color: #B3E2B4;";
+													}
+													if (strcmp($row2['BIKO1'],"003")==0) {
+														echo "background-color: #B8B2EA;";
+													}
+													if (strcmp($row2['BIKO1'],"004")==0) {
+														echo "background-color: #84b5cf;";
+													}
+												}
+											?>
+									"><?php echo htmlspecialchars($row2['SEATID'],ENT_QUOTES,'UTF-8'); ?></td> 
+				</tr> 
+			<?php 
+			} 
+			?>
+		</table>
+
+
+	</div>
+</td>
+</tr>
+<tr>
+<td colspan="3" class="td3">
+		<input type="submit" class="example" value="閉じる"/>
+</td>
+</tr>
+</table>
+
+
+
+
 
 <?php require "framework_tail.php"; ?>
 </form>
 </body>
 </html>
+
