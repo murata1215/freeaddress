@@ -113,6 +113,28 @@ const Lang = {
 
         // HTML lang属性を更新
         document.documentElement.lang = this.currentLang;
+
+        // 言語別表示の切り替え
+        this.updateLanguageVisibility();
+    },
+
+    /**
+     * 言語別のコンテンツ表示を更新
+     * .ja-only: 日本語のみ表示
+     * .non-ja-only: 日本語以外で表示
+     */
+    updateLanguageVisibility() {
+        const isJapanese = this.currentLang === 'ja';
+
+        // 日本語のみ表示する要素
+        document.querySelectorAll('.ja-only').forEach(el => {
+            el.style.display = isJapanese ? '' : 'none';
+        });
+
+        // 日本語以外で表示する要素
+        document.querySelectorAll('.non-ja-only').forEach(el => {
+            el.style.display = isJapanese ? 'none' : '';
+        });
     },
 
     /**

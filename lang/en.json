@@ -138,7 +138,13 @@
     "faq3A": "Please contact the administrator.",
     "faq4Q": "Q. I want to sit in a specific seat",
     "faq4A": "Due to the hot desking system, seats are determined by lottery. However, if the administrator has set fixed seats, that seat will be assigned.",
-    "backToTop": "▲ Back to Top"
+    "backToTop": "▲ Back to Top",
+    "menuScreenDesc": "The menu screen shows colorful buttons for each function. The orange \"Draw Hot Desking Seat\" button is in the center, with blue, green, purple, and lime buttons around it for other features.",
+    "lotteryScreenDesc": "The lottery screen displays a large numeric keypad for entering your employee number. There are Clear and BS (backspace) buttons to correct mistakes, and a Next button to proceed.",
+    "lotteryResultDesc": "The result screen shows your assigned seat number prominently displayed. Your name and the seat ID (like A01, B02) are shown clearly so you know where to sit.",
+    "seatMapScreenDesc": "The seat map shows your office layout as configured in Excel. Each seat displays its ID (A01, B02, etc.) and the name of the person sitting there if occupied. Empty seats show only the seat number.",
+    "checkScreenDesc": "The confirmation screen shows two lists side by side: seats sorted by seat number (left) and seats sorted by employee name (right). You can use Previous/Next Day buttons to view different dates.",
+    "awayScreenDesc": "The away registration screen has the same keypad layout as the lottery screen. Enter your employee number and tap Next to release your seat."
   },
   "seat": {
     "title": "Hot Desking Menu",
@@ -436,6 +442,20 @@
     "backToToc": "▲ Back to Contents",
     "adSpace": "Ad Space",
     "required": "Yes",
-    "optional": "-"
+    "optional": "-",
+    "registScreenDesc": "The registration form has three input fields: Email Address, Password, and Password (Confirm). Enter your information and click the blue \"Register\" button.",
+    "registCompleteDesc": "The completion screen displays your unique ID (a 9-digit number). Save this ID - you'll need it to access the system. There's a button to start using the system.",
+    "adminButtonDesc": "Look for the olive-colored \"Admin Page\" button at the top of the menu screen. Click it to access administration features.",
+    "adminLoginDesc": "The login screen has a password input field. Enter the password you set during registration and click \"Login\".",
+    "adminMenuDesc": "The admin menu shows sections for Master Data (download/upload), Settings (email, password, company name changes), and URLs for sharing with employees.",
+    "downloadDesc": "After clicking the download button, a file named \"sample-seat.xlsx\" will be saved to your computer. This Excel file contains sample data you can edit.",
+    "viewSheetDesc": "The \"view\" sheet defines your office layout. Place seat IDs (like A01, B02) in Excel cells to match your physical office arrangement. The cell positions become the visual seat map.",
+    "seatSheetDesc": "The \"seat\" sheet contains columns: seatid (seat number), mid (employee code for fixed seats), and optional notes (biko1-3). Leave mid empty for hot desking seats.",
+    "memberSheetDesc": "The \"member\" sheet lists employees with columns: mid (employee code for lottery), name, kana (for sorting), phone (extension), and optional notes (biko1-3).",
+    "uploadButtonDesc": "Find the orange \"Master Upload\" button in the admin menu. Click it to proceed to the upload screen.",
+    "fileSelectDesc": "The upload screen has a \"Select File\" button and an \"Upload\" button. Click \"Select File\" to choose your edited Excel file, then click \"Upload\" to process it.",
+    "uploadResultDesc": "The result screen shows lists of registered seats and employees. Check that your data was imported correctly. Any errors will be displayed here.",
+    "menuReturnDesc": "Return to the main menu by clicking the \"General Hot Desking Screen\" link in the admin URLs section, or use your browser's back button.",
+    "seatMapResultDesc": "Click \"View Seat Map\" to verify your layout was imported correctly. The seat map should display all seats from your Excel file in the positions you configured."
   }
 }
