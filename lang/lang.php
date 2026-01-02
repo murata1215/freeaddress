@@ -105,12 +105,24 @@ class Lang {
     }
 
     /**
+     * 言語切り替え用のURLを生成（既存のGETパラメータを保持）
+     */
+    private function buildLangUrl($lang) {
+        $params = $_GET;
+        $params['lang'] = $lang;
+        return '?' . http_build_query($params);
+    }
+
+    /**
      * 言語切り替えボタンのHTMLを出力
      */
     public function renderSwitcher() {
+        $jaUrl = $this->buildLangUrl('ja');
+        $enUrl = $this->buildLangUrl('en');
+
         $html = '<div id="lang-switcher">';
-        $html .= '<a href="?lang=ja" class="lang-btn ' . ($this->currentLang === 'ja' ? 'active' : '') . '">日本語</a>';
-        $html .= '<a href="?lang=en" class="lang-btn ' . ($this->currentLang === 'en' ? 'active' : '') . '">EN</a>';
+        $html .= '<a href="' . htmlspecialchars($jaUrl) . '" class="lang-btn ' . ($this->currentLang === 'ja' ? 'active' : '') . '">日本語</a>';
+        $html .= '<a href="' . htmlspecialchars($enUrl) . '" class="lang-btn ' . ($this->currentLang === 'en' ? 'active' : '') . '">EN</a>';
         $html .= '</div>';
 
         $html .= '<style>
@@ -120,11 +132,14 @@ class Lang {
                 right: 10px;
                 z-index: 1001;
                 display: flex;
+                flex-direction: row;
                 gap: 5px;
                 background: white;
                 padding: 5px;
                 border-radius: 20px;
                 box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+                height: auto !important;
+                width: auto !important;
             }
             .lang-btn {
                 padding: 6px 12px;
@@ -137,6 +152,7 @@ class Lang {
                 color: #666;
                 text-decoration: none;
                 transition: all 0.3s;
+                white-space: nowrap;
             }
             .lang-btn:hover {
                 background: #e0e0e0;
@@ -148,16 +164,6 @@ class Lang {
         </style>';
 
         return $html;
-    }
-
-    /**
-     * 言語切り替え時にURLパラメータを保持するヘルパー
-     */
-    public function buildUrl($params = []) {
-        $currentParams = $_GET;
-        $currentParams['lang'] = $this->currentLang;
-        $mergedParams = array_merge($currentParams, $params);
-        return '?' . http_build_query($mergedParams);
     }
 }
 
@@ -173,5 +179,12 @@ function __($key) {
  */
 function _e($key) {
     echo Lang::getInstance()->t($key);
+}
+
+/**
+ * グローバル関数：翻訳を取得（_g は _get の略）
+ */
+function _g($key) {
+    return Lang::getInstance()->t($key);
 }
 ?>
