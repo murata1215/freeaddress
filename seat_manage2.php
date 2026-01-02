@@ -1,8 +1,9 @@
+<?php require "lang/lang.php"; ?>
 <!doctype html>
-<html lang="ja">
+<html lang="<?php echo Lang::getInstance()->getCurrentLang(); ?>">
 <head>
 <meta charset="UTF-8">
-<title>フリーアドレス 管理者ページ</title>
+<title><?php _e('manage.title'); ?></title>
 <style>
 :root {
 	--primary-color: #2563eb;
@@ -210,6 +211,7 @@
 <body style="background: var(--background); margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
 <form id='form' name='form' action="seat.php" enctype="multipart/form-data" method="post">
 <?php require "framework_head.php"; ?>
+<?php echo Lang::getInstance()->renderSwitcher(); ?>
 <?php require "framework_body.php"; ?>
 
 <script type="text/javascript">
@@ -262,50 +264,50 @@
 		//パスワードが一致した
 		$param = new param();
 		$fileName = $param->getParam($id,"FileName");
-		
+
 		echo "<div class='manage-card'>";
-		echo "<h1 class='manage-title'>管理者ページ</h1>";
-		
+		echo "<h1 class='manage-title'>"._g('manage.title')."</h1>";
+
 		// ダウンロードセクション
 		echo "<div class='manage-section'>";
-		echo "<div class='manage-section-title'>マスタデータ</div>";
-		echo "<a href='./upload/sample-seat.xlsx' download='sample-seat.xlsx' class='manage-btn manage-btn-outline'>サンプルマスタダウンロード</a>";
-		echo "<a href='./upload/".$fileName."' download='".$id."-seat.xlsx' class='manage-btn manage-btn-success'>マスタダウンロード</a>";
+		echo "<div class='manage-section-title'>"._g('manage.masterData')."</div>";
+		echo "<a href='./upload/sample-seat.xlsx' download='sample-seat.xlsx' class='manage-btn manage-btn-outline'>"._g('manage.sampleDownload')."</a>";
+		echo "<a href='./upload/".$fileName."' download='".$id."-seat.xlsx' class='manage-btn manage-btn-success'>"._g('manage.masterDownload')."</a>";
 		echo "</div>";
-		
+
 		// 設定変更セクション
 		echo "<div class='manage-section'>";
-		echo "<div class='manage-section-title'>設定変更</div>";
-		echo "<button type='submit' class='manage-btn manage-btn-primary' onclick='goServletB();'>メールアドレス変更</button>";
-		echo "<button type='submit' class='manage-btn manage-btn-primary' onclick='goServletC();'>パスワード変更</button>";
-		echo "<button type='submit' class='manage-btn manage-btn-primary' onclick='goServletE();'>会社名変更</button>";
-		echo "<button type='submit' class='manage-btn manage-btn-warning' onclick='goServletD();'>マスタアップロード</button>";
+		echo "<div class='manage-section-title'>"._g('manage.settings')."</div>";
+		echo "<button type='submit' class='manage-btn manage-btn-primary' onclick='goServletB();'>"._g('manage.emailChange')."</button>";
+		echo "<button type='submit' class='manage-btn manage-btn-primary' onclick='goServletC();'>"._g('manage.passwordChange')."</button>";
+		echo "<button type='submit' class='manage-btn manage-btn-primary' onclick='goServletE();'>"._g('manage.companyChange')."</button>";
+		echo "<button type='submit' class='manage-btn manage-btn-warning' onclick='goServletD();'>"._g('manage.masterUpload')."</button>";
 		echo "</div>";
-		
+
 		// URLリンクセクション
 		echo "<div class='manage-section'>";
-		echo "<div class='manage-section-title'>各種URL</div>";
+		echo "<div class='manage-section-title'>"._g('manage.urls')."</div>";
 		echo "<ul class='manage-link-list'>";
-		echo "<li class='manage-link-item'><a href='seat.php?id=".$id."' class='manage-link'><span class='manage-link-icon'>&#128100;</span>一般用フリーアドレス画面</a></li>";
-		echo "<li class='manage-link-item'><a href='seat.php?id=".$id."&manage=true' class='manage-link'><span class='manage-link-icon'>&#128736;</span>管理者画面</a></li>";
-		echo "<li class='manage-link-item'><a href='seat_result.php?id=".$id."' class='manage-link'><span class='manage-link-icon'>&#128203;</span>着席リスト</a></li>";
-		echo "<li class='manage-link-item'><a href='seat_member.php?id=".$id."' class='manage-link'><span class='manage-link-icon'>&#128101;</span>メンバーリスト</a></li>";
+		echo "<li class='manage-link-item'><a href='seat.php?id=".$id."' class='manage-link'><span class='manage-link-icon'>&#128100;</span>"._g('manage.generalUrl')."</a></li>";
+		echo "<li class='manage-link-item'><a href='seat.php?id=".$id."&manage=true' class='manage-link'><span class='manage-link-icon'>&#128736;</span>"._g('manage.adminUrl')."</a></li>";
+		echo "<li class='manage-link-item'><a href='seat_result.php?id=".$id."' class='manage-link'><span class='manage-link-icon'>&#128203;</span>"._g('manage.seatListUrl')."</a></li>";
+		echo "<li class='manage-link-item'><a href='seat_member.php?id=".$id."' class='manage-link'><span class='manage-link-icon'>&#128101;</span>"._g('manage.memberListUrl')."</a></li>";
 		echo "</ul>";
 		echo "</div>";
-		
-		echo "<button type='submit' class='manage-btn manage-btn-secondary'>トップに戻る</button>";
+
+		echo "<button type='submit' class='manage-btn manage-btn-secondary'>"._g('manage.backToTop')."</button>";
 		echo "</div>";
-		
+
 	} else {
 		//パスワードが一致しない
 		echo "<div class='manage-card'>";
-		echo "<h1 class='manage-title'>管理者ページ</h1>";
+		echo "<h1 class='manage-title'>"._g('manage.title')."</h1>";
 		echo "<div class='manage-error'>";
-		echo "<div class='manage-error-text'>パスワードが一致しません</div>";
-		echo "<div class='manage-error-hint'>お忘れですか？</div>";
-		echo "<button type='submit' class='manage-btn manage-btn-primary' onclick='goServletA();'>パスワードを確認する</button>";
+		echo "<div class='manage-error-text'>"._g('manage.passwordMismatch')."</div>";
+		echo "<div class='manage-error-hint'>"._g('manage.forgotPassword')."</div>";
+		echo "<button type='submit' class='manage-btn manage-btn-primary' onclick='goServletA();'>"._g('manage.checkPassword')."</button>";
 		echo "</div>";
-		echo "<button type='submit' class='manage-btn manage-btn-secondary'>戻る</button>";
+		echo "<button type='submit' class='manage-btn manage-btn-secondary'>"._g('manage.back')."</button>";
 		echo "</div>";
 	}
 

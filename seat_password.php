@@ -1,8 +1,9 @@
+<?php require "lang/lang.php"; ?>
 <!doctype html>
-<html lang="ja">
+<html lang="<?php echo Lang::getInstance()->getCurrentLang(); ?>">
 <head>
 <meta charset="UTF-8">
-<title>フリーアドレス パスワード</title>
+<title><?php _e('password.title'); ?></title>
 <style>
 :root {
 	--primary-color: #2563eb;
@@ -137,34 +138,35 @@
 <body style="background: var(--background); margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
 <form action="seat_password2.php" enctype="multipart/form-data" method="post">
 <?php require "framework_head.php"; ?>
+<?php echo Lang::getInstance()->renderSwitcher(); ?>
 <?php require "framework_body.php"; ?>
 
 <div class="form-container">
 	<div class="form-card">
-		<h1 class="form-title">パスワード変更</h1>
-		<p class="form-subtitle">新しいパスワードを設定します</p>
-		
+		<h1 class="form-title"><?php _e('password.title'); ?></h1>
+		<p class="form-subtitle"><?php _e('password.subtitle'); ?></p>
+
 		<div class="form-group">
-			<label class="form-label" for="pass0">現在のパスワード</label>
-			<input type="password" id="pass0" name="pass0" value="" class="form-input" placeholder="現在のパスワードを入力" autocomplete="current-password" required>
+			<label class="form-label" for="pass0"><?php _e('password.currentPassword'); ?></label>
+			<input type="password" id="pass0" name="pass0" value="" class="form-input" placeholder="<?php _e('password.currentPasswordPlaceholder'); ?>" autocomplete="current-password" required>
 		</div>
-		
+
 		<hr class="form-divider">
-		
+
 		<div class="form-group">
-			<label class="form-label" for="pass1">新しいパスワード</label>
-			<input type="password" id="pass1" name="pass1" value="" class="form-input" placeholder="新しいパスワードを入力" autocomplete="new-password" required>
+			<label class="form-label" for="pass1"><?php _e('password.newPassword'); ?></label>
+			<input type="password" id="pass1" name="pass1" value="" class="form-input" placeholder="<?php _e('password.newPasswordPlaceholder'); ?>" autocomplete="new-password" required>
 		</div>
-		
+
 		<div class="form-group">
-			<label class="form-label" for="pass2">新しいパスワード（確認）</label>
-			<input type="password" id="pass2" name="pass2" value="" class="form-input" placeholder="もう一度入力してください" autocomplete="new-password" required>
-			<p class="form-hint">確認のため、同じパスワードをもう一度入力してください</p>
+			<label class="form-label" for="pass2"><?php _e('password.newPasswordConfirm'); ?></label>
+			<input type="password" id="pass2" name="pass2" value="" class="form-input" placeholder="<?php _e('password.newPasswordConfirmPlaceholder'); ?>" autocomplete="new-password" required>
+			<p class="form-hint"><?php _e('password.confirmHint'); ?></p>
 		</div>
-		
+
 		<div class="form-btn-group">
-			<button type="submit" name="s" class="form-btn form-btn-primary">変更する</button>
-			<button type="button" class="form-btn form-btn-secondary" onclick="history.back()">戻る</button>
+			<button type="submit" name="s" class="form-btn form-btn-primary"><?php _e('password.change'); ?></button>
+			<button type="button" class="form-btn form-btn-secondary" onclick="history.back()"><?php _e('common.back'); ?></button>
 		</div>
 	</div>
 </div>

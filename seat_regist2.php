@@ -1,8 +1,9 @@
+<?php require "lang/lang.php"; ?>
 <!doctype html>
-<html lang="ja">
+<html lang="<?php echo Lang::getInstance()->getCurrentLang(); ?>">
 <head>
 <meta charset="UTF-8">
-<title>フリーアドレス 登録</title>
+<title><?php _e('regist.title'); ?></title>
 <style>
 :root {
 	--primary-color: #2563eb;
@@ -138,12 +139,13 @@
 <body style="background: var(--background); margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
 <form action="seat.php">
 <?php require "framework_head.php"; ?>
+<?php echo Lang::getInstance()->renderSwitcher(); ?>
 <?php require "framework_body.php"; ?>
 <?php require "mail/framework_mail.php"; ?>
 
 <div class="regist-container">
 	<div class="regist-card">
-		<h1 class="regist-title">利用者登録</h1>
+		<h1 class="regist-title"><?php _e('regist.pageTitle'); ?></h1>
 
 <?php
 
@@ -182,15 +184,15 @@ if (empty($exist_id)) {
 			$regist = true;
 		} else {
 			//パスワードが一致しない
-			$error_message = "パスワードが一致していません";
+			$error_message = __('regist.errorPasswordMismatch');
 		}
 	} else {
 		//パスワードは空である
-		$error_message = "パスワードが入力されていません";
+		$error_message = __('regist.errorPasswordEmpty');
 	}
 } else {
 	//入力したメールアドレスが使用されている。
-	$error_message = "入力されたメールアドレスはすでに利用されています";
+	$error_message = __('regist.errorEmailExists');
 }
 
 if ($regist == true) {
@@ -203,14 +205,14 @@ if ($regist == true) {
 	$param->setParam($id_new, "MAIL", $mail);
 	$param->setParam($id_new, "PASSWORD", $pass1);
 
-	echo "<div class='regist-message regist-message-success'>登録が完了しました</div>";
-	
+	echo "<div class='regist-message regist-message-success'>".__('regist.success')."</div>";
+
 	echo "<div class='regist-id-display'>";
-	echo "<div class='regist-id-label'>あなたのID</div>";
+	echo "<div class='regist-id-label'>".__('regist.yourId')."</div>";
 	echo "<div class='regist-id-value'>".$id_new."</div>";
 	echo "</div>";
-	
-	echo "<p class='regist-info'>このIDは大切に保管してください。<br>フリーアドレスシステムへのアクセスに必要です。</p>";
+
+	echo "<p class='regist-info'>".__('regist.idNote')."</p>";
 
 	// 管理者ページURLをメールで送信（メール機能は現在無効）
 	/*
@@ -266,12 +268,12 @@ if ($regist == true) {
 	</script>
 	";
 
-	echo "<button type='submit' class='regist-btn regist-btn-primary'>フリーアドレスを開始する</button>";
+	echo "<button type='submit' class='regist-btn regist-btn-primary'>".__('regist.startButton')."</button>";
 
 } else {
 	echo "<div class='regist-message regist-message-error'>".$error_message."</div>";
-	echo "<p class='regist-info'>入力内容を確認して、もう一度お試しください。</p>";
-	echo "<button type='button' class='regist-btn regist-btn-secondary' onclick='history.back()'>戻って修正する</button>";
+	echo "<p class='regist-info'>".__('regist.errorRetry')."</p>";
+	echo "<button type='button' class='regist-btn regist-btn-secondary' onclick='history.back()'>".__('regist.backToFix')."</button>";
 }
 
 $dao->close();

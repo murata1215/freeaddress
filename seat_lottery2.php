@@ -1,9 +1,11 @@
+<?php require "lang/lang.php"; ?>
 <!doctype html>
-<html lang="ja">
-<head><meta charset="UTF-8"><title>フリーアドレス 抽選</title></head>
+<html lang="<?php echo Lang::getInstance()->getCurrentLang(); ?>">
+<head><meta charset="UTF-8"><title><?php _e('lottery.resultTitle'); ?></title></head>
 <body>
 <form action="seat.php">
 <?php require "framework_head.php"; ?>
+<?php echo Lang::getInstance()->renderSwitcher(); ?>
 <?php require "framework_body.php"; ?>
 
 
@@ -104,7 +106,7 @@ $dao->select($sql);
 if ($dao->next()){
 
 	//ALLOCにDELKB='D'の設定がある場合、離籍済みと判断
-	echo "今日は離籍済みです<p>";
+	echo __('lottery.alreadyLeft')."<p>";
 
 } else {
 
@@ -199,8 +201,8 @@ if ($dao->next()){
 		}
 
 		if ($cnt == 0) {
-			echo $name."さん 本日は満席です、打ち合わせコーナーをご利用ください<p>";
-			
+			echo $name.__('lottery.fullSeats')."<p>";
+
 		} else {
 			//決定された席番号がない場合、抽選を行う
 			if ($kettei_seatid == "") {
@@ -209,14 +211,14 @@ if ($dao->next()){
 				$dao->exec("insert into alloc (id, dt, mid, seatid, updtime) values ('".$id."', '".$date."','".$mid."','".$kettei_seatid."','".date("Y-m-d H:i:s")."')");
 			}
 
-			echo $name."さん 今日の席は <font color='red'>".$kettei_seatid."</font> です<p>";
+			echo $name.__('lottery.yourSeatIs')." <font color='red'>".$kettei_seatid."</font> ".__('lottery.seatSuffix')."<p>";
 		}
 
 
 	} else {
 
 		//メンバーマスタに存在しなかった
-		echo "コードが存在しません[".$mid."]<p>";
+		echo __('lottery.codeNotFound')."[".$mid."]<p>";
 
 	}
 
@@ -228,21 +230,18 @@ $dao->close();
 
 ?>
 
-<?php  echo "
-
 		</td>
           <td class='tdx'></td>
         </tr>
         <tr>
           <td colspan='3' align='center' class='td3'>
           	<br>
-			<input type='submit' class='example2' value='閉じる' />
+			<input type='submit' class='example2' value='<?php _e('common.close'); ?>' />
           </td>
         </tr>
       </table>
 
-";
-?>
+<?php ?>
 
 
 

@@ -6,589 +6,129 @@
     <meta name="description" content="FreeAddress フリーアドレス座席管理システムの使い方ガイド">
     <title>使い方ガイド - FreeAddress</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
-            line-height: 1.8;
-            color: #333;
-            background: #f8f9fa;
-        }
-
-        /* Header */
-        header {
-            background: #3498db;
-            color: white;
-            padding: 1rem 2rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            text-decoration: none;
-            color: white;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            margin-left: 2rem;
-            transition: opacity 0.3s;
-        }
-
-        .nav-links a:hover {
-            opacity: 0.8;
-        }
-
-        /* Main Content */
-        main {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 6rem 1.5rem 3rem;
-        }
-
-        .page-title {
-            text-align: center;
-            font-size: 2rem;
-            color: #2c3e50;
-            margin-bottom: 1rem;
-        }
-
-        .page-intro {
-            text-align: center;
-            color: #666;
-            margin-bottom: 3rem;
-        }
-
-        /* Table of Contents */
-        .toc {
-            background: white;
-            padding: 1.5rem 2rem;
-            border-radius: 10px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
-            margin-bottom: 3rem;
-        }
-
-        .toc h2 {
-            font-size: 1.2rem;
-            color: #3498db;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #3498db;
-        }
-
-        .toc-list {
-            list-style: none;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 0.5rem;
-        }
-
-        .toc-list a {
-            color: #333;
-            text-decoration: none;
-            padding: 0.5rem;
-            display: block;
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
-
-        .toc-list a:hover {
-            background: #e8f4fc;
-        }
-
-        .toc-list a::before {
-            content: "▶ ";
-            color: #3498db;
-            font-size: 0.8rem;
-        }
-
-        /* Ad Space */
-        .ad-space {
-            background: #f5f5f5;
-            padding: 1rem;
-            text-align: center;
-            border: 1px dashed #ccc;
-            margin: 2rem 0;
-            min-height: 90px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            border-radius: 5px;
-        }
-
-        /* Section */
-        .section {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
-            margin-bottom: 2rem;
-        }
-
-        .section h2 {
-            font-size: 1.5rem;
-            color: #2c3e50;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 3px solid #3498db;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .section h3 {
-            font-size: 1.1rem;
-            color: #3498db;
-            margin: 1.5rem 0 1rem;
-        }
-
-        .section p {
-            margin-bottom: 1rem;
-            color: #555;
-        }
-
-        /* Screenshot */
-        .screenshot {
-            margin: 1.5rem 0;
-            text-align: center;
-        }
-
-        .screenshot img {
-            max-width: 100%;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-
-        .screenshot-caption {
-            margin-top: 0.5rem;
-            font-size: 0.9rem;
-            color: #888;
-        }
-
-        /* Steps */
-        .steps {
-            counter-reset: step-counter;
-        }
-
-        .step {
-            position: relative;
-            padding-left: 3rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .step::before {
-            counter-increment: step-counter;
-            content: counter(step-counter);
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 2rem;
-            height: 2rem;
-            background: #3498db;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-
-        .step h4 {
-            color: #2c3e50;
-            margin-bottom: 0.5rem;
-        }
-
-        .step p {
-            margin-bottom: 0.5rem;
-        }
-
-        /* Tips */
-        .tip {
-            background: #e8f4fc;
-            padding: 1rem 1.5rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-            border-left: 4px solid #3498db;
-        }
-
-        .tip::before {
-            content: "💡 ヒント：";
-            font-weight: bold;
-            color: #3498db;
-        }
-
-        .warning {
-            background: #fff3cd;
-            padding: 1rem 1.5rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-            border-left: 4px solid #e8aa00;
-        }
-
-        .warning::before {
-            content: "⚠️ 注意：";
-            font-weight: bold;
-            color: #856404;
-        }
-
-        /* Button Legend */
-        .button-legend {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-            margin: 1rem 0;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .legend-color {
-            width: 20px;
-            height: 20px;
-            border-radius: 4px;
-        }
-
-        .legend-color.blue { background: #3498db; }
-        .legend-color.orange { background: #e8aa00; }
-        .legend-color.green { background: #27ae60; }
-        .legend-color.purple { background: #8e18a5; }
-        .legend-color.lime { background: #69c621; }
-        .legend-color.red { background: #a52a2a; }
-
-        /* Back to Top */
-        .back-to-top {
-            text-align: center;
-            margin-top: 1rem;
-        }
-
-        .back-to-top a {
-            color: #3498db;
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-
-        .back-to-top a:hover {
-            text-decoration: underline;
-        }
-
-        /* Usage Image - 利用イメージ図 */
-        .usage-image {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 15px;
-            padding: 2rem;
-            margin-bottom: 3rem;
-            color: white;
-        }
-
-        .usage-image h2 {
-            text-align: center;
-            margin-bottom: 1.5rem;
-            font-size: 1.3rem;
-        }
-
-        .usage-flow {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .usage-step {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            min-width: 120px;
-        }
-
-        .usage-icon {
-            width: 80px;
-            height: 80px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 0.8rem;
-            font-size: 2.5rem;
-            backdrop-filter: blur(5px);
-            border: 2px solid rgba(255,255,255,0.3);
-        }
-
-        .usage-step-label {
-            font-size: 0.9rem;
-            font-weight: 600;
-            line-height: 1.4;
-        }
-
-        .usage-arrow {
-            font-size: 2rem;
-            color: rgba(255,255,255,0.7);
-            margin: 0 0.5rem;
-        }
-
-        .usage-scene {
-            display: flex;
-            justify-content: center;
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .usage-office {
-            background: rgba(255,255,255,0.15);
-            border-radius: 10px;
-            padding: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            backdrop-filter: blur(5px);
-        }
-
-        .office-entrance {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .entrance-door {
-            width: 50px;
-            height: 70px;
-            background: linear-gradient(180deg, #8B4513 0%, #654321 100%);
-            border-radius: 5px 5px 0 0;
-            position: relative;
-            border: 2px solid #5D3A1A;
-        }
-
-        .entrance-door::after {
-            content: '';
-            position: absolute;
-            right: 8px;
-            top: 50%;
-            width: 6px;
-            height: 6px;
-            background: gold;
-            border-radius: 50%;
-        }
-
-        .tablet-stand {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .tablet {
-            width: 45px;
-            height: 60px;
-            background: linear-gradient(180deg, #333 0%, #1a1a1a 100%);
-            border-radius: 5px;
-            border: 2px solid #555;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .tablet-screen {
-            width: 35px;
-            height: 48px;
-            background: linear-gradient(180deg, #4facfe 0%, #00f2fe 100%);
-            border-radius: 2px;
-        }
-
-        .tablet-pole {
-            width: 8px;
-            height: 30px;
-            background: linear-gradient(180deg, #666 0%, #444 100%);
-        }
-
-        .tablet-base {
-            width: 30px;
-            height: 6px;
-            background: #444;
-            border-radius: 3px;
-        }
-
-        .person-icon {
-            font-size: 2.5rem;
-        }
-
-        .desk-area {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .mini-desk {
-            width: 25px;
-            height: 25px;
-            background: linear-gradient(135deg, #f5d79e 0%, #d4a857 100%);
-            border-radius: 3px;
-            border: 1px solid #c4983f;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.6rem;
-        }
-
-        .mini-desk.occupied {
-            box-shadow: 0 0 8px rgba(46, 204, 113, 0.8);
-        }
-
-        .scene-labels {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 0.8rem;
-            font-size: 0.75rem;
-            opacity: 0.9;
-        }
-
-        @media (max-width: 768px) {
-            .usage-flow {
-                flex-direction: column;
-            }
-            .usage-arrow {
-                transform: rotate(90deg);
-            }
-            .usage-office {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
-
-        /* Footer */
-        footer {
-            background: #2c3e50;
-            color: white;
-            padding: 2rem;
-            text-align: center;
-            margin-top: 3rem;
-        }
-
-        footer a {
-            color: #3498db;
-            text-decoration: none;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .page-title {
-                font-size: 1.5rem;
-            }
-
-            .section {
-                padding: 1.5rem;
-            }
-
-            .step {
-                padding-left: 2.5rem;
-            }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; line-height: 1.8; color: #333; background: #f8f9fa; }
+        header { background: #3498db; color: white; padding: 1rem 2rem; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .header-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: bold; text-decoration: none; color: white; }
+        .nav-links a { color: white; text-decoration: none; margin-left: 2rem; transition: opacity 0.3s; }
+        .nav-links a:hover { opacity: 0.8; }
+        main { max-width: 900px; margin: 0 auto; padding: 6rem 1.5rem 3rem; }
+        .page-title { text-align: center; font-size: 2rem; color: #2c3e50; margin-bottom: 1rem; }
+        .page-intro { text-align: center; color: #666; margin-bottom: 3rem; }
+        .toc { background: white; padding: 1.5rem 2rem; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.08); margin-bottom: 3rem; }
+        .toc h2 { font-size: 1.2rem; color: #3498db; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #3498db; }
+        .toc-list { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem; }
+        .toc-list a { color: #333; text-decoration: none; padding: 0.5rem; display: block; border-radius: 5px; transition: background 0.3s; }
+        .toc-list a:hover { background: #e8f4fc; }
+        .toc-list a::before { content: "▶ "; color: #3498db; font-size: 0.8rem; }
+        .ad-space { background: #f5f5f5; padding: 1rem; text-align: center; border: 1px dashed #ccc; margin: 2rem 0; min-height: 90px; display: flex; align-items: center; justify-content: center; color: #999; border-radius: 5px; }
+        .section { background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.08); margin-bottom: 2rem; }
+        .section h2 { font-size: 1.5rem; color: #2c3e50; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 3px solid #3498db; display: flex; align-items: center; gap: 0.5rem; }
+        .section h3 { font-size: 1.1rem; color: #3498db; margin: 1.5rem 0 1rem; }
+        .section p { margin-bottom: 1rem; color: #555; }
+        .screenshot { margin: 1.5rem 0; text-align: center; }
+        .screenshot img { max-width: 100%; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+        .screenshot-caption { margin-top: 0.5rem; font-size: 0.9rem; color: #888; }
+        .steps { counter-reset: step-counter; }
+        .step { position: relative; padding-left: 3rem; margin-bottom: 1.5rem; }
+        .step::before { counter-increment: step-counter; content: counter(step-counter); position: absolute; left: 0; top: 0; width: 2rem; height: 2rem; background: #3498db; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem; }
+        .step h4 { color: #2c3e50; margin-bottom: 0.5rem; }
+        .step p { margin-bottom: 0.5rem; }
+        .tip { background: #e8f4fc; padding: 1rem 1.5rem; border-radius: 8px; margin: 1rem 0; border-left: 4px solid #3498db; }
+        .tip::before { content: "💡 "; font-weight: bold; color: #3498db; }
+        .warning { background: #fff3cd; padding: 1rem 1.5rem; border-radius: 8px; margin: 1rem 0; border-left: 4px solid #e8aa00; }
+        .warning::before { content: "⚠️ "; font-weight: bold; color: #856404; }
+        .button-legend { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1rem 0; }
+        .legend-item { display: flex; align-items: center; gap: 0.5rem; }
+        .legend-color { width: 20px; height: 20px; border-radius: 4px; }
+        .legend-color.blue { background: #3498db; } .legend-color.orange { background: #e8aa00; } .legend-color.green { background: #27ae60; } .legend-color.purple { background: #8e18a5; } .legend-color.lime { background: #69c621; }
+        .back-to-top { text-align: center; margin-top: 1rem; }
+        .back-to-top a { color: #3498db; text-decoration: none; font-size: 0.9rem; }
+        .back-to-top a:hover { text-decoration: underline; }
+        .usage-image { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 15px; padding: 2rem; margin-bottom: 3rem; color: white; }
+        .usage-image h2 { text-align: center; margin-bottom: 1.5rem; font-size: 1.3rem; border: none; }
+        .usage-flow { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+        .usage-step { display: flex; flex-direction: column; align-items: center; text-align: center; min-width: 120px; }
+        .usage-icon { width: 80px; height: 80px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 0.8rem; font-size: 2.5rem; backdrop-filter: blur(5px); border: 2px solid rgba(255,255,255,0.3); }
+        .usage-step-label { font-size: 0.9rem; font-weight: 600; line-height: 1.4; }
+        .usage-arrow { font-size: 2rem; color: rgba(255,255,255,0.7); margin: 0 0.5rem; }
+        .usage-scene { display: flex; justify-content: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.2); }
+        .usage-office { background: rgba(255,255,255,0.15); border-radius: 10px; padding: 1.5rem; display: flex; align-items: center; gap: 2rem; backdrop-filter: blur(5px); }
+        .office-entrance { display: flex; flex-direction: column; align-items: center; }
+        .entrance-door { width: 50px; height: 70px; background: linear-gradient(180deg, #8B4513 0%, #654321 100%); border-radius: 5px 5px 0 0; position: relative; border: 2px solid #5D3A1A; }
+        .entrance-door::after { content: ''; position: absolute; right: 8px; top: 50%; width: 6px; height: 6px; background: gold; border-radius: 50%; }
+        .tablet-stand { display: flex; flex-direction: column; align-items: center; }
+        .tablet { width: 45px; height: 60px; background: linear-gradient(180deg, #333 0%, #1a1a1a 100%); border-radius: 5px; border: 2px solid #555; display: flex; align-items: center; justify-content: center; }
+        .tablet-screen { width: 35px; height: 48px; background: linear-gradient(180deg, #4facfe 0%, #00f2fe 100%); border-radius: 2px; }
+        .tablet-pole { width: 8px; height: 30px; background: linear-gradient(180deg, #666 0%, #444 100%); }
+        .tablet-base { width: 30px; height: 6px; background: #444; border-radius: 3px; }
+        .person-icon { font-size: 2.5rem; }
+        .desk-area { display: flex; gap: 0.5rem; }
+        .mini-desk { width: 25px; height: 25px; background: linear-gradient(135deg, #f5d79e 0%, #d4a857 100%); border-radius: 3px; border: 1px solid #c4983f; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; }
+        .mini-desk.occupied { box-shadow: 0 0 8px rgba(46, 204, 113, 0.8); }
+        footer { background: #2c3e50; color: white; padding: 2rem; text-align: center; margin-top: 3rem; }
+        footer a { color: #3498db; text-decoration: none; }
+        @media (max-width: 768px) { .nav-links { display: none; } .page-title { font-size: 1.5rem; } .section { padding: 1.5rem; } .step { padding-left: 2.5rem; } .usage-flow { flex-direction: column; } .usage-arrow { transform: rotate(90deg); } .usage-office { flex-direction: column; gap: 1rem; } }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="header-content">
-            <a href="index.html" class="logo">FreeAddress</a>
+            <a href="index.html" class="logo" data-i18n="common.siteName">FreeAddress</a>
             <nav class="nav-links">
-                <a href="index.html">ホーム</a>
-                <a href="howto.html">使い方</a>
-                <a href="setup.html">初期設定</a>
-                <a href="seat_regist.php">利用登録</a>
+                <a href="index.html" data-i18n="common.home">ホーム</a>
+                <a href="howto.html" data-i18n="common.howto">使い方</a>
+                <a href="setup.html" data-i18n="common.setup">初期設定</a>
+                <a href="seat_regist.php" data-i18n="common.register">利用登録</a>
             </nav>
         </div>
     </header>
 
-    <!-- Main Content -->
     <main>
-        <h1 class="page-title">使い方ガイド</h1>
-        <p class="page-intro">FreeAddressの基本的な使い方をご紹介します</p>
+        <h1 class="page-title" data-i18n="howto.pageTitle">使い方ガイド</h1>
+        <p class="page-intro" data-i18n="howto.pageIntro">FreeAddressの基本的な使い方をご紹介します</p>
 
-        <!-- Usage Image - 利用イメージ -->
         <div class="usage-image">
-            <h2>利用イメージ</h2>
-
-            <!-- フロー図 -->
+            <h2 data-i18n="howto.usageImageTitle">利用イメージ</h2>
             <div class="usage-flow">
                 <div class="usage-step">
                     <div class="usage-icon">🚶</div>
-                    <div class="usage-step-label">出社</div>
+                    <div class="usage-step-label" data-i18n="howto.usageStep1">出社</div>
                 </div>
                 <div class="usage-arrow">→</div>
                 <div class="usage-step">
                     <div class="usage-icon">📱</div>
-                    <div class="usage-step-label">入口の<br>タブレットで<br>抽選</div>
+                    <div class="usage-step-label" data-i18n="howto.usageStep2">入口の<br>タブレットで<br>抽選</div>
                 </div>
                 <div class="usage-arrow">→</div>
                 <div class="usage-step">
                     <div class="usage-icon">🎯</div>
-                    <div class="usage-step-label">今日の席が<br>決定</div>
+                    <div class="usage-step-label" data-i18n="howto.usageStep3">今日の席が<br>決定</div>
                 </div>
                 <div class="usage-arrow">→</div>
                 <div class="usage-step">
                     <div class="usage-icon">💺</div>
-                    <div class="usage-step-label">席に着いて<br>仕事開始</div>
+                    <div class="usage-step-label" data-i18n="howto.usageStep4">席に着いて<br>仕事開始</div>
                 </div>
             </div>
-
-            <!-- オフィスのイメージ図 -->
             <div class="usage-scene">
                 <div class="usage-office">
-                    <!-- 入口 -->
                     <div class="office-entrance">
                         <div class="entrance-door"></div>
-                        <span style="font-size: 0.7rem; margin-top: 4px;">入口</span>
+                        <span style="font-size: 0.7rem; margin-top: 4px;" data-i18n="howto.usageEntrance">入口</span>
                     </div>
-
-                    <!-- タブレットスタンド -->
                     <div class="tablet-stand">
-                        <div class="tablet">
-                            <div class="tablet-screen"></div>
-                        </div>
+                        <div class="tablet"><div class="tablet-screen"></div></div>
                         <div class="tablet-pole"></div>
                         <div class="tablet-base"></div>
-                        <span style="font-size: 0.7rem; margin-top: 4px;">タブレット</span>
+                        <span style="font-size: 0.7rem; margin-top: 4px;" data-i18n="howto.usageTablet">タブレット</span>
                     </div>
-
-                    <!-- 社員 -->
                     <div style="display: flex; flex-direction: column; align-items: center;">
                         <div class="person-icon">🧑‍💼</div>
-                        <span style="font-size: 0.7rem;">社員</span>
+                        <span style="font-size: 0.7rem;" data-i18n="howto.usageEmployee">社員</span>
                     </div>
-
-                    <!-- 矢印 -->
                     <div style="font-size: 1.5rem;">➡️</div>
-
-                    <!-- デスクエリア -->
                     <div style="display: flex; flex-direction: column; align-items: center;">
                         <div class="desk-area">
                             <div class="mini-desk">A1</div>
@@ -600,258 +140,193 @@
                             <div class="mini-desk occupied">B2</div>
                             <div class="mini-desk">B3</div>
                         </div>
-                        <span style="font-size: 0.7rem; margin-top: 4px;">フリーアドレス席</span>
+                        <span style="font-size: 0.7rem; margin-top: 4px;" data-i18n="howto.usageDesks">フリーアドレス席</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Table of Contents -->
         <nav class="toc">
-            <h2>目次</h2>
+            <h2 data-i18n="howto.tocTitle">目次</h2>
             <ul class="toc-list">
-                <li><a href="#menu">メニュー画面</a></li>
-                <li><a href="#lottery">座席抽選</a></li>
-                <li><a href="#seatmap">座席表を見る</a></li>
-                <li><a href="#check">着席を確認する</a></li>
-                <li><a href="#away">外出（離席）登録</a></li>
-                <li><a href="#search">席・内線を確認する</a></li>
+                <li><a href="#menu" data-i18n="howto.menuTitle">メニュー画面</a></li>
+                <li><a href="#lottery" data-i18n="howto.lotteryTitle">座席抽選</a></li>
+                <li><a href="#seatmap" data-i18n="howto.seatMapTitle">座席表を見る</a></li>
+                <li><a href="#check" data-i18n="howto.checkTitle">着席を確認する</a></li>
+                <li><a href="#away" data-i18n="howto.awayTitle">外出（離席）登録</a></li>
+                <li><a href="#search" data-i18n="howto.searchTitle">席・内線を確認する</a></li>
             </ul>
         </nav>
 
-        <!-- Ad Space -->
-        <div class="ad-space">
-            <!-- 広告コードをここに挿入 -->
-            広告スペース
-        </div>
+        <div class="ad-space">広告スペース</div>
 
-        <!-- Menu Section -->
         <section id="menu" class="section">
-            <h2>🏠 メニュー画面</h2>
-            <p>URLにアクセスすると、メニュー画面が表示されます。ここから各機能にアクセスできます。</p>
-
+            <h2>🏠 <span data-i18n="howto.menuTitle">メニュー画面</span></h2>
+            <p data-i18n="howto.menuText">URLにアクセスすると、メニュー画面が表示されます。ここから各機能にアクセスできます。</p>
             <div class="screenshot">
                 <img src="png/メニュー.png" alt="メニュー画面">
-                <p class="screenshot-caption">メニュー画面</p>
+                <p class="screenshot-caption" data-i18n="howto.menuTitle">メニュー画面</p>
             </div>
-
-            <h3>ボタンの説明</h3>
+            <h3 data-i18n="howto.buttonDesc">ボタンの説明</h3>
             <div class="button-legend">
-                <div class="legend-item">
-                    <span class="legend-color orange"></span>
-                    <span>フリーアドレスの抽選を行う</span>
-                </div>
-                <div class="legend-item">
-                    <span class="legend-color blue"></span>
-                    <span>席を確認する</span>
-                </div>
-                <div class="legend-item">
-                    <span class="legend-color green"></span>
-                    <span>着席を確認する</span>
-                </div>
-                <div class="legend-item">
-                    <span class="legend-color purple"></span>
-                    <span>外出（席を開放する）</span>
-                </div>
-                <div class="legend-item">
-                    <span class="legend-color lime"></span>
-                    <span>座席表を見る</span>
-                </div>
+                <div class="legend-item"><span class="legend-color orange"></span><span data-i18n="howto.lotteryButton">フリーアドレスの抽選を行う</span></div>
+                <div class="legend-item"><span class="legend-color blue"></span><span data-i18n="howto.checkSeatButton">席を確認する</span></div>
+                <div class="legend-item"><span class="legend-color green"></span><span data-i18n="howto.confirmSeatButton">着席を確認する</span></div>
+                <div class="legend-item"><span class="legend-color purple"></span><span data-i18n="howto.awayButton">外出（席を開放する）</span></div>
+                <div class="legend-item"><span class="legend-color lime"></span><span data-i18n="howto.seatMapButton">座席表を見る</span></div>
             </div>
-
-            <div class="tip">中央のオレンジ色のボタン「フリーアドレスの抽選を行う」が最もよく使う機能です。</div>
-
-            <div class="back-to-top"><a href="#menu">▲ 目次に戻る</a></div>
+            <div class="tip"><span data-i18n="howto.menuTip">中央のオレンジ色のボタン「フリーアドレスの抽選を行う」が最もよく使う機能です。</span></div>
+            <div class="back-to-top"><a href="#" data-i18n="howto.backToTop">▲ 目次に戻る</a></div>
         </section>
 
-        <!-- Lottery Section -->
         <section id="lottery" class="section">
-            <h2>🎲 座席抽選</h2>
-            <p>毎日の座席を抽選で決定します。出社時にこの操作を行ってください。</p>
-
+            <h2>🎲 <span data-i18n="howto.lotteryTitle">座席抽選</span></h2>
+            <p data-i18n="howto.lotteryText">毎日の座席を抽選で決定します。出社時にこの操作を行ってください。</p>
             <div class="steps">
                 <div class="step">
-                    <h4>メニューから「フリーアドレスの抽選を行う」をタップ</h4>
-                    <p>オレンジ色の大きなボタンを押します。</p>
+                    <h4 data-i18n="howto.lotteryStep1Title">メニューから「フリーアドレスの抽選を行う」をタップ</h4>
+                    <p data-i18n="howto.lotteryStep1Text">オレンジ色の大きなボタンを押します。</p>
                 </div>
                 <div class="step">
-                    <h4>社員番号を入力</h4>
-                    <p>テンキーで自分の社員番号を入力します。</p>
+                    <h4 data-i18n="howto.lotteryStep2Title">社員番号を入力</h4>
+                    <p data-i18n="howto.lotteryStep2Text">テンキーで自分の社員番号を入力します。</p>
                     <div class="screenshot">
                         <img src="png/抽選.png" alt="抽選画面">
-                        <p class="screenshot-caption">社員番号入力画面</p>
                     </div>
                 </div>
                 <div class="step">
-                    <h4>「次へ」をタップ</h4>
-                    <p>社員番号を入力したら「次へ」ボタンを押します。</p>
+                    <h4 data-i18n="howto.lotteryStep3Title">「次へ」をタップ</h4>
+                    <p data-i18n="howto.lotteryStep3Text">社員番号を入力したら「次へ」ボタンを押します。</p>
                 </div>
                 <div class="step">
-                    <h4>抽選結果を確認</h4>
-                    <p>あなたの今日の座席が表示されます。</p>
+                    <h4 data-i18n="howto.lotteryStep4Title">抽選結果を確認</h4>
+                    <p data-i18n="howto.lotteryStep4Text">あなたの今日の座席が表示されます。</p>
                     <div class="screenshot">
                         <img src="png/抽選結果.png" alt="抽選結果画面">
-                        <p class="screenshot-caption">抽選結果画面（例：G01席）</p>
                     </div>
                 </div>
             </div>
-
-            <div class="tip">入力を間違えた場合は「クリア」で全消去、「BS」で1文字削除できます。</div>
-            <div class="warning">1日1回のみ抽選できます。一度抽選した座席は変更できませんのでご注意ください。</div>
-
-            <div class="back-to-top"><a href="#menu">▲ 目次に戻る</a></div>
+            <div class="tip"><span data-i18n="howto.lotteryTip">入力を間違えた場合は「クリア」で全消去、「BS」で1文字削除できます。</span></div>
+            <div class="warning"><span data-i18n="howto.lotteryWarning">1日1回のみ抽選できます。一度抽選した座席は変更できませんのでご注意ください。</span></div>
+            <div class="back-to-top"><a href="#" data-i18n="howto.backToTop">▲ 目次に戻る</a></div>
         </section>
 
-        <!-- Ad Space -->
-        <div class="ad-space">
-            <!-- 広告コードをここに挿入 -->
-            広告スペース
-        </div>
+        <div class="ad-space">広告スペース</div>
 
-        <!-- Seat Map Section -->
         <section id="seatmap" class="section">
-            <h2>🗺️ 座席表を見る</h2>
-            <p>オフィスの座席配置を確認できます。誰がどの席に座っているかが一目でわかります。</p>
-
+            <h2>🗺️ <span data-i18n="howto.seatMapTitle">座席表を見る</span></h2>
+            <p data-i18n="howto.seatMapText">オフィスの座席配置を確認できます。誰がどの席に座っているかが一目でわかります。</p>
             <div class="steps">
                 <div class="step">
-                    <h4>メニューから「座席表を見る」をタップ</h4>
-                    <p>緑色のボタンを押します。</p>
+                    <h4 data-i18n="howto.seatMapStep1Title">メニューから「座席表を見る」をタップ</h4>
+                    <p data-i18n="howto.seatMapStep1Text">緑色のボタンを押します。</p>
                 </div>
                 <div class="step">
-                    <h4>座席表を確認</h4>
-                    <p>オフィスのレイアウトが表示されます。</p>
+                    <h4 data-i18n="howto.seatMapStep2Title">座席表を確認</h4>
+                    <p data-i18n="howto.seatMapStep2Text">オフィスのレイアウトが表示されます。</p>
                     <div class="screenshot">
                         <img src="png/座席表.png" alt="座席表画面">
-                        <p class="screenshot-caption">座席表画面</p>
                     </div>
                 </div>
             </div>
-
-            <h3>座席表の見方</h3>
+            <h3 data-i18n="howto.seatMapHowToRead">座席表の見方</h3>
             <ul style="margin-left: 1.5rem; color: #555;">
-                <li><strong>座席番号</strong>（A01, B02など）が各席に表示されます</li>
-                <li><strong>着席中の席</strong>には、座っている人の名前が表示されます</li>
-                <li><strong>空席</strong>は座席番号のみ表示されます</li>
-                <li>固定席（部長、社長など）は別途表示されます</li>
+                <li data-i18n="howto.seatMapHowToRead1"><strong>座席番号</strong>（A01, B02など）が各席に表示されます</li>
+                <li data-i18n="howto.seatMapHowToRead2"><strong>着席中の席</strong>には、座っている人の名前が表示されます</li>
+                <li data-i18n="howto.seatMapHowToRead3"><strong>空席</strong>は座席番号のみ表示されます</li>
+                <li data-i18n="howto.seatMapHowToRead4">固定席（部長、社長など）は別途表示されます</li>
             </ul>
-
-            <div class="tip">座席表は抽選後にリアルタイムで更新されます。</div>
-
-            <div class="back-to-top"><a href="#menu">▲ 目次に戻る</a></div>
+            <div class="tip"><span data-i18n="howto.seatMapTip">座席表は抽選後にリアルタイムで更新されます。</span></div>
+            <div class="back-to-top"><a href="#" data-i18n="howto.backToTop">▲ 目次に戻る</a></div>
         </section>
 
-        <!-- Check Section -->
         <section id="check" class="section">
-            <h2>✅ 着席を確認する</h2>
-            <p>誰がどの席に座っているか、リスト形式で確認できます。</p>
-
+            <h2>✅ <span data-i18n="howto.checkTitle">着席を確認する</span></h2>
+            <p data-i18n="howto.checkText">誰がどの席に座っているか、リスト形式で確認できます。</p>
             <div class="steps">
                 <div class="step">
-                    <h4>メニューから「着席を確認する」をタップ</h4>
-                    <p>緑色のボタンを押します。</p>
+                    <h4 data-i18n="howto.checkStep1Title">メニューから「着席を確認する」をタップ</h4>
+                    <p data-i18n="howto.checkStep1Text">緑色のボタンを押します。</p>
                 </div>
                 <div class="step">
-                    <h4>一覧を確認</h4>
-                    <p>席順・名前順で並べ替えて確認できます。</p>
+                    <h4 data-i18n="howto.checkStep2Title">一覧を確認</h4>
+                    <p data-i18n="howto.checkStep2Text">席順・名前順で並べ替えて確認できます。</p>
                     <div class="screenshot">
                         <img src="png/席確認.png" alt="席確認画面">
-                        <p class="screenshot-caption">着席確認画面</p>
                     </div>
                 </div>
             </div>
-
-            <h3>画面の見方</h3>
+            <h3 data-i18n="howto.checkHowToRead">画面の見方</h3>
             <ul style="margin-left: 1.5rem; color: #555;">
-                <li><strong>席順</strong>：座席番号順に表示（左側）</li>
-                <li><strong>名前順</strong>：社員名の順に表示（右側）</li>
-                <li><strong>前日/翌日</strong>：日付を切り替えて確認できます</li>
+                <li data-i18n="howto.checkHowToRead1"><strong>席順</strong>：座席番号順に表示（左側）</li>
+                <li data-i18n="howto.checkHowToRead2"><strong>名前順</strong>：社員名の順に表示（右側）</li>
+                <li data-i18n="howto.checkHowToRead3"><strong>前日/翌日</strong>：日付を切り替えて確認できます</li>
             </ul>
-
-            <div class="tip">特定の人を探すときは「名前順」が便利です。</div>
-
-            <div class="back-to-top"><a href="#menu">▲ 目次に戻る</a></div>
+            <div class="tip"><span data-i18n="howto.checkTip">特定の人を探すときは「名前順」が便利です。</span></div>
+            <div class="back-to-top"><a href="#" data-i18n="howto.backToTop">▲ 目次に戻る</a></div>
         </section>
 
-        <!-- Away Section -->
         <section id="away" class="section">
-            <h2>🚶 外出（離席）登録</h2>
-            <p>外出や会議などで席を長時間離れる場合、席を開放して他の人が使えるようにします。</p>
-
+            <h2>🚶 <span data-i18n="howto.awayTitle">外出（離席）登録</span></h2>
+            <p data-i18n="howto.awayText">外出や会議などで席を長時間離れる場合、席を開放して他の人が使えるようにします。</p>
             <div class="steps">
                 <div class="step">
-                    <h4>メニューから「外出（席を開放する）」をタップ</h4>
-                    <p>紫色のボタンを押します。</p>
+                    <h4 data-i18n="howto.awayStep1Title">メニューから「外出（席を開放する）」をタップ</h4>
+                    <p data-i18n="howto.awayStep1Text">紫色のボタンを押します。</p>
                 </div>
                 <div class="step">
-                    <h4>社員番号を入力</h4>
-                    <p>テンキーで自分の社員番号を入力します。</p>
+                    <h4 data-i18n="howto.awayStep2Title">社員番号を入力</h4>
+                    <p data-i18n="howto.awayStep2Text">テンキーで自分の社員番号を入力します。</p>
                     <div class="screenshot">
                         <img src="png/離席登録.png" alt="離席登録画面">
-                        <p class="screenshot-caption">外出登録画面（赤いテンキー）</p>
                     </div>
                 </div>
                 <div class="step">
-                    <h4>「次へ」をタップして完了</h4>
-                    <p>席が開放され、座席表から名前が消えます。</p>
+                    <h4 data-i18n="howto.awayStep3Title">「次へ」をタップして完了</h4>
+                    <p data-i18n="howto.awayStep3Text">席が開放され、座席表から名前が消えます。</p>
                 </div>
             </div>
-
-            <div class="warning">外出登録をすると、その日の座席が無効になります。再抽選はできませんので、本当に席を開放してよいか確認してから実行してください。</div>
-
-            <div class="back-to-top"><a href="#menu">▲ 目次に戻る</a></div>
+            <div class="warning"><span data-i18n="howto.awayWarning">外出登録をすると、その日の座席が無効になります。再抽選はできませんので、本当に席を開放してよいか確認してから実行してください。</span></div>
+            <div class="back-to-top"><a href="#" data-i18n="howto.backToTop">▲ 目次に戻る</a></div>
         </section>
 
-        <!-- Search Section -->
         <section id="search" class="section">
-            <h2>🔍 席・内線を確認する</h2>
-            <p>社員の席や内線番号を検索できます。電話を取り次ぐ時などに便利です。</p>
-
+            <h2>🔍 <span data-i18n="howto.searchTitle">席・内線を確認する</span></h2>
+            <p data-i18n="howto.searchText">社員の席や内線番号を検索できます。電話を取り次ぐ時などに便利です。</p>
             <div class="steps">
                 <div class="step">
-                    <h4>メニューから「席を確認する」をタップ</h4>
-                    <p>青色のボタンを押します。</p>
+                    <h4 data-i18n="howto.searchStep1Title">メニューから「席を確認する」をタップ</h4>
+                    <p data-i18n="howto.searchStep1Text">青色のボタンを押します。</p>
                 </div>
                 <div class="step">
-                    <h4>社員を検索</h4>
-                    <p>名前や社員番号で検索して、席と内線番号を確認できます。</p>
+                    <h4 data-i18n="howto.searchStep2Title">社員を検索</h4>
+                    <p data-i18n="howto.searchStep2Text">名前や社員番号で検索して、席と内線番号を確認できます。</p>
                 </div>
             </div>
-
-            <div class="tip">よく連絡を取る相手の内線番号は、この機能で確認できます。</div>
-
-            <div class="back-to-top"><a href="#menu">▲ 目次に戻る</a></div>
+            <div class="tip"><span data-i18n="howto.searchTip">よく連絡を取る相手の内線番号は、この機能で確認できます。</span></div>
+            <div class="back-to-top"><a href="#" data-i18n="howto.backToTop">▲ 目次に戻る</a></div>
         </section>
 
-        <!-- Ad Space -->
-        <div class="ad-space">
-            <!-- 広告コードをここに挿入 -->
-            広告スペース
-        </div>
+        <div class="ad-space">広告スペース</div>
 
-        <!-- FAQ Section -->
         <section class="section">
-            <h2>❓ よくある質問</h2>
-
-            <h3>Q. 抽選をやり直したい場合は？</h3>
-            <p>申し訳ありませんが、1日1回のみの抽選となっており、やり直しはできません。どうしても席を変更したい場合は管理者にご相談ください。</p>
-
-            <h3>Q. 座席表に自分の名前が表示されない</h3>
-            <p>抽選が完了していない可能性があります。まだ抽選していない場合は「フリーアドレスの抽選を行う」から抽選してください。既に抽選済みの場合は管理者にお問い合わせください。</p>
-
-            <h3>Q. 社員番号を忘れた</h3>
-            <p>管理者にお問い合わせください。</p>
-
-            <h3>Q. 特定の席に座りたい</h3>
-            <p>フリーアドレス制のため、座席は抽選で決まります。ただし、管理者が固定席を設定している場合はその席が割り当てられます。</p>
+            <h2>❓ <span data-i18n="howto.faqTitle">よくある質問</span></h2>
+            <h3 data-i18n="howto.faq1Q">Q. 抽選をやり直したい場合は？</h3>
+            <p data-i18n="howto.faq1A">申し訳ありませんが、1日1回のみの抽選となっており、やり直しはできません。どうしても席を変更したい場合は管理者にご相談ください。</p>
+            <h3 data-i18n="howto.faq2Q">Q. 座席表に自分の名前が表示されない</h3>
+            <p data-i18n="howto.faq2A">抽選が完了していない可能性があります。まだ抽選していない場合は「フリーアドレスの抽選を行う」から抽選してください。既に抽選済みの場合は管理者にお問い合わせください。</p>
+            <h3 data-i18n="howto.faq3Q">Q. 社員番号を忘れた</h3>
+            <p data-i18n="howto.faq3A">管理者にお問い合わせください。</p>
+            <h3 data-i18n="howto.faq4Q">Q. 特定の席に座りたい</h3>
+            <p data-i18n="howto.faq4A">フリーアドレス制のため、座席は抽選で決まります。ただし、管理者が固定席を設定している場合はその席が割り当てられます。</p>
         </section>
-
     </main>
 
-    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 FreeAddress. All rights reserved.</p>
-        <p><a href="index.html">ホームに戻る</a></p>
+        <p data-i18n="common.copyright">&copy; 2025 FreeAddress. All rights reserved.</p>
+        <p><a href="index.html" data-i18n="common.home">ホームに戻る</a></p>
     </footer>
+
+    <script src="lang/lang.js"></script>
 </body>
 </html>

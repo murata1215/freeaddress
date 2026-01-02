@@ -1,15 +1,17 @@
+<?php require "lang/lang.php"; ?>
 <!doctype html>
-<html lang="ja">
-<head><meta charset="UTF-8"><title>フリーアドレス アップロード</title></head>
+<html lang="<?php echo Lang::getInstance()->getCurrentLang(); ?>">
+<head><meta charset="UTF-8"><title><?php _e('upload.title'); ?></title></head>
 <body>
 <form action="seat_manage2.php" enctype="multipart/form-data" method="post">
 
 <?php require "framework_head.php"; ?>
+<?php echo Lang::getInstance()->renderSwitcher(); ?>
 <?php require "framework_body.php"; ?>
 
 
 
-<?php 
+<?php
 
 	if(isset($_GET['id'])) {
 		$id = $_GET['id'];
@@ -25,11 +27,11 @@
 	$upload = './upload/'.$newfilename;
 	//アップロードが正しく完了したかチェック
 	if(move_uploaded_file($_FILES['file_upload']['tmp_name'], $upload)){
-		echo 'アップロード完了';
+		echo _g('upload.uploadComplete');
 
 		//新ファイルチェック
 		if (check($newfilename) == true) {
-			echo "正確なファイルがアップロードされました";
+			echo _g('upload.fileCorrect');
 
 			//元ファイル削除
 			$param = new param();
@@ -47,7 +49,7 @@
 			update3($id, $newfilename);
 
 		} else {
-			echo "アップロードファイルは正しくないです";
+			echo _g('upload.fileIncorrect');
 			unlink($newfilename);
 		}
 
@@ -55,7 +57,7 @@
 
 
 	}else{
-		echo 'アップロード失敗';
+		echo _g('upload.uploadFailed');
 	}
 
 
@@ -70,19 +72,19 @@
 		//シートを取り出し
 		$sheet = $spreadsheet->getSheetByName("seat");
 		if ($sheet == null) {
-			echo "「seat」がありません";
+			echo _g('upload.missingSeat');
 			return false;
 		}
 		//シートを取り出し
 		$sheet = $spreadsheet->getSheetByName("member");
 		if ($sheet == null) {
-			echo "「member」がありません";
+			echo _g('upload.missingMember');
 			return false;
 		}
 		//シートを取り出し
 		$sheet = $spreadsheet->getSheetByName("view");
 		if ($sheet == null) {
-			echo "「view」がありません";
+			echo _g('upload.missingView');
 			return false;
 		}
 		return true;
@@ -141,7 +143,7 @@
 				}
 				$col = $col + 1;
 			}
-			
+
 			$row = array();
 			$row['SEATID'] = $seatid;
 			$row['MID'] = $mid;
@@ -225,7 +227,7 @@
 				}
 				$col = $col + 1;
 			}
-			
+
 			$row2 = array();
 			$row2['MID'] = $mid;
 			$row2['NAME'] = $name;
@@ -266,7 +268,7 @@
 		//excel内のすべての要素を取り出す（行、列）
 		$count = 0;
 		$bak_column = "";
-		
+
 		foreach ($sheet->getRowIterator() as $row) {
 			foreach ($sheet->getColumnIterator() as $column) {
 				//EXCELのセルIDを取得
@@ -291,7 +293,7 @@
 
 
 
-<H1>マスタアップロード結果</H1>
+<H1><?php _e('upload.resultTitle'); ?></H1>
 
 
 <table>
@@ -299,47 +301,47 @@
 	<td valign="top">
 		<table border='1'>
 		<tr><th>seatid</th><th>mid</th><th>biko1</th><th>biko2</th><th>biko3</th></tr>
-		 
-		<?php 
+
+		<?php
 		foreach($rows as $row){
-		?> 
-		<tr> 
-			<td><?php echo htmlspecialchars($row['SEATID'],ENT_QUOTES,'UTF-8'); ?></td> 
-			<td><?php echo htmlspecialchars($row['MID'],ENT_QUOTES,'UTF-8'); ?></td> 
-			<td><?php echo htmlspecialchars($row['BIKO1'],ENT_QUOTES,'UTF-8'); ?></td> 
-			<td><?php echo htmlspecialchars($row['BIKO2'],ENT_QUOTES,'UTF-8'); ?></td> 
-			<td><?php echo htmlspecialchars($row['BIKO3'],ENT_QUOTES,'UTF-8'); ?></td> 
-		</tr> 
-		<?php 
-		} 
 		?>
-		 
+		<tr>
+			<td><?php echo htmlspecialchars($row['SEATID'],ENT_QUOTES,'UTF-8'); ?></td>
+			<td><?php echo htmlspecialchars($row['MID'],ENT_QUOTES,'UTF-8'); ?></td>
+			<td><?php echo htmlspecialchars($row['BIKO1'],ENT_QUOTES,'UTF-8'); ?></td>
+			<td><?php echo htmlspecialchars($row['BIKO2'],ENT_QUOTES,'UTF-8'); ?></td>
+			<td><?php echo htmlspecialchars($row['BIKO3'],ENT_QUOTES,'UTF-8'); ?></td>
+		</tr>
+		<?php
+		}
+		?>
+
 		</table>
-		
+
 	</td>
 	<td valign="top">
 		<table border='1'>
 		<tr><th>mid</th><th>name</th><th>kana</th><th>phone</th><th>seat_range</th><th>biko1</th><th>biko2</th><th>biko3</th></tr>
-		 
-		<?php 
+
+		<?php
 		foreach($rows2 as $row){
-		?> 
-		<tr> 
-			<td><?php echo htmlspecialchars($row['MID'],ENT_QUOTES,'UTF-8'); ?></td> 
-			<td><?php echo htmlspecialchars($row['NAME'],ENT_QUOTES,'UTF-8'); ?></td> 
-			<td><?php echo htmlspecialchars($row['KANA'],ENT_QUOTES,'UTF-8'); ?></td> 
-			<td><?php echo htmlspecialchars($row['PHONE'],ENT_QUOTES,'UTF-8'); ?></td> 
-			<td><?php echo htmlspecialchars($row['SEAT_RANGE'],ENT_QUOTES,'UTF-8'); ?></td> 
-			<td><?php echo htmlspecialchars($row['BIKO1'],ENT_QUOTES,'UTF-8'); ?></td> 
-			<td><?php echo htmlspecialchars($row['BIKO2'],ENT_QUOTES,'UTF-8'); ?></td> 
-			<td><?php echo htmlspecialchars($row['BIKO3'],ENT_QUOTES,'UTF-8'); ?></td> 
-		</tr> 
-		<?php 
-		} 
 		?>
-		 
+		<tr>
+			<td><?php echo htmlspecialchars($row['MID'],ENT_QUOTES,'UTF-8'); ?></td>
+			<td><?php echo htmlspecialchars($row['NAME'],ENT_QUOTES,'UTF-8'); ?></td>
+			<td><?php echo htmlspecialchars($row['KANA'],ENT_QUOTES,'UTF-8'); ?></td>
+			<td><?php echo htmlspecialchars($row['PHONE'],ENT_QUOTES,'UTF-8'); ?></td>
+			<td><?php echo htmlspecialchars($row['SEAT_RANGE'],ENT_QUOTES,'UTF-8'); ?></td>
+			<td><?php echo htmlspecialchars($row['BIKO1'],ENT_QUOTES,'UTF-8'); ?></td>
+			<td><?php echo htmlspecialchars($row['BIKO2'],ENT_QUOTES,'UTF-8'); ?></td>
+			<td><?php echo htmlspecialchars($row['BIKO3'],ENT_QUOTES,'UTF-8'); ?></td>
+		</tr>
+		<?php
+		}
+		?>
+
 		</table>
-		
+
 	</td>
 </tr>
 </table>
@@ -349,7 +351,7 @@
 
 
 
-<input type="submit" value="戻る">
+<input type="submit" value="<?php _e('manage.back'); ?>">
 
 
 
@@ -358,4 +360,3 @@
 </form>
 </body>
 </html>
-

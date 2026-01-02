@@ -1,9 +1,11 @@
+<?php require "lang/lang.php"; ?>
 <!doctype html>
-<html lang="ja">
-<head><meta charset="UTF-8"><title>フリーアドレス 離籍</title></head>
+<html lang="<?php echo Lang::getInstance()->getCurrentLang(); ?>">
+<head><meta charset="UTF-8"><title><?php _e('away.title'); ?></title></head>
 <body>
 <form action="seat_away2.php">
 <?php require "framework_head.php"; ?>
+<?php echo Lang::getInstance()->renderSwitcher(); ?>
 <?php require "framework_body.php"; ?>
 
 
@@ -135,14 +137,14 @@
       <table align="center" width="100%"class="brwsr2">
         <tr>
           <td class="tdx1"></td>
-          <td class="td1">社員番号：</td>
+          <td class="td1"><?php _e('away.employeeNumber'); ?></td>
           <td class="tdx2"></td>
           <td class="td2">
 			<input type="text" class="example1" id="mid" name="mid" value="" onfocus="onNum()" >
           </td>
           <td class="tdx2"></td>
           <td colspan="2" align="center" class="td3">
-			<input type="submit" class="example2" value="次へ" action="#{seat.exec}"/>
+			<input type="submit" class="example2" value="<?php _e('common.next'); ?>" action="#{seat.exec}"/>
           </td>
           <td class="tdx2">
         </tr>
@@ -185,7 +187,7 @@
         </tr>
         <tr>
           <td class="td2">
-            <input type="button" value="クリア" class="tenKey" onclick="onTenkey('RET')" style="font-size:490%">
+            <input type="button" value="<?php _e('common.clear'); ?>" class="tenKey" onclick="onTenkey('RET')" style="font-size:490%">
           </td>
           <td class="td1">
             <input type="button" value="0" class="tenKey" onclick="onTenkey('0')">
@@ -198,7 +200,7 @@
           <td class="td2">
           </td>
           <td class="td1">
-			<button class="example2" type="button" onclick="history.back()">戻る</button>
+			<button class="example2" type="button" onclick="history.back()"><?php _e('common.back'); ?></button>
           </td>
           <td class="td2">
           </td>

@@ -1,8 +1,9 @@
+<?php require "lang/lang.php"; ?>
 <!doctype html>
-<html lang="ja">
+<html lang="<?php echo Lang::getInstance()->getCurrentLang(); ?>">
 <head>
 <meta charset="UTF-8">
-<title>フリーアドレス 確認</title>
+<title><?php _e('owasure.title'); ?></title>
 <style>
 :root {
 	--primary-color: #2563eb;
@@ -100,18 +101,19 @@
 <body style="background: var(--background); margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
 <form action="seat_owasure2.php">
 <?php require "framework_head.php"; ?>
+<?php echo Lang::getInstance()->renderSwitcher(); ?>
 <?php require "framework_body.php"; ?>
 
 <div class="form-container">
 	<div class="form-card">
-		<h1 class="form-title">パスワードをお忘れですか？</h1>
-		
+		<h1 class="form-title"><?php _e('owasure.title'); ?></h1>
+
 		<div class="form-info">
-			<p class="form-info-text">下記ボタンを押すと、登録されているメールアドレスにパスワードを送信します。</p>
+			<p class="form-info-text"><?php _e('owasure.info'); ?></p>
 		</div>
-		
-		<button type="submit" name="s" class="form-btn form-btn-primary">パスワードを送信する</button>
-		<button type="button" class="form-btn form-btn-secondary" onclick="history.back()">戻る</button>
+
+		<button type="submit" name="s" class="form-btn form-btn-primary"><?php _e('owasure.sendPassword'); ?></button>
+		<button type="button" class="form-btn form-btn-secondary" onclick="history.back()"><?php _e('common.back'); ?></button>
 	</div>
 </div>
 

@@ -1,8 +1,9 @@
+<?php require "lang/lang.php"; ?>
 <!doctype html>
-<html lang="ja">
+<html lang="<?php echo Lang::getInstance()->getCurrentLang(); ?>">
 <head>
 <meta charset="UTF-8">
-<title>フリーアドレス メール変更</title>
+<title><?php _e('mailChange.title'); ?></title>
 <style>
 :root {
 	--primary-color: #2563eb;
@@ -108,11 +109,12 @@
 <body style="background: var(--background); margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
 <form action="seat_manage2.php" enctype="multipart/form-data" method="post">
 <?php require "framework_head.php"; ?>
+<?php echo Lang::getInstance()->renderSwitcher(); ?>
 <?php require "framework_body.php"; ?>
 
 <div class="form-container">
 	<div class="form-card">
-		<h1 class="form-title">メールアドレス変更</h1>
+		<h1 class="form-title"><?php _e('mailChange.title'); ?></h1>
 
 <?php
 
@@ -136,14 +138,14 @@ $regist = false;
 $error_message = "";
 
 if (empty($mail1)) {
-	$error_message = "メールアドレスが入力されていません";
+	$error_message = _g('mailChange.errorEmpty');
 } else {
 	if (strcmp($mail1,$mail2)==0) {
 		//メールアドレスが一致した
 		$regist = true;
 	} else {
 		//メールアドレスが一致しない
-		$error_message = "メールアドレスが一致しません";
+		$error_message = _g('mailChange.errorMismatch');
 	}
 }
 
@@ -151,11 +153,11 @@ if ($regist == true) {
 	//設定ファイルにメールを格納
 	$param = new param();
 	$param->setParam($id, "MAIL", $mail1);
-	echo "<div class='form-message form-message-success'>メールアドレスを「".$mail1."」に変更しました</div>";
-	echo "<button type='submit' name='s' class='form-btn form-btn-primary'>管理画面に戻る</button>";
+	echo "<div class='form-message form-message-success'>"._g('mailChange.success').$mail1._g('mailChange.successSuffix')."</div>";
+	echo "<button type='submit' name='s' class='form-btn form-btn-primary'>"._g('mailChange.backToAdmin')."</button>";
 } else {
 	echo "<div class='form-message form-message-error'>".$error_message."</div>";
-	echo "<button type='button' class='form-btn form-btn-secondary' onclick='history.back()'>戻って修正する</button>";
+	echo "<button type='button' class='form-btn form-btn-secondary' onclick='history.back()'>"._g('mailChange.backToFix')."</button>";
 }
 
 $dao->close();

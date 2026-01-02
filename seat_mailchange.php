@@ -1,8 +1,9 @@
+<?php require "lang/lang.php"; ?>
 <!doctype html>
-<html lang="ja">
+<html lang="<?php echo Lang::getInstance()->getCurrentLang(); ?>">
 <head>
 <meta charset="UTF-8">
-<title>フリーアドレス メール変更</title>
+<title><?php _e('mailChange.title'); ?></title>
 <style>
 :root {
 	--primary-color: #2563eb;
@@ -131,27 +132,28 @@
 <body style="background: var(--background); margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
 <form action="seat_mailchange2.php" enctype="multipart/form-data" method="post">
 <?php require "framework_head.php"; ?>
+<?php echo Lang::getInstance()->renderSwitcher(); ?>
 <?php require "framework_body.php"; ?>
 
 <div class="form-container">
 	<div class="form-card">
-		<h1 class="form-title">メールアドレス変更</h1>
-		<p class="form-subtitle">新しいメールアドレスを設定します</p>
-		
+		<h1 class="form-title"><?php _e('mailChange.title'); ?></h1>
+		<p class="form-subtitle"><?php _e('mailChange.subtitle'); ?></p>
+
 		<div class="form-group">
-			<label class="form-label" for="mail1">新しいメールアドレス</label>
-			<input type="email" id="mail1" name="mail1" value="" class="form-input" placeholder="example@email.com" autocomplete="email" required>
+			<label class="form-label" for="mail1"><?php _e('mailChange.newEmail'); ?></label>
+			<input type="email" id="mail1" name="mail1" value="" class="form-input" placeholder="<?php _e('mailChange.emailPlaceholder'); ?>" autocomplete="email" required>
 		</div>
-		
+
 		<div class="form-group">
-			<label class="form-label" for="mail2">メールアドレス（確認）</label>
-			<input type="email" id="mail2" name="mail2" value="" class="form-input" placeholder="もう一度入力してください" autocomplete="email" required>
-			<p class="form-hint">確認のため、同じメールアドレスをもう一度入力してください</p>
+			<label class="form-label" for="mail2"><?php _e('mailChange.emailConfirm'); ?></label>
+			<input type="email" id="mail2" name="mail2" value="" class="form-input" placeholder="<?php _e('mailChange.emailConfirmPlaceholder'); ?>" autocomplete="email" required>
+			<p class="form-hint"><?php _e('mailChange.confirmHint'); ?></p>
 		</div>
-		
+
 		<div class="form-btn-group">
-			<button type="submit" name="s" class="form-btn form-btn-primary">変更する</button>
-			<button type="button" class="form-btn form-btn-secondary" onclick="history.back()">戻る</button>
+			<button type="submit" name="s" class="form-btn form-btn-primary"><?php _e('mailChange.change'); ?></button>
+			<button type="button" class="form-btn form-btn-secondary" onclick="history.back()"><?php _e('common.back'); ?></button>
 		</div>
 	</div>
 </div>

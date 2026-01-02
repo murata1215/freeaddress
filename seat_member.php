@@ -1,9 +1,11 @@
+<?php require "lang/lang.php"; ?>
 <!doctype html>
-<html lang="ja">
-<head><meta charset="UTF-8"><title>フリーアドレス メンバーリスト</title></head>
+<html lang="<?php echo Lang::getInstance()->getCurrentLang(); ?>">
+<head><meta charset="UTF-8"><title><?php _e('member.title'); ?></title></head>
 <body>
 <form id='form' name='form' action="seat.php">
 <?php require "framework_head.php"; ?>
+<?php echo Lang::getInstance()->renderSwitcher(); ?>
 <?php require "framework_body.php"; ?>
 
 
@@ -315,25 +317,25 @@ function goServletB(){
 	<tr>
 		<td colspan="3" class="td4">
 
-<?php 
-if (strcmp($dt,"")==0 or strcmp($dt,"0")==0) { echo "
-			<button type='submit' class='BTN31' onclick='goServletA();'><<前日</button>
-			<input type='submit' class='example' value='閉じる' />
-			<button type='submit' class='BTN31' onclick='goServletB();' disabled>翌日>></button>
-";}
+<?php
+if (strcmp($dt,"")==0 or strcmp($dt,"0")==0) { ?>
+			<button type='submit' class='BTN31' onclick='goServletA();'><?php _e('result.previousDay'); ?></button>
+			<input type='submit' class='example' value='<?php _e('common.close'); ?>' />
+			<button type='submit' class='BTN31' onclick='goServletB();' disabled><?php _e('result.nextDay'); ?></button>
+<?php }
 
-else { echo "
-			<button type='submit' class='BTN31' onclick='goServletA();'><<前日</button>
-			<input type='submit' class='example' value='閉じる' />
-			<button type='submit' class='BTN31' onclick='goServletB();'>翌日>></button>
-";} ?>
+else { ?>
+			<button type='submit' class='BTN31' onclick='goServletA();'><?php _e('result.previousDay'); ?></button>
+			<input type='submit' class='example' value='<?php _e('common.close'); ?>' />
+			<button type='submit' class='BTN31' onclick='goServletB();'><?php _e('result.nextDay'); ?></button>
+<?php } ?>
 
 		</td>
 	</tr>
 	<tr>
-		<td class="tds">席順</td>
+		<td class="tds"><?php _e('result.seatOrder'); ?></td>
 		<td class="tdx"></td>
-		<td class="tds">名前順</td>
+		<td class="tds"><?php _e('result.nameOrder'); ?></td>
 	</tr>
 	<tr>
 		<td valign="top" class="td1" width="100%">
@@ -408,7 +410,7 @@ else { echo "
 </tr>
 <tr>
 <td colspan="3" class="td3">
-		<input type="submit" class="example" value="閉じる"/>
+		<input type="submit" class="example" value="<?php _e('common.close'); ?>"/>
 </td>
 </tr>
 </table>

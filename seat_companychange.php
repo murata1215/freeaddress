@@ -1,8 +1,9 @@
+<?php require "lang/lang.php"; ?>
 <!doctype html>
-<html lang="ja">
+<html lang="<?php echo Lang::getInstance()->getCurrentLang(); ?>">
 <head>
 <meta charset="UTF-8">
-<title>フリーアドレス 会社変更</title>
+<title><?php _e('companyChange.title'); ?></title>
 <style>
 :root {
 	--primary-color: #2563eb;
@@ -131,6 +132,7 @@
 <body style="background: var(--background); margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
 <form action="seat_companychange2.php" enctype="multipart/form-data" method="post">
 <?php require "framework_head.php"; ?>
+<?php echo Lang::getInstance()->renderSwitcher(); ?>
 <?php require "framework_body.php"; ?>
 
 <?php
@@ -140,18 +142,18 @@
 
 <div class="form-container">
 	<div class="form-card">
-		<h1 class="form-title">会社名変更</h1>
-		<p class="form-subtitle">表示される会社名を変更します</p>
-		
+		<h1 class="form-title"><?php _e('companyChange.title'); ?></h1>
+		<p class="form-subtitle"><?php _e('companyChange.subtitle'); ?></p>
+
 		<div class="form-group">
-			<label class="form-label" for="company">会社名</label>
-			<input type="text" id="company" name="company" value="<?php echo $company ?>" class="form-input" placeholder="会社名を入力" required>
-			<p class="form-hint">フリーアドレス画面に表示される会社名です</p>
+			<label class="form-label" for="company"><?php _e('companyChange.companyName'); ?></label>
+			<input type="text" id="company" name="company" value="<?php echo $company ?>" class="form-input" placeholder="<?php _e('companyChange.placeholder'); ?>" required>
+			<p class="form-hint"><?php _e('companyChange.hint'); ?></p>
 		</div>
-		
+
 		<div class="form-btn-group">
-			<button type="submit" name="s" class="form-btn form-btn-primary">変更する</button>
-			<button type="button" class="form-btn form-btn-secondary" onclick="history.back()">戻る</button>
+			<button type="submit" name="s" class="form-btn form-btn-primary"><?php _e('companyChange.change'); ?></button>
+			<button type="button" class="form-btn form-btn-secondary" onclick="history.back()"><?php _e('common.back'); ?></button>
 		</div>
 	</div>
 </div>

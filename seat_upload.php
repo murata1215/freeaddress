@@ -1,8 +1,9 @@
+<?php require "lang/lang.php"; ?>
 <!doctype html>
-<html lang="ja">
+<html lang="<?php echo Lang::getInstance()->getCurrentLang(); ?>">
 <head>
 <meta charset="UTF-8">
-<title>フリーアドレス アップロード</title>
+<title><?php _e('upload.title'); ?></title>
 <style>
 :root {
 	--primary-color: #2563eb;
@@ -151,26 +152,27 @@
 <body style="background: var(--background); margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
 <form action="seat_upload2.php" enctype="multipart/form-data" method="post">
 <?php require "framework_head.php"; ?>
+<?php echo Lang::getInstance()->renderSwitcher(); ?>
 <?php require "framework_body.php"; ?>
 
 <div class="form-container">
 	<div class="form-card">
-		<h1 class="form-title">マスタアップロード</h1>
-		<p class="form-subtitle">座席マスタデータをアップロードします</p>
-		
+		<h1 class="form-title"><?php _e('upload.title'); ?></h1>
+		<p class="form-subtitle"><?php _e('upload.subtitle'); ?></p>
+
 		<div class="form-warning">
-			<p class="form-warning-text">アップロードすると現在のマスタデータが上書きされます。事前にバックアップを取ることをお勧めします。</p>
+			<p class="form-warning-text"><?php _e('upload.warning'); ?></p>
 		</div>
-		
+
 		<div class="form-group">
-			<label class="form-label" for="file_upload">ファイルを選択</label>
+			<label class="form-label" for="file_upload"><?php _e('upload.selectFile'); ?></label>
 			<input type="file" id="file_upload" name="file_upload" class="form-file-input" accept=".xlsx,.xls" required>
-			<p class="form-hint">Excel形式（.xlsx, .xls）のファイルを選択してください</p>
+			<p class="form-hint"><?php _e('upload.fileHint'); ?></p>
 		</div>
-		
+
 		<div class="form-btn-group">
-			<button type="submit" class="form-btn form-btn-primary">アップロード</button>
-			<button type="button" class="form-btn form-btn-secondary" onclick="history.back()">戻る</button>
+			<button type="submit" class="form-btn form-btn-primary"><?php _e('upload.upload'); ?></button>
+			<button type="button" class="form-btn form-btn-secondary" onclick="history.back()"><?php _e('upload.back'); ?></button>
 		</div>
 	</div>
 </div>

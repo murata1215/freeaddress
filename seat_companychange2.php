@@ -1,8 +1,9 @@
+<?php require "lang/lang.php"; ?>
 <!doctype html>
-<html lang="ja">
+<html lang="<?php echo Lang::getInstance()->getCurrentLang(); ?>">
 <head>
 <meta charset="UTF-8">
-<title>フリーアドレス 会社変更</title>
+<title><?php _e('companyChange.title'); ?></title>
 <style>
 :root {
 	--primary-color: #2563eb;
@@ -89,11 +90,12 @@
 <body style="background: var(--background); margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
 <form action="seat_manage2.php" enctype="multipart/form-data" method="post">
 <?php require "framework_head.php"; ?>
+<?php echo Lang::getInstance()->renderSwitcher(); ?>
 <?php require "framework_body.php"; ?>
 
 <div class="form-container">
 	<div class="form-card">
-		<h1 class="form-title">会社名変更</h1>
+		<h1 class="form-title"><?php _e('companyChange.title'); ?></h1>
 
 <?php
 
@@ -111,8 +113,8 @@ $dao->connect();
 $param = new param();
 $param->setParam($id, "COMPANY", $company);
 
-echo "<div class='form-message form-message-success'>会社名を「".$company."」に変更しました</div>";
-echo "<button type='submit' name='s' class='form-btn form-btn-primary'>管理画面に戻る</button>";
+echo "<div class='form-message form-message-success'>"._g('companyChange.success').$company._g('companyChange.successSuffix')."</div>";
+echo "<button type='submit' name='s' class='form-btn form-btn-primary'>"._g('companyChange.backToAdmin')."</button>";
 
 $dao->close();
 

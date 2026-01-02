@@ -1,9 +1,11 @@
+<?php require "lang/lang.php"; ?>
 <!doctype html>
-<html lang="ja">
-<head><meta charset="UTF-8"><title>フリーアドレス 離籍</title></head>
+<html lang="<?php echo Lang::getInstance()->getCurrentLang(); ?>">
+<head><meta charset="UTF-8"><title><?php _e('away.title'); ?></title></head>
 <body>
 <form action="seat.php">
 <?php require "framework_head.php"; ?>
+<?php echo Lang::getInstance()->renderSwitcher(); ?>
 <?php require "framework_body.php"; ?>
 
 
@@ -99,19 +101,19 @@ if ($dao->next()){
 
 	if ( strcmp($delkb,"D") == 0 ) {
 
-		echo "すでに退席済みです";
+		echo __('away.alreadyLeft');
 
 	} else {
 
 		$sql = " update alloc set delkb='d' where id='".$id."' and dt='".$date."' and mid='".$mid."' ";
 		$dao->exec($sql);
-		echo $name."今日の席 ".$kettei_seatid." を開放しました";
+		echo $name.__('away.seatReleased').$kettei_seatid.__('away.seatReleasedSuffix');
 
 	}
 
 } else {
 
-	echo $mid."今日は席が抽選されていません";
+	echo $mid.__('away.noSeatToday');
 
 
 }
@@ -130,7 +132,7 @@ $dao->close();
 	<tr>
 		<td colspan="3" align="center" class="td3">
 			<br>
-			<input type="submit" class="example2" value="閉じる" onclick="close_window();"/>
+			<input type="submit" class="example2" value="<?php _e('common.close'); ?>" onclick="close_window();"/>
 		</td>
 	</tr>
 </table>

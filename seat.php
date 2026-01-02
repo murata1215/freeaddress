@@ -1,9 +1,11 @@
+<?php require "lang/lang.php"; ?>
 <!doctype html>
-<html lang="ja">
-<head><meta charset="UTF-8"><title>フリーアドレス メニュー</title></head>
+<html lang="<?php echo Lang::getInstance()->getCurrentLang(); ?>">
+<head><meta charset="UTF-8"><title><?php _e('seat.title'); ?></title></head>
 <body>
 <form id='form' name='form' action="seat_lottery.php" >
 <?php require "framework_head.php"; ?>
+<?php echo Lang::getInstance()->renderSwitcher(); ?>
 <?php require "framework_body.php"; ?>
 
 	<script type="text/javascript">
@@ -200,29 +202,29 @@
 
 
 
-<?php 
+<?php
 
-if (strcmp($id,"")==0) { echo "
+if (strcmp($id,"")==0) { ?>
 
 	<table align='center' width='100%' height='90%' style='display:none;'>
 
 		<tr>
 			<td colspan='3' class='td11'>
-				<button type='submit' class='BTN11' onclick='goServletG();'>利用者登録をする</button>
+				<button type='submit' class='BTN11' onclick='goServletG();'><?php _e('seat.register'); ?></button>
 			</td>
 		</tr>
 
 	</table>
 
-";}
+<?php }
 
-else if (strcmp($manage,"true")==0) { echo "
+else if (strcmp($manage,"true")==0) { ?>
 
 <table align='center' width='100%' height='30%'>
 
 		<tr>
 			<td colspan='3' class='td42'>
-				<button type='submit' class='BTN42' onclick='goServletH();'>管理者ページ</button>
+				<button type='submit' class='BTN42' onclick='goServletH();'><?php _e('seat.adminPage'); ?></button>
 			</td>
 		</tr>
 
@@ -232,55 +234,55 @@ else if (strcmp($manage,"true")==0) { echo "
 
 	<tr>
 		<td class='td21'>
-			<button type='submit' class='BTN21' onclick='goServletE();'>席・内線を<br>確認する</button>
+			<button type='submit' class='BTN21' onclick='goServletE();'><?php _e('seat.checkSeatExtension'); ?></button>
 		</td>
 		<td rowspan='2' class='td22'>
-			<button type='submit' class='BTN22' onclick='goServletA();'>フリーアドレスの<br>抽選を行う</button>
+			<button type='submit' class='BTN22' onclick='goServletA();'><?php _e('seat.lottery'); ?></button>
 		</td>
 		<td class='td23'>
-			<button type='submit' class='BTN23' onclick='goServletD();'>着席を確認する</button>
+			<button type='submit' class='BTN23' onclick='goServletD();'><?php _e('seat.confirmSeat'); ?></button>
 		</td>
 	</tr>
 	<tr>
 		<td class='td31'>
-			<button type='submit' class='BTN31' onclick='goServletB();'>外出(席を開放する)</button>
+			<button type='submit' class='BTN31' onclick='goServletB();'><?php _e('seat.away'); ?></button>
 		</td>
 		<td class='td32'>
-			<button type='submit' class='BTN32' onclick='goServletC();'>座席表を見る</button>
+			<button type='submit' class='BTN32' onclick='goServletC();'><?php _e('seat.seatMap'); ?></button>
 		</td>
 	</tr>
 
 </table>
 
-";}
+<?php }
 
-else { echo "
+else { ?>
 
 	<table align='center' width='100%' height='100%'>
 
 		<tr>
 			<td class='td21'>
-				<button type='submit' class='BTN21' onclick='goServletE();'>席を確認する</button>
+				<button type='submit' class='BTN21' onclick='goServletE();'><?php _e('seat.checkSeat'); ?></button>
 			</td>
 			<td rowspan='2' class='td22'>
-				<button type='submit' class='BTN22' onclick='goServletA();'>フリーアドレスの<br>抽選を行う</button>
+				<button type='submit' class='BTN22' onclick='goServletA();'><?php _e('seat.lottery'); ?></button>
 			</td>
 			<td class='td23'>
-				<button type='submit' class='BTN23' onclick='goServletD();'>着席を確認する</button>
+				<button type='submit' class='BTN23' onclick='goServletD();'><?php _e('seat.confirmSeat'); ?></button>
 			</td>
 		</tr>
 		<tr>
 			<td class='td31'>
-				<button type='submit' class='BTN31' onclick='goServletB();'>外出(席を開放する)</button>
+				<button type='submit' class='BTN31' onclick='goServletB();'><?php _e('seat.away'); ?></button>
 			</td>
 			<td class='td32'>
-				<button type='submit' class='BTN32' onclick='goServletC();'>座席表を見る</button>
+				<button type='submit' class='BTN32' onclick='goServletC();'><?php _e('seat.seatMap'); ?></button>
 			</td>
 		</tr>
 
 	</table>
 
-";} ?>
+<?php } ?>
 
 
 

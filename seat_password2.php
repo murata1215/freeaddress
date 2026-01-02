@@ -1,8 +1,9 @@
+<?php require "lang/lang.php"; ?>
 <!doctype html>
-<html lang="ja">
+<html lang="<?php echo Lang::getInstance()->getCurrentLang(); ?>">
 <head>
 <meta charset="UTF-8">
-<title>フリーアドレス パスワード</title>
+<title><?php _e('password.title'); ?></title>
 <style>
 :root {
 	--primary-color: #2563eb;
@@ -108,11 +109,12 @@
 <body style="background: var(--background); margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
 <form action="seat_manage2.php" enctype="multipart/form-data" method="post">
 <?php require "framework_head.php"; ?>
+<?php echo Lang::getInstance()->renderSwitcher(); ?>
 <?php require "framework_body.php"; ?>
 
 <div class="form-container">
 	<div class="form-card">
-		<h1 class="form-title">パスワード変更</h1>
+		<h1 class="form-title"><?php _e('password.title'); ?></h1>
 
 <?php
 
@@ -159,11 +161,11 @@ if (strcmp($pass0,$old_password)==0) {
 		$regist = true;
 	} else {
 		//パスワードが一致しない
-		$error_message = "新パスワードが一致していません";
+		$error_message = _g('password.errorNewMismatch');
 	}
 } else {
 	//旧パスワードとパスワードが一致しない
-	$error_message = "現在のパスワードが正しくありません";
+	$error_message = _g('password.errorCurrentWrong');
 }
 
 if ($regist == true) {
@@ -173,11 +175,11 @@ if ($regist == true) {
 
 	echo "<script type='text/javascript'>document.getElementById('password').value='$pass1';</script>";
 
-	echo "<div class='form-message form-message-success'>パスワードを変更しました</div>";
-	echo "<button type='submit' name='s' class='form-btn form-btn-primary'>管理画面に戻る</button>";
+	echo "<div class='form-message form-message-success'>"._g('password.success')."</div>";
+	echo "<button type='submit' name='s' class='form-btn form-btn-primary'>"._g('password.backToAdmin')."</button>";
 } else {
 	echo "<div class='form-message form-message-error'>".$error_message."</div>";
-	echo "<button type='button' class='form-btn form-btn-secondary' onclick='history.back()'>戻って修正する</button>";
+	echo "<button type='button' class='form-btn form-btn-secondary' onclick='history.back()'>"._g('password.backToFix')."</button>";
 }
 
 $dao->close();

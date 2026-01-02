@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="FreeAddress フリーアドレス座席管理システムの登録・初期設定ガイド">
-    <title>登録・初期設定ガイド - FreeAddress</title>
+    <title data-i18n="setup.pageTitle">登録・初期設定ガイド - FreeAddress</title>
     <style>
         * {
             margin: 0;
@@ -429,373 +429,373 @@
     <!-- Header -->
     <header>
         <div class="header-content">
-            <a href="index.html" class="logo">FreeAddress</a>
+            <a href="index.html" class="logo" data-i18n="common.siteName">FreeAddress</a>
             <nav class="nav-links">
-                <a href="index.html">ホーム</a>
-                <a href="howto.html">使い方</a>
-                <a href="setup.html">初期設定</a>
-                <a href="seat_regist.php">利用登録</a>
+                <a href="index.html" data-i18n="common.home">ホーム</a>
+                <a href="howto.html" data-i18n="common.howto">使い方</a>
+                <a href="setup.html" data-i18n="common.setup">初期設定</a>
+                <a href="seat_regist.php" data-i18n="common.register">利用登録</a>
             </nav>
         </div>
     </header>
 
     <!-- Main Content -->
     <main>
-        <h1 class="page-title">登録・初期設定ガイド</h1>
-        <p class="page-intro">FreeAddressを使い始めるための登録と初期設定の手順をご説明します</p>
+        <h1 class="page-title" data-i18n="setup.pageTitle">登録・初期設定ガイド</h1>
+        <p class="page-intro" data-i18n="setup.pageIntro">FreeAddressを使い始めるための登録と初期設定の手順をご説明します</p>
 
         <!-- Table of Contents -->
         <nav class="toc">
-            <h3>目次</h3>
+            <h3 data-i18n="setup.tocTitle">目次</h3>
             <ul class="toc-list">
-                <li><strong>PART 1：利用者登録</strong></li>
-                <li><a href="#regist">利用者登録の手順</a></li>
-                <li style="margin-top: 1rem;"><strong>PART 2：初期設定（管理者向け）</strong></li>
-                <li><a href="#admin-login">管理者ページへのログイン</a></li>
-                <li><a href="#download">サンプルマスタのダウンロード</a></li>
-                <li><a href="#excel">Excelファイルの編集</a></li>
-                <li><a href="#upload">マスタのアップロード</a></li>
-                <li><a href="#confirm">設定の確認</a></li>
+                <li><strong data-i18n="setup.part1Title">PART 1：利用者登録</strong></li>
+                <li><a href="#regist" data-i18n="setup.tocRegist">利用者登録の手順</a></li>
+                <li style="margin-top: 1rem;"><strong data-i18n="setup.part2Title">PART 2：初期設定（管理者向け）</strong></li>
+                <li><a href="#admin-login" data-i18n="setup.tocAdminLogin">管理者ページへのログイン</a></li>
+                <li><a href="#download" data-i18n="setup.tocDownload">サンプルマスタのダウンロード</a></li>
+                <li><a href="#excel" data-i18n="setup.tocExcel">Excelファイルの編集</a></li>
+                <li><a href="#upload" data-i18n="setup.tocUpload">マスタのアップロード</a></li>
+                <li><a href="#confirm" data-i18n="setup.tocConfirm">設定の確認</a></li>
             </ul>
         </nav>
 
         <!-- ========== PART 1: 利用者登録 ========== -->
         <div class="part-header">
-            <h2>PART 1：利用者登録</h2>
-            <p>まずはアカウントを作成しましょう</p>
+            <h2 data-i18n="setup.part1Title">PART 1：利用者登録</h2>
+            <p data-i18n="setup.part1Subtitle">まずはアカウントを作成しましょう</p>
         </div>
 
         <section id="regist" class="section">
-            <h3>📝 利用者登録の手順</h3>
+            <h3 data-i18n="setup.registTitle">📝 利用者登録の手順</h3>
 
             <div class="flow-summary">
-                <span class="flow-item">メール・パスワード入力</span>
+                <span class="flow-item" data-i18n="setup.flowEmail">メール・パスワード入力</span>
                 <span class="flow-arrow">→</span>
-                <span class="flow-item">登録完了・ID発行</span>
+                <span class="flow-item" data-i18n="setup.flowComplete">登録完了・ID発行</span>
                 <span class="flow-arrow">→</span>
-                <span class="flow-item">利用開始</span>
+                <span class="flow-item" data-i18n="setup.flowStart">利用開始</span>
             </div>
 
             <div class="steps">
                 <div class="step">
-                    <h4>利用者登録画面を開く</h4>
-                    <p>トップページの「利用登録」または「無料で始める」ボタンをクリックします。</p>
+                    <h4 data-i18n="setup.registStep1Title">利用者登録画面を開く</h4>
+                    <p data-i18n="setup.registStep1Text">トップページの「利用登録」または「無料で始める」ボタンをクリックします。</p>
                 </div>
 
                 <div class="step">
-                    <h4>必要情報を入力</h4>
-                    <p>以下の情報を入力してください。</p>
+                    <h4 data-i18n="setup.registStep2Title">必要情報を入力</h4>
+                    <p data-i18n="setup.registStep2Text">以下の情報を入力してください。</p>
                     <ul style="margin-left: 1.5rem; color: #555;">
-                        <li><strong>メールアドレス</strong>：ログイン情報の送信先</li>
-                        <li><strong>パスワード</strong>：管理者ページへのログイン用</li>
-                        <li><strong>パスワード（確認）</strong>：確認のため再入力</li>
+                        <li><strong data-i18n="setup.registStep2Email">メールアドレス</strong>：<span data-i18n="setup.registStep2EmailDesc">ログイン情報の送信先</span></li>
+                        <li><strong data-i18n="setup.registStep2Password">パスワード</strong>：<span data-i18n="setup.registStep2PasswordDesc">管理者ページへのログイン用</span></li>
+                        <li><strong data-i18n="setup.registStep2PasswordConfirm">パスワード（確認）</strong>：<span data-i18n="setup.registStep2PasswordConfirmDesc">確認のため再入力</span></li>
                     </ul>
                     <div class="screenshot">
                         <img src="png_regist/登録１_利用者登録.png" alt="利用者登録画面">
-                        <p class="screenshot-caption">利用者登録画面</p>
+                        <p class="screenshot-caption" data-i18n="setup.registStep2Caption">利用者登録画面</p>
                     </div>
                 </div>
 
                 <div class="step">
-                    <h4>「登録する」をクリック</h4>
-                    <p>入力が完了したら、青い「登録する」ボタンをクリックします。</p>
+                    <h4 data-i18n="setup.registStep3Title">「登録する」をクリック</h4>
+                    <p data-i18n="setup.registStep3Text">入力が完了したら、青い「登録する」ボタンをクリックします。</p>
                 </div>
 
                 <div class="step">
-                    <h4>IDを確認・保存</h4>
-                    <p>登録が完了すると、<strong>あなたのID</strong>が発行されます。</p>
+                    <h4 data-i18n="setup.registStep4Title">IDを確認・保存</h4>
+                    <p data-i18n="setup.registStep4Text">登録が完了すると、<strong>あなたのID</strong>が発行されます。</p>
                     <div class="screenshot">
                         <img src="png_regist/登録２_利用者登録後.png" alt="登録完了画面">
-                        <p class="screenshot-caption">登録完了画面（IDが発行されます）</p>
+                        <p class="screenshot-caption" data-i18n="setup.registStep4Caption">登録完了画面（IDが発行されます）</p>
                     </div>
-                    <div class="important">このIDは大切に保管してください。フリーアドレスシステムへのアクセスに必要です。</div>
+                    <div class="important" data-i18n="setup.registStep4Important">このIDは大切に保管してください。フリーアドレスシステムへのアクセスに必要です。</div>
                 </div>
 
                 <div class="step">
-                    <h4>「フリーアドレスを開始する」をクリック</h4>
-                    <p>ボタンをクリックすると、メニュー画面に移動します。</p>
-                    <p>これで利用者登録は完了です。続いて初期設定を行いましょう。</p>
+                    <h4 data-i18n="setup.registStep5Title">「フリーアドレスを開始する」をクリック</h4>
+                    <p data-i18n="setup.registStep5Text">ボタンをクリックすると、メニュー画面に移動します。</p>
+                    <p data-i18n="setup.registStep5Text2">これで利用者登録は完了です。続いて初期設定を行いましょう。</p>
                 </div>
             </div>
 
-            <div class="back-to-top"><a href="#">▲ 目次に戻る</a></div>
+            <div class="back-to-top"><a href="#" data-i18n="setup.backToToc">▲ 目次に戻る</a></div>
         </section>
 
         <!-- Ad Space -->
         <div class="ad-space">
             <!-- 広告コードをここに挿入 -->
-            広告スペース
+            <span data-i18n="setup.adSpace">広告スペース</span>
         </div>
 
         <!-- ========== PART 2: 初期設定 ========== -->
         <div class="part-header part2">
-            <h2>PART 2：初期設定（管理者向け）</h2>
-            <p>座席と社員情報を設定しましょう</p>
+            <h2 data-i18n="setup.part2Title">PART 2：初期設定（管理者向け）</h2>
+            <p data-i18n="setup.part2Subtitle">座席と社員情報を設定しましょう</p>
         </div>
 
         <section id="admin-login" class="section part2">
-            <h3>🔐 管理者ページへのログイン</h3>
+            <h3 data-i18n="setup.adminLoginTitle">🔐 管理者ページへのログイン</h3>
 
             <div class="steps">
                 <div class="step">
-                    <h4>メニューから「管理者ページ」をクリック</h4>
-                    <p>メニュー画面の上部に表示されるオリーブ色の「管理者ページ」ボタンをクリックします。</p>
+                    <h4 data-i18n="setup.adminLoginStep1Title">メニューから「管理者ページ」をクリック</h4>
+                    <p data-i18n="setup.adminLoginStep1Text">メニュー画面の上部に表示されるオリーブ色の「管理者ページ」ボタンをクリックします。</p>
                     <div class="screenshot">
                         <img src="png_regist/登録３_管理者ページ.png" alt="管理者ページボタン">
-                        <p class="screenshot-caption">メニュー画面（上部に管理者ページボタン）</p>
+                        <p class="screenshot-caption" data-i18n="setup.adminLoginStep1Caption">メニュー画面（上部に管理者ページボタン）</p>
                     </div>
                 </div>
 
                 <div class="step">
-                    <h4>パスワードを入力してログイン</h4>
-                    <p>利用者登録時に設定したパスワードを入力し、「ログイン」をクリックします。</p>
+                    <h4 data-i18n="setup.adminLoginStep2Title">パスワードを入力してログイン</h4>
+                    <p data-i18n="setup.adminLoginStep2Text">利用者登録時に設定したパスワードを入力し、「ログイン」をクリックします。</p>
                     <div class="screenshot">
                         <img src="png_regist/登録４_管理者ページへのパスワード入力.png" alt="パスワード入力画面">
-                        <p class="screenshot-caption">管理者ページログイン画面</p>
+                        <p class="screenshot-caption" data-i18n="setup.adminLoginStep2Caption">管理者ページログイン画面</p>
                     </div>
                 </div>
 
                 <div class="step">
-                    <h4>管理者メニューを確認</h4>
-                    <p>ログインすると、管理者メニューが表示されます。</p>
+                    <h4 data-i18n="setup.adminLoginStep3Title">管理者メニューを確認</h4>
+                    <p data-i18n="setup.adminLoginStep3Text">ログインすると、管理者メニューが表示されます。</p>
                     <div class="screenshot">
                         <img src="png_regist/登録５_管理者メニュー.png" alt="管理者メニュー">
-                        <p class="screenshot-caption">管理者メニュー画面</p>
+                        <p class="screenshot-caption" data-i18n="setup.adminLoginStep3Caption">管理者メニュー画面</p>
                     </div>
-                    <div class="tip">「各種URL」セクションのリンクは、社員に共有するためのURLです。</div>
+                    <div class="tip" data-i18n="setup.adminLoginTip">「各種URL」セクションのリンクは、社員に共有するためのURLです。</div>
                 </div>
             </div>
 
-            <div class="back-to-top"><a href="#">▲ 目次に戻る</a></div>
+            <div class="back-to-top"><a href="#" data-i18n="setup.backToToc">▲ 目次に戻る</a></div>
         </section>
 
         <section id="download" class="section part2">
-            <h3>📥 サンプルマスタのダウンロード</h3>
+            <h3 data-i18n="setup.downloadTitle">📥 サンプルマスタのダウンロード</h3>
 
             <div class="steps">
                 <div class="step">
-                    <h4>「サンプルマスタダウンロード」をクリック</h4>
-                    <p>管理者メニューの「サンプルマスタダウンロード」ボタンをクリックします。</p>
+                    <h4 data-i18n="setup.downloadStep1Title">「サンプルマスタダウンロード」をクリック</h4>
+                    <p data-i18n="setup.downloadStep1Text">管理者メニューの「サンプルマスタダウンロード」ボタンをクリックします。</p>
                 </div>
 
                 <div class="step">
-                    <h4>Excelファイルを保存</h4>
-                    <p><code>sample-seat.xlsx</code>というファイルがダウンロードされます。</p>
+                    <h4 data-i18n="setup.downloadStep2Title">Excelファイルを保存</h4>
+                    <p data-i18n="setup.downloadStep2Text"><code>sample-seat.xlsx</code>というファイルがダウンロードされます。</p>
                     <div class="screenshot">
                         <img src="png_regist/登録６＿サンプルマスタダウンロード押下後.png" alt="ダウンロード完了">
-                        <p class="screenshot-caption">サンプルマスタがダウンロードされます</p>
+                        <p class="screenshot-caption" data-i18n="setup.downloadStep2Caption">サンプルマスタがダウンロードされます</p>
                     </div>
-                    <div class="tip">このサンプルファイルを編集して、自社の座席・社員情報を設定します。</div>
+                    <div class="tip" data-i18n="setup.downloadTip">このサンプルファイルを編集して、自社の座席・社員情報を設定します。</div>
                 </div>
             </div>
 
-            <div class="back-to-top"><a href="#">▲ 目次に戻る</a></div>
+            <div class="back-to-top"><a href="#" data-i18n="setup.backToToc">▲ 目次に戻る</a></div>
         </section>
 
         <!-- Ad Space -->
         <div class="ad-space">
             <!-- 広告コードをここに挿入 -->
-            広告スペース
+            <span data-i18n="setup.adSpace">広告スペース</span>
         </div>
 
         <section id="excel" class="section part2">
-            <h3>📊 Excelファイルの編集</h3>
+            <h3 data-i18n="setup.excelTitle">📊 Excelファイルの編集</h3>
 
-            <p>ダウンロードした<code>sample-seat.xlsx</code>には3つのシートがあります。それぞれ編集してください。</p>
+            <p data-i18n="setup.excelIntro">ダウンロードした<code>sample-seat.xlsx</code>には3つのシートがあります。それぞれ編集してください。</p>
 
             <!-- Sheet 1: view -->
             <div class="excel-info">
-                <h5>📋 シート1：view（座席レイアウト）</h5>
-                <p>オフィスの座席配置を設定します。Excelのセルに座席番号（3桁のアルファベット+数字）を自由に配置できます。</p>
+                <h5 data-i18n="setup.sheet1Title">📋 シート1：view（座席レイアウト）</h5>
+                <p data-i18n="setup.sheet1Desc">オフィスの座席配置を設定します。Excelのセルに座席番号（3桁のアルファベット+数字）を自由に配置できます。</p>
                 <div class="screenshot">
                     <img src="png_regist/登録７＿EXCEL１.png" alt="viewシート">
-                    <p class="screenshot-caption">viewシート - 座席レイアウトの設定例</p>
+                    <p class="screenshot-caption" data-i18n="setup.sheet1Caption">viewシート - 座席レイアウトの設定例</p>
                 </div>
                 <table class="excel-table">
                     <tr>
-                        <th>設定内容</th>
-                        <th>説明</th>
-                        <th>例</th>
+                        <th data-i18n="setup.sheet1Col1">設定内容</th>
+                        <th data-i18n="setup.sheet1Col2">説明</th>
+                        <th data-i18n="setup.sheet1Col3">例</th>
                     </tr>
                     <tr>
-                        <td>座席番号</td>
-                        <td>3桁の英数字で座席を表します</td>
-                        <td>A01, B02, C03 など</td>
+                        <td data-i18n="setup.sheet1Row1Col1">座席番号</td>
+                        <td data-i18n="setup.sheet1Row1Col2">3桁の英数字で座席を表します</td>
+                        <td data-i18n="setup.sheet1Row1Col3">A01, B02, C03 など</td>
                     </tr>
                     <tr>
-                        <td>配置</td>
-                        <td>セルの位置が座席表の配置になります</td>
-                        <td>自由に配置可能</td>
+                        <td data-i18n="setup.sheet1Row2Col1">配置</td>
+                        <td data-i18n="setup.sheet1Row2Col2">セルの位置が座席表の配置になります</td>
+                        <td data-i18n="setup.sheet1Row2Col3">自由に配置可能</td>
                     </tr>
                 </table>
-                <div class="tip">座席の色やオブジェクト（観葉植物、ロッカーなど）もExcelで自由に設定できます。</div>
+                <div class="tip" data-i18n="setup.sheet1Tip">座席の色やオブジェクト（観葉植物、ロッカーなど）もExcelで自由に設定できます。</div>
             </div>
 
             <!-- Sheet 2: seat -->
             <div class="excel-info">
-                <h5>📋 シート2：seat（座席マスタ）</h5>
-                <p>各座席の詳細情報と固定席の設定を行います。</p>
+                <h5 data-i18n="setup.sheet2Title">📋 シート2：seat（座席マスタ）</h5>
+                <p data-i18n="setup.sheet2Desc">各座席の詳細情報と固定席の設定を行います。</p>
                 <div class="screenshot">
                     <img src="png_regist/登録８＿EXCEL２.png" alt="seatシート">
-                    <p class="screenshot-caption">seatシート - 座席マスタの設定</p>
+                    <p class="screenshot-caption" data-i18n="setup.sheet2Caption">seatシート - 座席マスタの設定</p>
                 </div>
                 <table class="excel-table">
                     <tr>
-                        <th>列名</th>
-                        <th>説明</th>
-                        <th>必須</th>
+                        <th data-i18n="setup.sheet2Col1">列名</th>
+                        <th data-i18n="setup.sheet2Col2">説明</th>
+                        <th data-i18n="setup.sheet2Col3">必須</th>
                     </tr>
                     <tr>
-                        <td>seatid</td>
-                        <td>座席番号（viewシートと同じ）</td>
-                        <td>○</td>
+                        <td data-i18n="setup.sheet2Row1Col1">seatid</td>
+                        <td data-i18n="setup.sheet2Row1Col2">座席番号（viewシートと同じ）</td>
+                        <td data-i18n="setup.required">○</td>
                     </tr>
                     <tr>
-                        <td>mid</td>
-                        <td>固定席の場合、社員コードを設定</td>
-                        <td>-</td>
+                        <td data-i18n="setup.sheet2Row2Col1">mid</td>
+                        <td data-i18n="setup.sheet2Row2Col2">固定席の場合、社員コードを設定</td>
+                        <td data-i18n="setup.optional">-</td>
                     </tr>
                     <tr>
-                        <td>biko1〜3</td>
-                        <td>備考（任意）</td>
-                        <td>-</td>
+                        <td data-i18n="setup.sheet2Row3Col1">biko1〜3</td>
+                        <td data-i18n="setup.sheet2Row3Col2">備考（任意）</td>
+                        <td data-i18n="setup.optional">-</td>
                     </tr>
                 </table>
-                <div class="warning">固定席（部長席、社長席など）を設定する場合は、midに該当社員の社員コードを入力してください。空欄の座席はフリーアドレス対象となります。</div>
+                <div class="warning" data-i18n="setup.sheet2Warning">固定席（部長席、社長席など）を設定する場合は、midに該当社員の社員コードを入力してください。空欄の座席はフリーアドレス対象となります。</div>
             </div>
 
             <!-- Sheet 3: member -->
             <div class="excel-info">
-                <h5>📋 シート3：member（社員マスタ）</h5>
-                <p>社員の一覧を登録します。</p>
+                <h5 data-i18n="setup.sheet3Title">📋 シート3：member（社員マスタ）</h5>
+                <p data-i18n="setup.sheet3Desc">社員の一覧を登録します。</p>
                 <div class="screenshot">
                     <img src="png_regist/登録９＿EXCEL３.png" alt="memberシート">
-                    <p class="screenshot-caption">memberシート - 社員一覧の設定</p>
+                    <p class="screenshot-caption" data-i18n="setup.sheet3Caption">memberシート - 社員一覧の設定</p>
                 </div>
                 <table class="excel-table">
                     <tr>
-                        <th>列名</th>
-                        <th>説明</th>
-                        <th>必須</th>
+                        <th data-i18n="setup.sheet2Col1">列名</th>
+                        <th data-i18n="setup.sheet2Col2">説明</th>
+                        <th data-i18n="setup.sheet2Col3">必須</th>
                     </tr>
                     <tr>
-                        <td>mid</td>
-                        <td>社員コード（抽選時に入力する番号）</td>
-                        <td>○</td>
+                        <td data-i18n="setup.sheet3Row1Col1">mid</td>
+                        <td data-i18n="setup.sheet3Row1Col2">社員コード（抽選時に入力する番号）</td>
+                        <td data-i18n="setup.required">○</td>
                     </tr>
                     <tr>
-                        <td>name</td>
-                        <td>社員名</td>
-                        <td>○</td>
+                        <td data-i18n="setup.sheet3Row2Col1">name</td>
+                        <td data-i18n="setup.sheet3Row2Col2">社員名</td>
+                        <td data-i18n="setup.required">○</td>
                     </tr>
                     <tr>
-                        <td>kana</td>
-                        <td>カナ名（名前順の並び替えに使用）</td>
-                        <td>○</td>
+                        <td data-i18n="setup.sheet3Row3Col1">kana</td>
+                        <td data-i18n="setup.sheet3Row3Col2">カナ名（名前順の並び替えに使用）</td>
+                        <td data-i18n="setup.required">○</td>
                     </tr>
                     <tr>
-                        <td>phone</td>
-                        <td>内線番号</td>
-                        <td>-</td>
+                        <td data-i18n="setup.sheet3Row4Col1">phone</td>
+                        <td data-i18n="setup.sheet3Row4Col2">内線番号</td>
+                        <td data-i18n="setup.optional">-</td>
                     </tr>
                     <tr>
-                        <td>biko1〜3</td>
-                        <td>備考（任意）</td>
-                        <td>-</td>
+                        <td data-i18n="setup.sheet3Row5Col1">biko1〜3</td>
+                        <td data-i18n="setup.sheet3Row5Col2">備考（任意）</td>
+                        <td data-i18n="setup.optional">-</td>
                     </tr>
                 </table>
-                <div class="tip">社員コード（mid）は社員が抽選時に入力する番号です。覚えやすい番号を設定してください。</div>
+                <div class="tip" data-i18n="setup.sheet3Tip">社員コード（mid）は社員が抽選時に入力する番号です。覚えやすい番号を設定してください。</div>
             </div>
 
-            <div class="important">編集が完了したら、ファイルを保存してください。ファイル名は変更しても構いません。</div>
+            <div class="important" data-i18n="setup.excelImportant">編集が完了したら、ファイルを保存してください。ファイル名は変更しても構いません。</div>
 
-            <div class="back-to-top"><a href="#">▲ 目次に戻る</a></div>
+            <div class="back-to-top"><a href="#" data-i18n="setup.backToToc">▲ 目次に戻る</a></div>
         </section>
 
         <section id="upload" class="section part2">
-            <h3>📤 マスタのアップロード</h3>
+            <h3 data-i18n="setup.uploadTitle">📤 マスタのアップロード</h3>
 
             <div class="steps">
                 <div class="step">
-                    <h4>「マスタアップロード」をクリック</h4>
-                    <p>管理者メニューのオレンジ色の「マスタアップロード」ボタンをクリックします。</p>
+                    <h4 data-i18n="setup.uploadStep1Title">「マスタアップロード」をクリック</h4>
+                    <p data-i18n="setup.uploadStep1Text">管理者メニューのオレンジ色の「マスタアップロード」ボタンをクリックします。</p>
                     <div class="screenshot">
                         <img src="png_regist/登録１０＿アップロード１.png" alt="マスタアップロードボタン">
-                        <p class="screenshot-caption">マスタアップロードボタン</p>
+                        <p class="screenshot-caption" data-i18n="setup.uploadStep1Caption">マスタアップロードボタン</p>
                     </div>
                 </div>
 
                 <div class="step">
-                    <h4>ファイルを選択</h4>
-                    <p>「ファイルを選択」をクリックし、編集したExcelファイルを選択します。</p>
+                    <h4 data-i18n="setup.uploadStep2Title">ファイルを選択</h4>
+                    <p data-i18n="setup.uploadStep2Text">「ファイルを選択」をクリックし、編集したExcelファイルを選択します。</p>
                     <div class="screenshot">
                         <img src="png_regist/登録１１＿アップロード２.png" alt="ファイル選択画面">
-                        <p class="screenshot-caption">ファイル選択画面</p>
+                        <p class="screenshot-caption" data-i18n="setup.uploadStep2Caption">ファイル選択画面</p>
                     </div>
-                    <div class="warning">アップロードすると現在のマスタデータが上書きされます。事前にバックアップを取ることをお勧めします。</div>
+                    <div class="warning" data-i18n="setup.uploadStep2Warning">アップロードすると現在のマスタデータが上書きされます。事前にバックアップを取ることをお勧めします。</div>
                 </div>
 
                 <div class="step">
-                    <h4>「アップロード」をクリック</h4>
-                    <p>ファイルを選択したら、「アップロード」ボタンをクリックします。</p>
+                    <h4 data-i18n="setup.uploadStep3Title">「アップロード」をクリック</h4>
+                    <p data-i18n="setup.uploadStep3Text">ファイルを選択したら、「アップロード」ボタンをクリックします。</p>
                 </div>
 
                 <div class="step">
-                    <h4>アップロード結果を確認</h4>
-                    <p>アップロードが完了すると、登録された座席と社員の一覧が表示されます。</p>
+                    <h4 data-i18n="setup.uploadStep4Title">アップロード結果を確認</h4>
+                    <p data-i18n="setup.uploadStep4Text">アップロードが完了すると、登録された座席と社員の一覧が表示されます。</p>
                     <div class="screenshot">
                         <img src="png_regist/登録１２＿アップロード３.png" alt="アップロード結果">
-                        <p class="screenshot-caption">アップロード結果画面</p>
+                        <p class="screenshot-caption" data-i18n="setup.uploadStep4Caption">アップロード結果画面</p>
                     </div>
-                    <div class="tip">エラーがある場合はここに表示されます。内容を確認して、必要に応じてExcelを修正してください。</div>
+                    <div class="tip" data-i18n="setup.uploadTip">エラーがある場合はここに表示されます。内容を確認して、必要に応じてExcelを修正してください。</div>
                 </div>
             </div>
 
-            <div class="back-to-top"><a href="#">▲ 目次に戻る</a></div>
+            <div class="back-to-top"><a href="#" data-i18n="setup.backToToc">▲ 目次に戻る</a></div>
         </section>
 
         <!-- Ad Space -->
         <div class="ad-space">
             <!-- 広告コードをここに挿入 -->
-            広告スペース
+            <span data-i18n="setup.adSpace">広告スペース</span>
         </div>
 
         <section id="confirm" class="section part2">
-            <h3>✅ 設定の確認</h3>
+            <h3 data-i18n="setup.confirmTitle">✅ 設定の確認</h3>
 
             <div class="steps">
                 <div class="step">
-                    <h4>メニュー画面に戻る</h4>
-                    <p>管理者メニューの「一般用フリーアドレス画面」リンクをクリックするか、ブラウザの戻るボタンでメニューに戻ります。</p>
+                    <h4 data-i18n="setup.confirmStep1Title">メニュー画面に戻る</h4>
+                    <p data-i18n="setup.confirmStep1Text">管理者メニューの「一般用フリーアドレス画面」リンクをクリックするか、ブラウザの戻るボタンでメニューに戻ります。</p>
                     <div class="screenshot">
                         <img src="png_regist/登録１３＿メニュー.png" alt="メニュー画面">
-                        <p class="screenshot-caption">通常のメニュー画面</p>
+                        <p class="screenshot-caption" data-i18n="setup.confirmStep1Caption">通常のメニュー画面</p>
                     </div>
                 </div>
 
                 <div class="step">
-                    <h4>座席表を確認</h4>
-                    <p>「座席表を見る」をクリックして、設定した座席レイアウトが反映されているか確認します。</p>
+                    <h4 data-i18n="setup.confirmStep2Title">座席表を確認</h4>
+                    <p data-i18n="setup.confirmStep2Text">「座席表を見る」をクリックして、設定した座席レイアウトが反映されているか確認します。</p>
                     <div class="screenshot">
                         <img src="png_regist/登録１４＿結果.png" alt="座席表">
-                        <p class="screenshot-caption">設定が反映された座席表</p>
+                        <p class="screenshot-caption" data-i18n="setup.confirmStep2Caption">設定が反映された座席表</p>
                     </div>
                 </div>
             </div>
 
-            <div class="tip">座席表が正しく表示されていれば、初期設定は完了です。社員にURLを共有して、フリーアドレスを開始しましょう。</div>
+            <div class="tip" data-i18n="setup.confirmTip">座席表が正しく表示されていれば、初期設定は完了です。社員にURLを共有して、フリーアドレスを開始しましょう。</div>
 
-            <div class="back-to-top"><a href="#">▲ 目次に戻る</a></div>
+            <div class="back-to-top"><a href="#" data-i18n="setup.backToToc">▲ 目次に戻る</a></div>
         </section>
 
         <!-- Next Steps -->
         <section class="section">
-            <h3>🎉 設定完了！次のステップ</h3>
-            <p>お疲れ様でした！初期設定が完了しました。</p>
+            <h3 data-i18n="setup.completeTitle">🎉 設定完了！次のステップ</h3>
+            <p data-i18n="setup.completeText">お疲れ様でした！初期設定が完了しました。</p>
             <ul style="margin: 1rem 0 1rem 1.5rem; color: #555;">
-                <li><strong>社員へURL共有</strong>：管理者メニューの「一般用フリーアドレス画面」のURLを社員に共有してください</li>
-                <li><strong>使い方の案内</strong>：<a href="howto.html" style="color: #3498db;">使い方ガイド</a>を社員に共有してください</li>
-                <li><strong>マスタの更新</strong>：社員の増減や座席変更があれば、同じ手順でExcelを更新・アップロードしてください</li>
+                <li><strong data-i18n="setup.completeStep1">社員へURL共有</strong>：<span data-i18n="setup.completeStep1Desc">管理者メニューの「一般用フリーアドレス画面」のURLを社員に共有してください</span></li>
+                <li><strong data-i18n="setup.completeStep2">使い方の案内</strong>：<a href="howto.html" style="color: #3498db;" data-i18n="setup.completeStep2Desc">使い方ガイド</a><span data-i18n="setup.completeStep2DescSuffix">を社員に共有してください</span></li>
+                <li><strong data-i18n="setup.completeStep3">マスタの更新</strong>：<span data-i18n="setup.completeStep3Desc">社員の増減や座席変更があれば、同じ手順でExcelを更新・アップロードしてください</span></li>
             </ul>
         </section>
 
@@ -803,8 +803,11 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 FreeAddress. All rights reserved.</p>
-        <p><a href="index.html">ホームに戻る</a> | <a href="howto.html">使い方ガイド</a></p>
+        <p data-i18n="common.copyright">&copy; 2025 FreeAddress. All rights reserved.</p>
+        <p><a href="index.html" data-i18n="common.home">ホームに戻る</a> | <a href="howto.html" data-i18n="common.howto">使い方ガイド</a></p>
     </footer>
+
+    <!-- Language Switcher Script -->
+    <script src="lang/lang.js"></script>
 </body>
 </html>

@@ -1,8 +1,9 @@
+<?php require "lang/lang.php"; ?>
 <!doctype html>
-<html lang="ja">
+<html lang="<?php echo Lang::getInstance()->getCurrentLang(); ?>">
 <head>
 <meta charset="UTF-8">
-<title>フリーアドレス 管理者ページ</title>
+<title><?php _e('manage.title'); ?></title>
 <style>
 :root {
 	--primary-color: #2563eb;
@@ -115,20 +116,21 @@
 <body style="background: var(--background); margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
 <form action="seat_manage2.php" enctype="multipart/form-data" method="post">
 <?php require "framework_head.php"; ?>
+<?php echo Lang::getInstance()->renderSwitcher(); ?>
 <?php require "framework_body.php"; ?>
 
 <div class="manage-container">
 	<div class="manage-card">
-		<h1 class="manage-title">管理者ページ</h1>
-		
+		<h1 class="manage-title"><?php _e('manage.title'); ?></h1>
+
 		<div class="manage-form-group">
-			<label class="manage-label" for="pass">パスワードを入力</label>
-			<input type="password" id="pass" name="pass" value="" class="manage-input" placeholder="パスワード">
+			<label class="manage-label" for="pass"><?php _e('manage.passwordLabel'); ?></label>
+			<input type="password" id="pass" name="pass" value="" class="manage-input" placeholder="<?php _e('manage.passwordPlaceholder'); ?>">
 		</div>
-		
+
 		<div class="manage-btn-group">
-			<button type="submit" class="manage-btn manage-btn-primary">ログイン</button>
-			<button type="button" class="manage-btn manage-btn-secondary" onclick="history.back()">戻る</button>
+			<button type="submit" class="manage-btn manage-btn-primary"><?php _e('manage.login'); ?></button>
+			<button type="button" class="manage-btn manage-btn-secondary" onclick="history.back()"><?php _e('manage.back'); ?></button>
 		</div>
 	</div>
 </div>

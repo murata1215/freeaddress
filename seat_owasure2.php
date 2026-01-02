@@ -1,8 +1,9 @@
+<?php require "lang/lang.php"; ?>
 <!doctype html>
-<html lang="ja">
+<html lang="<?php echo Lang::getInstance()->getCurrentLang(); ?>">
 <head>
 <meta charset="UTF-8">
-<title>フリーアドレス 確認</title>
+<title><?php _e('owasure.resultTitle'); ?></title>
 <style>
 :root {
 	--primary-color: #2563eb;
@@ -97,12 +98,13 @@
 <body style="background: var(--background); margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
 <form action="seat.php">
 <?php require "framework_head.php"; ?>
+<?php echo Lang::getInstance()->renderSwitcher(); ?>
 <?php require "framework_body.php"; ?>
 <?php require "./mail/framework_mail.php"; ?>
 
 <div class="form-container">
 	<div class="form-card">
-		<h1 class="form-title">確認メール送信</h1>
+		<h1 class="form-title"><?php _e('owasure.resultTitle'); ?></h1>
 
 <?php
 
@@ -128,12 +130,12 @@
 	$mymail = new mymail();
 	$mymail->sendMail($to, $toname, $from, $fromname, $subject, $body);
 
-	echo "<div class='form-message form-message-success'>パスワードをメールで送信しました</div>";
-	echo "<p class='form-info'>登録されているメールアドレスにパスワードを送信しました。<br>メールをご確認ください。</p>";
+	echo "<div class='form-message form-message-success'>"._g('owasure.success')."</div>";
+	echo "<p class='form-info'>"._g('owasure.resultInfo')."</p>";
 
 ?>
 
-		<button type="submit" name="s" class="form-btn form-btn-primary">トップに戻る</button>
+		<button type="submit" name="s" class="form-btn form-btn-primary"><?php _e('owasure.backToTop'); ?></button>
 	</div>
 </div>
 

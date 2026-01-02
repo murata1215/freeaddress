@@ -1,8 +1,9 @@
+<?php require "lang/lang.php"; ?>
 <!doctype html>
-<html lang="ja">
+<html lang="<?php echo Lang::getInstance()->getCurrentLang(); ?>">
 <head>
 <meta charset="UTF-8">
-<title>フリーアドレス 登録</title>
+<title><?php _e('regist.title'); ?></title>
 <style>
 :root {
 	--primary-color: #2563eb;
@@ -131,32 +132,33 @@
 <body style="background: var(--background); margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
 <form action="seat_regist2.php">
 <?php require "framework_head.php"; ?>
+<?php echo Lang::getInstance()->renderSwitcher(); ?>
 <?php require "framework_body.php"; ?>
 
 <div class="regist-container">
 	<div class="regist-card">
-		<h1 class="regist-title">利用者登録</h1>
-		<p class="regist-subtitle">新規アカウントを作成します</p>
-		
+		<h1 class="regist-title"><?php _e('regist.pageTitle'); ?></h1>
+		<p class="regist-subtitle"><?php _e('regist.subtitle'); ?></p>
+
 		<div class="regist-form-group">
-			<label class="regist-label" for="mail">メールアドレス</label>
-			<input type="email" id="mail" name="mail" value="" class="regist-input" placeholder="example@email.com" required>
+			<label class="regist-label" for="mail"><?php _e('regist.email'); ?></label>
+			<input type="email" id="mail" name="mail" value="" class="regist-input" placeholder="<?php _e('regist.emailPlaceholder'); ?>" required>
 		</div>
-		
+
 		<div class="regist-form-group">
-			<label class="regist-label" for="pass1">パスワード</label>
-			<input type="password" id="pass1" name="pass1" value="" class="regist-input" placeholder="パスワードを入力" required>
+			<label class="regist-label" for="pass1"><?php _e('regist.password'); ?></label>
+			<input type="password" id="pass1" name="pass1" value="" class="regist-input" placeholder="<?php _e('regist.passwordPlaceholder'); ?>" required>
 		</div>
-		
+
 		<div class="regist-form-group">
-			<label class="regist-label" for="pass2">パスワード（確認）</label>
-			<input type="password" id="pass2" name="pass2" value="" class="regist-input" placeholder="パスワードを再入力" required>
-			<p class="regist-hint">確認のため、同じパスワードをもう一度入力してください</p>
+			<label class="regist-label" for="pass2"><?php _e('regist.passwordConfirm'); ?></label>
+			<input type="password" id="pass2" name="pass2" value="" class="regist-input" placeholder="<?php _e('regist.passwordConfirmPlaceholder'); ?>" required>
+			<p class="regist-hint"><?php _e('regist.passwordHint'); ?></p>
 		</div>
-		
+
 		<div class="regist-btn-group">
-			<button type="submit" name="s" class="regist-btn regist-btn-primary">登録する</button>
-			<button type="button" class="regist-btn regist-btn-secondary" onclick="history.back()">戻る</button>
+			<button type="submit" name="s" class="regist-btn regist-btn-primary"><?php _e('regist.submit'); ?></button>
+			<button type="button" class="regist-btn regist-btn-secondary" onclick="history.back()"><?php _e('regist.back'); ?></button>
 		</div>
 	</div>
 </div>

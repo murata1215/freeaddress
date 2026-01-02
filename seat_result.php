@@ -1,9 +1,11 @@
+<?php require "lang/lang.php"; ?>
 <!doctype html>
-<html lang="ja">
-<head><meta charset="UTF-8"><title>フリーアドレス 着席リスト</title></head>
+<html lang="<?php echo Lang::getInstance()->getCurrentLang(); ?>">
+<head><meta charset="UTF-8"><title><?php _e('result.title'); ?></title></head>
 <body>
 <form action="seat.php">
 <?php require "framework_head.php"; ?>
+<?php echo Lang::getInstance()->renderSwitcher(); ?>
 <?php require "framework_body.php"; ?>
 
 <style type="text/css">
@@ -235,7 +237,7 @@ if (!empty($id)) {
   </tr>
   <tr>
   <td class="td1">
-  	<input type="submit" class="example" value="閉じる"/>
+  	<input type="submit" class="example" value="<?php _e('common.close'); ?>"/>
   </td>
   </tr>
   </table>
