@@ -16,7 +16,8 @@
     "download": "ダウンロード",
     "clear": "クリア",
     "copyright": "© 2025 FreeAddress. All rights reserved.",
-    "privacy": "プライバシーポリシー"
+    "privacy": "プライバシーポリシー",
+    "contact": "お問い合わせ"
   },
   "index": {
     "heroTitle": "フリーアドレス座席管理を<br>もっとシンプルに",
@@ -490,5 +491,32 @@
     "contactText": "本プライバシーポリシーに関するご質問やお問い合わせは、以下までご連絡ください。",
     "contactService": "サービス名",
     "contactEmail": "メールアドレス"
+  },
+  "contact": {
+    "pageTitle": "お問い合わせ",
+    "pageSubtitle": "社内導入・カスタマイズのご相談",
+    "heroTitle": "御社に最適なフリーアドレス環境を構築します",
+    "heroText": "導入支援から運用サポート、カスタマイズまで<br>トータルでサポートいたします",
+    "serviceTitle": "サービス内容",
+    "serviceIntro": "FreeAddressの社内導入をご検討の企業様向けに、以下のサービスを提供しています。",
+    "service1Title": "導入コンサルティング",
+    "service1Desc": "御社のオフィス環境に合わせた最適な導入プランをご提案します",
+    "service2Title": "初期設定サポート",
+    "service2Desc": "座席マスタ・社員データの登録、システム設定を代行します",
+    "service3Title": "カスタマイズ開発",
+    "service3Desc": "御社独自の機能追加、画面デザインの変更に対応します",
+    "service4Title": "運用サポート・保守",
+    "service4Desc": "導入後のお問い合わせ対応、トラブル解決をサポートします",
+    "service5Title": "社員向け説明会",
+    "service5Desc": "システムの使い方を社員の皆様にレクチャーします",
+    "serviceNote": "料金はご要望の内容に応じてお見積りいたします。まずはお気軽にご相談ください。",
+    "ctaTitle": "まずはお気軽にご相談ください",
+    "ctaText": "導入に関するご質問、お見積りのご依頼など<br>メールにてお問い合わせを受け付けております",
+    "ctaButton": "メールで問い合わせる",
+    "priceNote": "※ ご相談・お見積りは無料です",
+    "companyTitle": "運営会社",
+    "companyName": "会社名",
+    "representative": "代表者",
+    "email": "メール"
   }
 }

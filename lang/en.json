@@ -16,7 +16,8 @@
     "download": "Download",
     "clear": "Clear",
     "copyright": "© 2025 HotDesking. All rights reserved.",
-    "privacy": "Privacy Policy"
+    "privacy": "Privacy Policy",
+    "contact": "Contact Us"
   },
   "index": {
     "heroTitle": "Make Hot Desking<br>Seat Management Simple",
@@ -510,5 +511,32 @@
     "contactText": "For questions or inquiries about this Privacy Policy, please contact us:",
     "contactService": "Service Name",
     "contactEmail": "Email Address"
+  },
+  "contact": {
+    "pageTitle": "Contact Us",
+    "pageSubtitle": "Enterprise Implementation & Customization",
+    "heroTitle": "We'll build the perfect hot desking environment for your company",
+    "heroText": "From implementation support to operation and customization<br>We provide comprehensive support",
+    "serviceTitle": "Our Services",
+    "serviceIntro": "We offer the following services for companies considering HotDesking implementation.",
+    "service1Title": "Implementation Consulting",
+    "service1Desc": "We propose the optimal implementation plan tailored to your office environment",
+    "service2Title": "Initial Setup Support",
+    "service2Desc": "We handle seat master and employee data registration and system configuration",
+    "service3Title": "Custom Development",
+    "service3Desc": "We accommodate custom feature additions and design modifications",
+    "service4Title": "Operation Support & Maintenance",
+    "service4Desc": "We provide inquiry support and troubleshooting after implementation",
+    "service5Title": "Employee Training",
+    "service5Desc": "We conduct system usage training for your employees",
+    "serviceNote": "Pricing is provided based on your specific requirements. Please feel free to contact us for a consultation.",
+    "ctaTitle": "Feel free to contact us",
+    "ctaText": "For questions about implementation or quote requests<br>We accept inquiries via email",
+    "ctaButton": "Contact via Email",
+    "priceNote": "* Consultation and quotes are free",
+    "companyTitle": "Company Information",
+    "companyName": "Company",
+    "representative": "Representative",
+    "email": "Email"
   }
 }

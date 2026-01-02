@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FreeAddress 社内導入・カスタマイズのご相談">
+    <title data-i18n="contact.pageTitle">お問い合わせ - FreeAddress</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; line-height: 1.8; color: #333; background: #f8f9fa; }
+        header { background: #3498db; color: white; padding: 1rem 2rem; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .header-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: bold; text-decoration: none; color: white; }
+        .nav-links a { color: white; text-decoration: none; margin-left: 2rem; transition: opacity 0.3s; }
+        .nav-links a:hover { opacity: 0.8; }
+        main { max-width: 800px; margin: 0 auto; padding: 6rem 1.5rem 3rem; }
+        .page-title { text-align: center; font-size: 2rem; color: #2c3e50; margin-bottom: 0.5rem; }
+        .page-subtitle { text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 3rem; }
+
+        .hero-section {
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .hero-section h2 { font-size: 1.8rem; margin-bottom: 1rem; }
+        .hero-section p { font-size: 1.1rem; opacity: 0.95; }
+
+        .section { background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.08); margin-bottom: 2rem; }
+        .section h2 { font-size: 1.4rem; color: #2c3e50; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 3px solid #3498db; }
+        .section h3 { font-size: 1.1rem; color: #3498db; margin: 1.5rem 0 0.5rem; }
+        .section p { margin-bottom: 1rem; color: #555; }
+
+        .service-list { list-style: none; margin: 1.5rem 0; }
+        .service-list li {
+            padding: 1rem 1rem 1rem 3rem;
+            margin-bottom: 0.8rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            position: relative;
+            border-left: 4px solid #3498db;
+        }
+        .service-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 1rem;
+            color: #27ae60;
+            font-weight: bold;
+        }
+        .service-list li strong { color: #2c3e50; }
+
+        .company-info {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+        .company-info h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        .company-table { width: 100%; border-collapse: collapse; }
+        .company-table th, .company-table td {
+            padding: 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .company-table th {
+            width: 30%;
+            color: #666;
+            font-weight: 600;
+        }
+        .company-table td { color: #333; }
+
+        .contact-box {
+            background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .contact-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .contact-box p {
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+        }
+        .contact-button {
+            display: inline-block;
+            background: white;
+            color: #27ae60;
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .contact-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .note {
+            background: #fff3cd;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid #e8aa00;
+            font-size: 0.95rem;
+            color: #856404;
+        }
+
+        .price-note {
+            text-align: center;
+            color: #666;
+            font-size: 0.95rem;
+            margin-top: 1rem;
+        }
+
+        footer { background: #2c3e50; color: white; padding: 2rem; text-align: center; margin-top: 3rem; }
+        footer a { color: #3498db; text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .page-title { font-size: 1.5rem; }
+            .section { padding: 1.5rem; }
+            .hero-section { padding: 2rem 1.5rem; }
+            .hero-section h2 { font-size: 1.4rem; }
+            .contact-box { padding: 2rem 1.5rem; }
+            .company-table th { width: 35%; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo" data-i18n="common.siteName">FreeAddress</a>
+            <nav class="nav-links">
+                <a href="index.html" data-i18n="common.home">ホーム</a>
+                <a href="howto.html" data-i18n="common.howto">使い方</a>
+                <a href="setup.html" data-i18n="common.setup">初期設定</a>
+                <a href="seat_regist.php" data-i18n="common.register">利用登録</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h1 class="page-title" data-i18n="contact.pageTitle">お問い合わせ</h1>
+        <p class="page-subtitle" data-i18n="contact.pageSubtitle">社内導入・カスタマイズのご相談</p>
+
+        <div class="hero-section">
+            <h2 data-i18n="contact.heroTitle">御社に最適なフリーアドレス環境を構築します</h2>
+            <p data-i18n="contact.heroText">導入支援から運用サポート、カスタマイズまで<br>トータルでサポートいたします</p>
+        </div>
+
+        <section class="section">
+            <h2 data-i18n="contact.serviceTitle">サービス内容</h2>
+            <p data-i18n="contact.serviceIntro">FreeAddressの社内導入をご検討の企業様向けに、以下のサービスを提供しています。</p>
+
+            <ul class="service-list">
+                <li><strong data-i18n="contact.service1Title">導入コンサルティング</strong><br><span data-i18n="contact.service1Desc">御社のオフィス環境に合わせた最適な導入プランをご提案します</span></li>
+                <li><strong data-i18n="contact.service2Title">初期設定サポート</strong><br><span data-i18n="contact.service2Desc">座席マスタ・社員データの登録、システム設定を代行します</span></li>
+                <li><strong data-i18n="contact.service3Title">カスタマイズ開発</strong><br><span data-i18n="contact.service3Desc">御社独自の機能追加、画面デザインの変更に対応します</span></li>
+                <li><strong data-i18n="contact.service4Title">運用サポート・保守</strong><br><span data-i18n="contact.service4Desc">導入後のお問い合わせ対応、トラブル解決をサポートします</span></li>
+                <li><strong data-i18n="contact.service5Title">社員向け説明会</strong><br><span data-i18n="contact.service5Desc">システムの使い方を社員の皆様にレクチャーします</span></li>
+            </ul>
+
+            <div class="note" data-i18n="contact.serviceNote">
+                料金はご要望の内容に応じてお見積りいたします。まずはお気軽にご相談ください。
+            </div>
+        </section>
+
+        <div class="contact-box">
+            <h3 data-i18n="contact.ctaTitle">まずはお気軽にご相談ください</h3>
+            <p data-i18n="contact.ctaText">導入に関するご質問、お見積りのご依頼など<br>メールにてお問い合わせを受け付けております</p>
+            <a href="mailto:fwjg2507@gmail.com?subject=FreeAddress導入のお問い合わせ" class="contact-button" data-i18n="contact.ctaButton">メールで問い合わせる</a>
+            <p class="price-note" data-i18n="contact.priceNote">※ ご相談・お見積りは無料です</p>
+        </div>
+
+        <section class="section">
+            <h2 data-i18n="contact.companyTitle">運営会社</h2>
+            <div class="company-info">
+                <table class="company-table">
+                    <tr>
+                        <th data-i18n="contact.companyName">会社名</th>
+                        <td>合同会社りぼん不動産</td>
+                    </tr>
+                    <tr>
+                        <th data-i18n="contact.representative">代表者</th>
+                        <td>代表社員 村田 圭助</td>
+                    </tr>
+                    <tr>
+                        <th data-i18n="contact.email">メール</th>
+                        <td><a href="mailto:fwjg2507@gmail.com">fwjg2507@gmail.com</a></td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p data-i18n="common.copyright">&copy; 2025 FreeAddress. All rights reserved.</p>
+        <p><a href="index.html" data-i18n="common.home">ホームに戻る</a> | <a href="privacy.html" data-i18n="common.privacy">プライバシーポリシー</a></p>
+    </footer>
+
+    <script src="lang/lang.js"></script>
+</body>
+</html>
