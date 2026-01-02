@@ -11,10 +11,13 @@
 
 <style type="text/css">
 	input.example {
-	font-size:  50pt;
-	height:     100%;
-	width:      20%;
+	font-size:  30pt;
+	height:     auto;
+	padding: 10px 20px;
 	border-style:none;
+	background-color: #ccc;
+	color: #333;
+	cursor: pointer;
 	}
 	
 	input.tenKey {
@@ -69,11 +72,14 @@
 	width:      100%;
 	}
 	button.BTN31 {
-		font-size:  50pt;
+		font-size:  20pt;
+		padding: 10px 20px;
 		border-style:none;
+		border-radius: 5px;
 		background-color:#3498db;
-		text-align:centert;
+		text-align:center;
 		color:white;
+		cursor: pointer;
 	}
 
 </style>
@@ -316,20 +322,20 @@ function goServletB(){
 	</tr>
 	<tr>
 		<td colspan="3" class="td4">
-
+			<div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 40px;">
 <?php
 if (strcmp($dt,"")==0 or strcmp($dt,"0")==0) { ?>
-			<button type='submit' class='BTN31' onclick='goServletA();'><?php _e('result.previousDay'); ?></button>
-			<input type='submit' class='example' value='<?php _e('common.close'); ?>' />
-			<button type='submit' class='BTN31' onclick='goServletB();' disabled><?php _e('result.nextDay'); ?></button>
+				<button type='submit' class='BTN31' onclick='goServletA();'><?php _e('result.previousDay'); ?></button>
+				<input type='submit' class='example' value='<?php _e('common.close'); ?>' />
+				<button type='submit' class='BTN31' onclick='goServletB();' disabled><?php _e('result.nextDay'); ?></button>
 <?php }
 
 else { ?>
-			<button type='submit' class='BTN31' onclick='goServletA();'><?php _e('result.previousDay'); ?></button>
-			<input type='submit' class='example' value='<?php _e('common.close'); ?>' />
-			<button type='submit' class='BTN31' onclick='goServletB();'><?php _e('result.nextDay'); ?></button>
+				<button type='submit' class='BTN31' onclick='goServletA();'><?php _e('result.previousDay'); ?></button>
+				<input type='submit' class='example' value='<?php _e('common.close'); ?>' />
+				<button type='submit' class='BTN31' onclick='goServletB();'><?php _e('result.nextDay'); ?></button>
 <?php } ?>
-
+			</div>
 		</td>
 	</tr>
 	<tr>
