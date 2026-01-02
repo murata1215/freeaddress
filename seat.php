@@ -1,7 +1,11 @@
 <?php require "lang/lang.php"; ?>
 <!doctype html>
 <html lang="<?php echo Lang::getInstance()->getCurrentLang(); ?>">
-<head><meta charset="UTF-8"><title><?php _e('seat.title'); ?></title></head>
+<head>
+<meta charset="UTF-8">
+<title><?php _e('seat.title'); ?></title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6340357703893137" crossorigin="anonymous"></script>
+</head>
 <body>
 <form id='form' name='form' action="seat_lottery.php" >
 <?php require "framework_head.php"; ?>
