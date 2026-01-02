@@ -11,13 +11,15 @@
 
 <style type="text/css">
 	input.example {
-	font-size:  30pt;
+	font-size:  20pt;
 	height:     auto;
 	padding: 10px 20px;
 	border-style:none;
 	background-color: #ccc;
 	color: #333;
 	cursor: pointer;
+	white-space: nowrap;
+	flex-shrink: 0;
 	}
 	
 	input.tenKey {
@@ -80,6 +82,8 @@
 		text-align:center;
 		color:white;
 		cursor: pointer;
+		white-space: nowrap;
+		flex-shrink: 0;
 	}
 
 </style>
@@ -322,7 +326,7 @@ function goServletB(){
 	</tr>
 	<tr>
 		<td colspan="3" class="td4">
-			<div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 40px;">
+			<div style="display: flex; justify-content: center; align-items: center; gap: 30px; margin-top: 40px;">
 <?php
 if (strcmp($dt,"")==0 or strcmp($dt,"0")==0) { ?>
 				<button type='submit' class='BTN31' onclick='goServletA();'><?php _e('result.previousDay'); ?></button>
