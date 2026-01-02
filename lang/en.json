@@ -171,8 +171,8 @@
   },
   "result": {
     "title": "Free Address Seating Confirmation",
-    "previousDay": "<<Previous",
-    "nextDay": "Next>>",
+    "previousDay": "<< Prev",
+    "nextDay": "Next >>",
     "seatOrder": "By Seat",
     "nameOrder": "By Name"
   },
