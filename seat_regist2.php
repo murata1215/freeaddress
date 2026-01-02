@@ -139,6 +139,7 @@
 <form action="seat.php">
 <?php require "framework_head.php"; ?>
 <?php require "framework_body.php"; ?>
+<?php require "mail/framework_mail.php"; ?>
 
 <div class="regist-container">
 	<div class="regist-card">
@@ -210,6 +211,46 @@ if ($regist == true) {
 	echo "</div>";
 	
 	echo "<p class='regist-info'>このIDは大切に保管してください。<br>フリーアドレスシステムへのアクセスに必要です。</p>";
+
+	// 管理者ページURLをメールで送信
+	$base_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'];
+	$script_path = dirname($_SERVER['SCRIPT_NAME']);
+	if ($script_path !== '/' && $script_path !== '\\') {
+		$base_url .= $script_path;
+	}
+
+	$general_url = $base_url . "/seat.php?id=" . $id_new;
+	$admin_url = $base_url . "/seat.php?id=" . $id_new . "&manage=true";
+
+	$mail_subject = "【FreeAddress】利用登録完了のお知らせ";
+	$mail_body = "FreeAddressへのご登録ありがとうございます。\n\n";
+	$mail_body .= "利用登録が完了しました。\n\n";
+	$mail_body .= "━━━━━━━━━━━━━━━━━━━━━━━━━━\n";
+	$mail_body .= "■ あなたのID\n";
+	$mail_body .= $id_new . "\n\n";
+	$mail_body .= "■ 一般用フリーアドレス画面\n";
+	$mail_body .= $general_url . "\n\n";
+	$mail_body .= "■ 管理者ページ\n";
+	$mail_body .= $admin_url . "\n";
+	$mail_body .= "━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n";
+	$mail_body .= "※管理者ページのパスワードは、登録時に設定したパスワードです。\n";
+	$mail_body .= "※このメールは大切に保管してください。\n\n";
+	$mail_body .= "----\n";
+	$mail_body .= "FreeAddress - フリーアドレス座席管理システム\n";
+
+	$mailer = new mymail();
+	$mail_result = $mailer->sendMail(
+		$mail,                          // 宛先メールアドレス
+		"",                             // 宛先名
+		"noreply@freeaddress.local",    // 送信元メールアドレス
+		"FreeAddress",                  // 送信元名
+		$mail_subject,                  // 件名
+		$mail_body                      // 本文
+	);
+
+	if ($mail_result) {
+		echo "<p class='regist-info' style='color: var(--success-color);'>📧 登録情報を " . htmlspecialchars($mail) . " に送信しました。</p>";
+	}
 
 	//生成したIDを id_new に格納してフレームワークのIDに格納する
 	echo "<input type='text' id='id_new' name='id_new' style='display:none' value='{$id_new}'>";

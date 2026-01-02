@@ -41,11 +41,13 @@
 
 				//メール送信
 				$mail->send();
-				echo '<p>メール送信に成功しました';
+				return true;
 
 			} catch (Exception $e) {
 
-				echo '<p>メール送信が失敗しました: ', $mail->ErrorInfo;
+				// エラーログに記録（本番環境では適切なログ出力に変更）
+				error_log('メール送信が失敗しました: ' . $mail->ErrorInfo);
+				return false;
 
 			}
 

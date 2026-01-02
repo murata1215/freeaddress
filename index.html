@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="フリーアドレス座席管理システム - オフィスの座席抽選・管理を簡単に。Excelで座席管理、社員コードで抽選、座席・内線の一覧管理ができます。">
+    <meta name="keywords" content="フリーアドレス,座席管理,オフィス,座席抽選,Excel,内線管理">
+    <title>FreeAddress - フリーアドレス座席管理システム</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: #3498db;
+            color: white;
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #e8aa00;
+            color: white;
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-weight: bold;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Ad Space */
+        .ad-space {
+            background: #f5f5f5;
+            padding: 1rem;
+            text-align: center;
+            border: 1px dashed #ccc;
+            margin: 2rem auto;
+            max-width: 728px;
+            min-height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: #3498db;
+            margin-bottom: 1rem;
+        }
+
+        /* How it Works */
+        .how-it-works {
+            background: #f8f9fa;
+            padding: 4rem 2rem;
+        }
+
+        .steps {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        .step-number {
+            background: #3498db;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        /* Benefits */
+        .benefits {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .benefits-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: #e8f4fc;
+            border-radius: 8px;
+        }
+
+        .benefit-check {
+            color: #27ae60;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #e8aa00 0%, #f39c12 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button-white {
+            display: inline-block;
+            background: white;
+            color: #e8aa00;
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .cta-button-white:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: #3498db;
+        }
+
+        .footer-section a {
+            color: #bdc3c7;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid #34495e;
+            color: #7f8c8d;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .step {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .step-number {
+                margin: 0 auto 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">FreeAddress</div>
+            <nav class="nav-links">
+                <a href="#features">機能</a>
+                <a href="howto.html">使い方</a>
+                <a href="setup.html">初期設定</a>
+                <a href="seat_regist.php">利用登録</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>フリーアドレス座席管理を<br>もっとシンプルに</h1>
+        <p>Excelで座席管理、社員コードで抽選。座席・内線の一覧管理がこれ一つで完結します。</p>
+        <a href="seat_regist.php" class="cta-button">無料で始める</a>
+    </section>
+
+    <!-- Ad Space -->
+    <div class="ad-space">
+        <!-- Google AdSense などの広告コードをここに挿入 -->
+        広告スペース
+    </div>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <h2 class="section-title">主な機能</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎲</div>
+                <h3>座席抽選</h3>
+                <p>社員コードを入力するだけで、毎日の座席を公平に抽選。煩わしい座席決めから解放されます。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Excel連携</h3>
+                <p>座席マスタや社員情報をExcelでインポート・エクスポート。既存のデータをそのまま活用できます。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🪑</div>
+                <h3>座席表表示</h3>
+                <p>リアルタイムで座席状況を確認。誰がどこに座っているか一目でわかります。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📞</div>
+                <h3>内線管理</h3>
+                <p>座席と内線番号を紐付けて管理。電話を取り次ぐ際も迷いません。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🚶</div>
+                <h3>外出管理</h3>
+                <p>外出時に席を開放して、座席を有効活用。在席状況がリアルタイムで共有されます。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚙️</div>
+                <h3>管理者機能</h3>
+                <p>座席マスタ管理、メンバー管理、各種設定を管理者ページから簡単に操作できます。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ad Space -->
+    <div class="ad-space">
+        <!-- Google AdSense などの広告コードをここに挿入 -->
+        広告スペース
+    </div>
+
+    <!-- How it Works -->
+    <section id="how-it-works" class="how-it-works">
+        <h2 class="section-title">使い方</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>利用者登録</h3>
+                    <p>会社名と社員情報を登録して、利用を開始します。既存のExcelデータからインポートも可能です。</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>座席マスタ設定</h3>
+                    <p>管理者がオフィスの座席情報を登録します。座席番号、内線番号などを設定できます。</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>毎日の座席抽選</h3>
+                    <p>社員が出社時に社員コードを入力して抽選を実行。その日の座席が自動で決まります。</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>座席状況の確認</h3>
+                    <p>座席表や着席状況をいつでも確認できます。同僚の居場所もすぐにわかります。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits -->
+    <section id="benefits" class="benefits">
+        <h2 class="section-title">導入メリット</h2>
+        <div class="benefits-list">
+            <div class="benefit-item">
+                <span class="benefit-check">✓</span>
+                <span>座席決めの手間を大幅削減</span>
+            </div>
+            <div class="benefit-item">
+                <span class="benefit-check">✓</span>
+                <span>公平な座席抽選で不満なし</span>
+            </div>
+            <div class="benefit-item">
+                <span class="benefit-check">✓</span>
+                <span>Excelデータをそのまま活用</span>
+            </div>
+            <div class="benefit-item">
+                <span class="benefit-check">✓</span>
+                <span>内線番号も一元管理</span>
+            </div>
+            <div class="benefit-item">
+                <span class="benefit-check">✓</span>
+                <span>外出・在席状況をリアルタイム共有</span>
+            </div>
+            <div class="benefit-item">
+                <span class="benefit-check">✓</span>
+                <span>シンプルな操作で誰でも使える</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ad Space -->
+    <div class="ad-space">
+        <!-- Google AdSense などの広告コードをここに挿入 -->
+        広告スペース
+    </div>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>今すぐ始めましょう</h2>
+        <p>フリーアドレス管理の効率化を体験してください</p>
+        <a href="seat_regist.php" class="cta-button-white">無料で利用登録</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>FreeAddress</h4>
+                <p style="color: #bdc3c7;">オフィスのフリーアドレス座席管理をシンプルに。</p>
+            </div>
+            <div class="footer-section">
+                <h4>機能</h4>
+                <a href="#features">座席抽選</a>
+                <a href="#features">座席表表示</a>
+                <a href="#features">内線管理</a>
+                <a href="#features">外出管理</a>
+            </div>
+            <div class="footer-section">
+                <h4>サポート</h4>
+                <a href="#how-it-works">使い方</a>
+                <a href="seat_regist.php">利用登録</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 FreeAddress. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

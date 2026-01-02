@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FreeAddress フリーアドレス座席管理システムの登録・初期設定ガイド">
+    <title>登録・初期設定ガイド - FreeAddress</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        /* Header */
+        header {
+            background: #3498db;
+            color: white;
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 6rem 1.5rem 3rem;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .page-intro {
+            text-align: center;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        /* Part Header */
+        .part-header {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 3rem 0 2rem;
+            text-align: center;
+        }
+
+        .part-header.part2 {
+            background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
+        }
+
+        .part-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .part-header p {
+            opacity: 0.9;
+        }
+
+        /* Table of Contents */
+        .toc {
+            background: white;
+            padding: 1.5rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+        }
+
+        .toc h3 {
+            font-size: 1.1rem;
+            color: #3498db;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .toc-list {
+            list-style: none;
+        }
+
+        .toc-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .toc-list a {
+            color: #333;
+            text-decoration: none;
+            padding: 0.3rem 0.5rem;
+            display: inline-block;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .toc-list a:hover {
+            background: #e8f4fc;
+        }
+
+        .toc-list a::before {
+            content: "▶ ";
+            color: #3498db;
+            font-size: 0.8rem;
+        }
+
+        /* Ad Space */
+        .ad-space {
+            background: #f5f5f5;
+            padding: 1rem;
+            text-align: center;
+            border: 1px dashed #ccc;
+            margin: 2rem 0;
+            min-height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            border-radius: 5px;
+        }
+
+        /* Section */
+        .section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+        }
+
+        .section h3 {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #3498db;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section.part2 h3 {
+            border-bottom-color: #27ae60;
+        }
+
+        .section h4 {
+            font-size: 1.1rem;
+            color: #3498db;
+            margin: 1.5rem 0 1rem;
+        }
+
+        .section p {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        /* Screenshot */
+        .screenshot {
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .screenshot img {
+            max-width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .screenshot-caption {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        /* Steps */
+        .steps {
+            counter-reset: step-counter;
+        }
+
+        .step {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .step:last-child {
+            border-bottom: none;
+        }
+
+        .step::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            background: #3498db;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .section.part2 .step::before {
+            background: #27ae60;
+        }
+
+        .step h4 {
+            color: #2c3e50;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .step p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Tips */
+        .tip {
+            background: #e8f4fc;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid #3498db;
+        }
+
+        .tip::before {
+            content: "💡 ポイント：";
+            font-weight: bold;
+            color: #3498db;
+        }
+
+        .warning {
+            background: #fff3cd;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid #e8aa00;
+        }
+
+        .warning::before {
+            content: "⚠️ 注意：";
+            font-weight: bold;
+            color: #856404;
+        }
+
+        .important {
+            background: #f8d7da;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid #dc3545;
+        }
+
+        .important::before {
+            content: "❗ 重要：";
+            font-weight: bold;
+            color: #721c24;
+        }
+
+        /* Excel Table */
+        .excel-info {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .excel-info h5 {
+            color: #27ae60;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .excel-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        .excel-table th,
+        .excel-table td {
+            border: 1px solid #ddd;
+            padding: 0.5rem;
+            text-align: left;
+        }
+
+        .excel-table th {
+            background: #27ae60;
+            color: white;
+        }
+
+        .excel-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        /* Flow Summary */
+        .flow-summary {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+            align-items: center;
+        }
+
+        .flow-item {
+            background: #3498db;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .flow-item.part2 {
+            background: #27ae60;
+        }
+
+        .flow-arrow {
+            color: #999;
+            font-size: 1.2rem;
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .back-to-top a {
+            color: #3498db;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .back-to-top a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .page-title {
+                font-size: 1.5rem;
+            }
+
+            .section {
+                padding: 1.5rem;
+            }
+
+            .step {
+                padding-left: 2.5rem;
+            }
+
+            .flow-summary {
+                flex-direction: column;
+            }
+
+            .flow-arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo">FreeAddress</a>
+            <nav class="nav-links">
+                <a href="index.html">ホーム</a>
+                <a href="howto.html">使い方</a>
+                <a href="setup.html">初期設定</a>
+                <a href="seat_regist.php">利用登録</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <h1 class="page-title">登録・初期設定ガイド</h1>
+        <p class="page-intro">FreeAddressを使い始めるための登録と初期設定の手順をご説明します</p>
+
+        <!-- Table of Contents -->
+        <nav class="toc">
+            <h3>目次</h3>
+            <ul class="toc-list">
+                <li><strong>PART 1：利用者登録</strong></li>
+                <li><a href="#regist">利用者登録の手順</a></li>
+                <li style="margin-top: 1rem;"><strong>PART 2：初期設定（管理者向け）</strong></li>
+                <li><a href="#admin-login">管理者ページへのログイン</a></li>
+                <li><a href="#download">サンプルマスタのダウンロード</a></li>
+                <li><a href="#excel">Excelファイルの編集</a></li>
+                <li><a href="#upload">マスタのアップロード</a></li>
+                <li><a href="#confirm">設定の確認</a></li>
+            </ul>
+        </nav>
+
+        <!-- ========== PART 1: 利用者登録 ========== -->
+        <div class="part-header">
+            <h2>PART 1：利用者登録</h2>
+            <p>まずはアカウントを作成しましょう</p>
+        </div>
+
+        <section id="regist" class="section">
+            <h3>📝 利用者登録の手順</h3>
+
+            <div class="flow-summary">
+                <span class="flow-item">メール・パスワード入力</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-item">登録完了・ID発行</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-item">利用開始</span>
+            </div>
+
+            <div class="steps">
+                <div class="step">
+                    <h4>利用者登録画面を開く</h4>
+                    <p>トップページの「利用登録」または「無料で始める」ボタンをクリックします。</p>
+                </div>
+
+                <div class="step">
+                    <h4>必要情報を入力</h4>
+                    <p>以下の情報を入力してください。</p>
+                    <ul style="margin-left: 1.5rem; color: #555;">
+                        <li><strong>メールアドレス</strong>：ログイン情報の送信先</li>
+                        <li><strong>パスワード</strong>：管理者ページへのログイン用</li>
+                        <li><strong>パスワード（確認）</strong>：確認のため再入力</li>
+                    </ul>
+                    <div class="screenshot">
+                        <img src="png_regist/登録１_利用者登録.png" alt="利用者登録画面">
+                        <p class="screenshot-caption">利用者登録画面</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <h4>「登録する」をクリック</h4>
+                    <p>入力が完了したら、青い「登録する」ボタンをクリックします。</p>
+                </div>
+
+                <div class="step">
+                    <h4>IDを確認・保存</h4>
+                    <p>登録が完了すると、<strong>あなたのID</strong>が発行されます。</p>
+                    <div class="screenshot">
+                        <img src="png_regist/登録２_利用者登録後.png" alt="登録完了画面">
+                        <p class="screenshot-caption">登録完了画面（IDが発行されます）</p>
+                    </div>
+                    <div class="important">このIDは大切に保管してください。フリーアドレスシステムへのアクセスに必要です。</div>
+                </div>
+
+                <div class="step">
+                    <h4>「フリーアドレスを開始する」をクリック</h4>
+                    <p>ボタンをクリックすると、メニュー画面に移動します。</p>
+                    <p>これで利用者登録は完了です。続いて初期設定を行いましょう。</p>
+                </div>
+            </div>
+
+            <div class="back-to-top"><a href="#">▲ 目次に戻る</a></div>
+        </section>
+
+        <!-- Ad Space -->
+        <div class="ad-space">
+            <!-- 広告コードをここに挿入 -->
+            広告スペース
+        </div>
+
+        <!-- ========== PART 2: 初期設定 ========== -->
+        <div class="part-header part2">
+            <h2>PART 2：初期設定（管理者向け）</h2>
+            <p>座席と社員情報を設定しましょう</p>
+        </div>
+
+        <section id="admin-login" class="section part2">
+            <h3>🔐 管理者ページへのログイン</h3>
+
+            <div class="steps">
+                <div class="step">
+                    <h4>メニューから「管理者ページ」をクリック</h4>
+                    <p>メニュー画面の上部に表示されるオリーブ色の「管理者ページ」ボタンをクリックします。</p>
+                    <div class="screenshot">
+                        <img src="png_regist/登録３_管理者ページ.png" alt="管理者ページボタン">
+                        <p class="screenshot-caption">メニュー画面（上部に管理者ページボタン）</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <h4>パスワードを入力してログイン</h4>
+                    <p>利用者登録時に設定したパスワードを入力し、「ログイン」をクリックします。</p>
+                    <div class="screenshot">
+                        <img src="png_regist/登録４_管理者ページへのパスワード入力.png" alt="パスワード入力画面">
+                        <p class="screenshot-caption">管理者ページログイン画面</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <h4>管理者メニューを確認</h4>
+                    <p>ログインすると、管理者メニューが表示されます。</p>
+                    <div class="screenshot">
+                        <img src="png_regist/登録５_管理者メニュー.png" alt="管理者メニュー">
+                        <p class="screenshot-caption">管理者メニュー画面</p>
+                    </div>
+                    <div class="tip">「各種URL」セクションのリンクは、社員に共有するためのURLです。</div>
+                </div>
+            </div>
+
+            <div class="back-to-top"><a href="#">▲ 目次に戻る</a></div>
+        </section>
+
+        <section id="download" class="section part2">
+            <h3>📥 サンプルマスタのダウンロード</h3>
+
+            <div class="steps">
+                <div class="step">
+                    <h4>「サンプルマスタダウンロード」をクリック</h4>
+                    <p>管理者メニューの「サンプルマスタダウンロード」ボタンをクリックします。</p>
+                </div>
+
+                <div class="step">
+                    <h4>Excelファイルを保存</h4>
+                    <p><code>sample-seat.xlsx</code>というファイルがダウンロードされます。</p>
+                    <div class="screenshot">
+                        <img src="png_regist/登録６＿サンプルマスタダウンロード押下後.png" alt="ダウンロード完了">
+                        <p class="screenshot-caption">サンプルマスタがダウンロードされます</p>
+                    </div>
+                    <div class="tip">このサンプルファイルを編集して、自社の座席・社員情報を設定します。</div>
+                </div>
+            </div>
+
+            <div class="back-to-top"><a href="#">▲ 目次に戻る</a></div>
+        </section>
+
+        <!-- Ad Space -->
+        <div class="ad-space">
+            <!-- 広告コードをここに挿入 -->
+            広告スペース
+        </div>
+
+        <section id="excel" class="section part2">
+            <h3>📊 Excelファイルの編集</h3>
+
+            <p>ダウンロードした<code>sample-seat.xlsx</code>には3つのシートがあります。それぞれ編集してください。</p>
+
+            <!-- Sheet 1: view -->
+            <div class="excel-info">
+                <h5>📋 シート1：view（座席レイアウト）</h5>
+                <p>オフィスの座席配置を設定します。Excelのセルに座席番号（3桁のアルファベット+数字）を自由に配置できます。</p>
+                <div class="screenshot">
+                    <img src="png_regist/登録７＿EXCEL１.png" alt="viewシート">
+                    <p class="screenshot-caption">viewシート - 座席レイアウトの設定例</p>
+                </div>
+                <table class="excel-table">
+                    <tr>
+                        <th>設定内容</th>
+                        <th>説明</th>
+                        <th>例</th>
+                    </tr>
+                    <tr>
+                        <td>座席番号</td>
+                        <td>3桁の英数字で座席を表します</td>
+                        <td>A01, B02, C03 など</td>
+                    </tr>
+                    <tr>
+                        <td>配置</td>
+                        <td>セルの位置が座席表の配置になります</td>
+                        <td>自由に配置可能</td>
+                    </tr>
+                </table>
+                <div class="tip">座席の色やオブジェクト（観葉植物、ロッカーなど）もExcelで自由に設定できます。</div>
+            </div>
+
+            <!-- Sheet 2: seat -->
+            <div class="excel-info">
+                <h5>📋 シート2：seat（座席マスタ）</h5>
+                <p>各座席の詳細情報と固定席の設定を行います。</p>
+                <div class="screenshot">
+                    <img src="png_regist/登録８＿EXCEL２.png" alt="seatシート">
+                    <p class="screenshot-caption">seatシート - 座席マスタの設定</p>
+                </div>
+                <table class="excel-table">
+                    <tr>
+                        <th>列名</th>
+                        <th>説明</th>
+                        <th>必須</th>
+                    </tr>
+                    <tr>
+                        <td>seatid</td>
+                        <td>座席番号（viewシートと同じ）</td>
+                        <td>○</td>
+                    </tr>
+                    <tr>
+                        <td>mid</td>
+                        <td>固定席の場合、社員コードを設定</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>biko1〜3</td>
+                        <td>備考（任意）</td>
+                        <td>-</td>
+                    </tr>
+                </table>
+                <div class="warning">固定席（部長席、社長席など）を設定する場合は、midに該当社員の社員コードを入力してください。空欄の座席はフリーアドレス対象となります。</div>
+            </div>
+
+            <!-- Sheet 3: member -->
+            <div class="excel-info">
+                <h5>📋 シート3：member（社員マスタ）</h5>
+                <p>社員の一覧を登録します。</p>
+                <div class="screenshot">
+                    <img src="png_regist/登録９＿EXCEL３.png" alt="memberシート">
+                    <p class="screenshot-caption">memberシート - 社員一覧の設定</p>
+                </div>
+                <table class="excel-table">
+                    <tr>
+                        <th>列名</th>
+                        <th>説明</th>
+                        <th>必須</th>
+                    </tr>
+                    <tr>
+                        <td>mid</td>
+                        <td>社員コード（抽選時に入力する番号）</td>
+                        <td>○</td>
+                    </tr>
+                    <tr>
+                        <td>name</td>
+                        <td>社員名</td>
+                        <td>○</td>
+                    </tr>
+                    <tr>
+                        <td>kana</td>
+                        <td>カナ名（名前順の並び替えに使用）</td>
+                        <td>○</td>
+                    </tr>
+                    <tr>
+                        <td>phone</td>
+                        <td>内線番号</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>biko1〜3</td>
+                        <td>備考（任意）</td>
+                        <td>-</td>
+                    </tr>
+                </table>
+                <div class="tip">社員コード（mid）は社員が抽選時に入力する番号です。覚えやすい番号を設定してください。</div>
+            </div>
+
+            <div class="important">編集が完了したら、ファイルを保存してください。ファイル名は変更しても構いません。</div>
+
+            <div class="back-to-top"><a href="#">▲ 目次に戻る</a></div>
+        </section>
+
+        <section id="upload" class="section part2">
+            <h3>📤 マスタのアップロード</h3>
+
+            <div class="steps">
+                <div class="step">
+                    <h4>「マスタアップロード」をクリック</h4>
+                    <p>管理者メニューのオレンジ色の「マスタアップロード」ボタンをクリックします。</p>
+                    <div class="screenshot">
+                        <img src="png_regist/登録１０＿アップロード１.png" alt="マスタアップロードボタン">
+                        <p class="screenshot-caption">マスタアップロードボタン</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <h4>ファイルを選択</h4>
+                    <p>「ファイルを選択」をクリックし、編集したExcelファイルを選択します。</p>
+                    <div class="screenshot">
+                        <img src="png_regist/登録１１＿アップロード２.png" alt="ファイル選択画面">
+                        <p class="screenshot-caption">ファイル選択画面</p>
+                    </div>
+                    <div class="warning">アップロードすると現在のマスタデータが上書きされます。事前にバックアップを取ることをお勧めします。</div>
+                </div>
+
+                <div class="step">
+                    <h4>「アップロード」をクリック</h4>
+                    <p>ファイルを選択したら、「アップロード」ボタンをクリックします。</p>
+                </div>
+
+                <div class="step">
+                    <h4>アップロード結果を確認</h4>
+                    <p>アップロードが完了すると、登録された座席と社員の一覧が表示されます。</p>
+                    <div class="screenshot">
+                        <img src="png_regist/登録１２＿アップロード３.png" alt="アップロード結果">
+                        <p class="screenshot-caption">アップロード結果画面</p>
+                    </div>
+                    <div class="tip">エラーがある場合はここに表示されます。内容を確認して、必要に応じてExcelを修正してください。</div>
+                </div>
+            </div>
+
+            <div class="back-to-top"><a href="#">▲ 目次に戻る</a></div>
+        </section>
+
+        <!-- Ad Space -->
+        <div class="ad-space">
+            <!-- 広告コードをここに挿入 -->
+            広告スペース
+        </div>
+
+        <section id="confirm" class="section part2">
+            <h3>✅ 設定の確認</h3>
+
+            <div class="steps">
+                <div class="step">
+                    <h4>メニュー画面に戻る</h4>
+                    <p>管理者メニューの「一般用フリーアドレス画面」リンクをクリックするか、ブラウザの戻るボタンでメニューに戻ります。</p>
+                    <div class="screenshot">
+                        <img src="png_regist/登録１３＿メニュー.png" alt="メニュー画面">
+                        <p class="screenshot-caption">通常のメニュー画面</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <h4>座席表を確認</h4>
+                    <p>「座席表を見る」をクリックして、設定した座席レイアウトが反映されているか確認します。</p>
+                    <div class="screenshot">
+                        <img src="png_regist/登録１４＿結果.png" alt="座席表">
+                        <p class="screenshot-caption">設定が反映された座席表</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip">座席表が正しく表示されていれば、初期設定は完了です。社員にURLを共有して、フリーアドレスを開始しましょう。</div>
+
+            <div class="back-to-top"><a href="#">▲ 目次に戻る</a></div>
+        </section>
+
+        <!-- Next Steps -->
+        <section class="section">
+            <h3>🎉 設定完了！次のステップ</h3>
+            <p>お疲れ様でした！初期設定が完了しました。</p>
+            <ul style="margin: 1rem 0 1rem 1.5rem; color: #555;">
+                <li><strong>社員へURL共有</strong>：管理者メニューの「一般用フリーアドレス画面」のURLを社員に共有してください</li>
+                <li><strong>使い方の案内</strong>：<a href="howto.html" style="color: #3498db;">使い方ガイド</a>を社員に共有してください</li>
+                <li><strong>マスタの更新</strong>：社員の増減や座席変更があれば、同じ手順でExcelを更新・アップロードしてください</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 FreeAddress. All rights reserved.</p>
+        <p><a href="index.html">ホームに戻る</a> | <a href="howto.html">使い方ガイド</a></p>
+    </footer>
+</body>
+</html>
