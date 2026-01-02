@@ -29,7 +29,9 @@ freeaddress/
 ├── framework_*.php        # 共通フレームワーク
 ├── index.html             # トップページ
 ├── howto.html             # 使い方ガイド
-└── setup.html             # 登録・初期設定ガイド
+├── setup.html             # 登録・初期設定ガイド
+├── privacy.html           # プライバシーポリシー
+└── contact.html           # お問い合わせ（導入相談）
 ```
 
 ## 主要ファイル
@@ -108,12 +110,52 @@ freeaddress/
 - 新しいテキストを追加する際は、ja.jsonとen.json両方に追加
 - キー名はドット区切りのセクション.キー形式
 - HTMLタグを含む翻訳は`<br>`などそのまま記述可能
+- 英語版では「Free Address」→「Hot Desking」に変更済み
+
+### 言語別コンテンツ表示
+日本語スクリーンショットなど、言語によって表示/非表示を切り替える場合：
+```html
+<div class="ja-only">日本語のみ表示</div>
+<div class="non-ja-only">日本語以外で表示</div>
+```
+`lang/lang.js`の`updateLanguageVisibility()`で制御
 
 ## 開発環境セットアップ
 
 ```bash
 composer install
 ```
+
+## Google AdSense
+
+### 導入済みページ
+- index.html（Hero直後に広告ユニット）
+- howto.html（headにスクリプトのみ）
+- setup.html（headにスクリプトのみ）
+- seat.php（headにスクリプトのみ）
+
+### 広告コード
+```html
+<!-- headに配置 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6340357703893137" crossorigin="anonymous"></script>
+
+<!-- 広告ユニット（任意の位置に配置） -->
+<div style="max-width:728px;margin:24px auto;text-align:center;">
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-6340357703893137"
+        data-ad-slot="1234567890"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+```
+
+## お問い合わせ情報
+
+- 会社名: 合同会社りぼん不動産
+- 代表: 村田 圭助
+- メール: fwjg2507@gmail.com
 
 ## セキュリティ注意事項
 
