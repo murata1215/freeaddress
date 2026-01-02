@@ -212,7 +212,8 @@ if ($regist == true) {
 	
 	echo "<p class='regist-info'>このIDは大切に保管してください。<br>フリーアドレスシステムへのアクセスに必要です。</p>";
 
-	// 管理者ページURLをメールで送信
+	// 管理者ページURLをメールで送信（メール機能は現在無効）
+	/*
 	$base_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'];
 	$script_path = dirname($_SERVER['SCRIPT_NAME']);
 	if ($script_path !== '/' && $script_path !== '\\') {
@@ -251,6 +252,7 @@ if ($regist == true) {
 	if ($mail_result) {
 		echo "<p class='regist-info' style='color: var(--success-color);'>📧 登録情報を " . htmlspecialchars($mail) . " に送信しました。</p>";
 	}
+	*/
 
 	//生成したIDを id_new に格納してフレームワークのIDに格納する
 	echo "<input type='text' id='id_new' name='id_new' style='display:none' value='{$id_new}'>";

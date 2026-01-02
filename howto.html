@@ -295,6 +295,191 @@
             text-decoration: underline;
         }
 
+        /* Usage Image - 利用イメージ図 */
+        .usage-image {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        .usage-image h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .usage-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .usage-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .usage-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.8rem;
+            font-size: 2.5rem;
+            backdrop-filter: blur(5px);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .usage-step-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .usage-arrow {
+            font-size: 2rem;
+            color: rgba(255,255,255,0.7);
+            margin: 0 0.5rem;
+        }
+
+        .usage-scene {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .usage-office {
+            background: rgba(255,255,255,0.15);
+            border-radius: 10px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            backdrop-filter: blur(5px);
+        }
+
+        .office-entrance {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .entrance-door {
+            width: 50px;
+            height: 70px;
+            background: linear-gradient(180deg, #8B4513 0%, #654321 100%);
+            border-radius: 5px 5px 0 0;
+            position: relative;
+            border: 2px solid #5D3A1A;
+        }
+
+        .entrance-door::after {
+            content: '';
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            width: 6px;
+            height: 6px;
+            background: gold;
+            border-radius: 50%;
+        }
+
+        .tablet-stand {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .tablet {
+            width: 45px;
+            height: 60px;
+            background: linear-gradient(180deg, #333 0%, #1a1a1a 100%);
+            border-radius: 5px;
+            border: 2px solid #555;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .tablet-screen {
+            width: 35px;
+            height: 48px;
+            background: linear-gradient(180deg, #4facfe 0%, #00f2fe 100%);
+            border-radius: 2px;
+        }
+
+        .tablet-pole {
+            width: 8px;
+            height: 30px;
+            background: linear-gradient(180deg, #666 0%, #444 100%);
+        }
+
+        .tablet-base {
+            width: 30px;
+            height: 6px;
+            background: #444;
+            border-radius: 3px;
+        }
+
+        .person-icon {
+            font-size: 2.5rem;
+        }
+
+        .desk-area {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .mini-desk {
+            width: 25px;
+            height: 25px;
+            background: linear-gradient(135deg, #f5d79e 0%, #d4a857 100%);
+            border-radius: 3px;
+            border: 1px solid #c4983f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.6rem;
+        }
+
+        .mini-desk.occupied {
+            box-shadow: 0 0 8px rgba(46, 204, 113, 0.8);
+        }
+
+        .scene-labels {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 0.8rem;
+            font-size: 0.75rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .usage-flow {
+                flex-direction: column;
+            }
+            .usage-arrow {
+                transform: rotate(90deg);
+            }
+            .usage-office {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
         /* Footer */
         footer {
             background: #2c3e50;
@@ -347,6 +532,79 @@
     <main>
         <h1 class="page-title">使い方ガイド</h1>
         <p class="page-intro">FreeAddressの基本的な使い方をご紹介します</p>
+
+        <!-- Usage Image - 利用イメージ -->
+        <div class="usage-image">
+            <h2>利用イメージ</h2>
+
+            <!-- フロー図 -->
+            <div class="usage-flow">
+                <div class="usage-step">
+                    <div class="usage-icon">🚶</div>
+                    <div class="usage-step-label">出社</div>
+                </div>
+                <div class="usage-arrow">→</div>
+                <div class="usage-step">
+                    <div class="usage-icon">📱</div>
+                    <div class="usage-step-label">入口の<br>タブレットで<br>抽選</div>
+                </div>
+                <div class="usage-arrow">→</div>
+                <div class="usage-step">
+                    <div class="usage-icon">🎯</div>
+                    <div class="usage-step-label">今日の席が<br>決定</div>
+                </div>
+                <div class="usage-arrow">→</div>
+                <div class="usage-step">
+                    <div class="usage-icon">💺</div>
+                    <div class="usage-step-label">席に着いて<br>仕事開始</div>
+                </div>
+            </div>
+
+            <!-- オフィスのイメージ図 -->
+            <div class="usage-scene">
+                <div class="usage-office">
+                    <!-- 入口 -->
+                    <div class="office-entrance">
+                        <div class="entrance-door"></div>
+                        <span style="font-size: 0.7rem; margin-top: 4px;">入口</span>
+                    </div>
+
+                    <!-- タブレットスタンド -->
+                    <div class="tablet-stand">
+                        <div class="tablet">
+                            <div class="tablet-screen"></div>
+                        </div>
+                        <div class="tablet-pole"></div>
+                        <div class="tablet-base"></div>
+                        <span style="font-size: 0.7rem; margin-top: 4px;">タブレット</span>
+                    </div>
+
+                    <!-- 社員 -->
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <div class="person-icon">🧑‍💼</div>
+                        <span style="font-size: 0.7rem;">社員</span>
+                    </div>
+
+                    <!-- 矢印 -->
+                    <div style="font-size: 1.5rem;">➡️</div>
+
+                    <!-- デスクエリア -->
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <div class="desk-area">
+                            <div class="mini-desk">A1</div>
+                            <div class="mini-desk">A2</div>
+                            <div class="mini-desk occupied">A3</div>
+                        </div>
+                        <div class="desk-area" style="margin-top: 4px;">
+                            <div class="mini-desk">B1</div>
+                            <div class="mini-desk occupied">B2</div>
+                            <div class="mini-desk">B3</div>
+                        </div>
+                        <span style="font-size: 0.7rem; margin-top: 4px;">フリーアドレス席</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Table of Contents -->
         <nav class="toc">
