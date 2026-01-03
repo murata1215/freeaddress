@@ -40,7 +40,7 @@
 				$mail->Host = $this->smtpHost;
 				$mail->Username = $this->smtpUsername;
 				$mail->Password = $this->smtpPassword;
-				$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+				$mail->SMTPSecure = 'tls';
 				$mail->Port = $this->smtpPort;
 				$mail->CharSet = "utf-8";
 				$mail->Encoding = "base64";
