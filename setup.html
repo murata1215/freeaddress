@@ -272,7 +272,7 @@
         }
 
         .tip::before {
-            content: "💡 ポイント：";
+            content: var(--tip-label, "💡 ポイント：");
             font-weight: bold;
             color: #3498db;
         }
@@ -286,7 +286,7 @@
         }
 
         .warning::before {
-            content: "⚠️ 注意：";
+            content: var(--warning-label, "⚠️ 注意：");
             font-weight: bold;
             color: #856404;
         }
@@ -300,7 +300,7 @@
         }
 
         .important::before {
-            content: "❗ 重要：";
+            content: var(--important-label, "❗ 重要：");
             font-weight: bold;
             color: #721c24;
         }

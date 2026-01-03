@@ -2,6 +2,9 @@
   "common": {
     "siteName": "핫데스킹",
     "home": "홈",
+    "tipLabel": "💡 팁:",
+    "warningLabel": "⚠️ 주의:",
+    "importantLabel": "❗ 중요:",
     "howto": "사용법",
     "setup": "초기 설정",
     "register": "등록",

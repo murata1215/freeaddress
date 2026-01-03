@@ -2,6 +2,9 @@
   "common": {
     "siteName": "HotDesking",
     "home": "Home",
+    "tipLabel": "💡 Tip:",
+    "warningLabel": "⚠️ Warning:",
+    "importantLabel": "❗ Important:",
     "howto": "How to Use",
     "setup": "Setup",
     "register": "Register",

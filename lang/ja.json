@@ -2,6 +2,9 @@
   "common": {
     "siteName": "FreeAddress",
     "home": "ホーム",
+    "tipLabel": "💡 ポイント：",
+    "warningLabel": "⚠️ 注意：",
+    "importantLabel": "❗ 重要：",
     "howto": "使い方",
     "setup": "初期設定",
     "register": "利用登録",

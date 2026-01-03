@@ -123,6 +123,22 @@ const Lang = {
 
         // 言語別表示の切り替え
         this.updateLanguageVisibility();
+
+        // CSS変数でラベルを設定（tip, warning, important）
+        this.updateCssLabels();
+    },
+
+    /**
+     * CSS変数でラベルテキストを更新
+     */
+    updateCssLabels() {
+        const tipLabel = this.t('common.tipLabel') || '💡 ポイント：';
+        const warningLabel = this.t('common.warningLabel') || '⚠️ 注意：';
+        const importantLabel = this.t('common.importantLabel') || '❗ 重要：';
+
+        document.documentElement.style.setProperty('--tip-label', `"${tipLabel}"`);
+        document.documentElement.style.setProperty('--warning-label', `"${warningLabel}"`);
+        document.documentElement.style.setProperty('--important-label', `"${importantLabel}"`);
     },
 
     /**
