@@ -140,7 +140,13 @@
     "faq3A": "Por favor contacte al administrador.",
     "faq4Q": "P. Quiero sentarme en un asiento específico",
     "faq4A": "Debido al sistema de hot desking, los asientos se determinan por sorteo. Sin embargo, si el administrador ha establecido asientos fijos, ese asiento será asignado.",
-    "backToTop": "▲ Volver Arriba"
+    "backToTop": "▲ Volver Arriba",
+    "menuScreenDesc": "La pantalla del menú muestra botones coloridos para cada función. El botón naranja \"Sortear Asiento Hot Desking\" está en el centro, con botones azul, verde, morado y lima alrededor para otras funciones.",
+    "lotteryScreenDesc": "La pantalla de sorteo muestra un gran teclado numérico para ingresar su número de empleado. Hay botones de Borrar y BS (retroceso) para corregir errores, y un botón Siguiente para continuar.",
+    "lotteryResultDesc": "La pantalla de resultado muestra prominentemente su número de asiento asignado. Su nombre y el ID del asiento (como A01, B02) se muestran claramente para que sepa dónde sentarse.",
+    "seatMapScreenDesc": "El mapa de asientos muestra la distribución de su oficina configurada en Excel. Cada asiento muestra su ID (A01, B02, etc.) y el nombre de la persona sentada si está ocupado. Los asientos vacíos muestran solo el número de asiento.",
+    "checkScreenDesc": "La pantalla de confirmación muestra dos listas lado a lado: asientos ordenados por número (izquierda) y asientos ordenados por nombre de empleado (derecha). Puede usar los botones Día Anterior/Siguiente para ver diferentes fechas.",
+    "awayScreenDesc": "La pantalla de registro de ausencia tiene el mismo diseño de teclado que la pantalla de sorteo. Ingrese su número de empleado y toque Siguiente para liberar su asiento."
   },
   "seat": {
     "title": "Menú Hot Desking",
@@ -438,7 +444,21 @@
     "backToToc": "▲ Volver al Índice",
     "adSpace": "Espacio Publicitario",
     "required": "Sí",
-    "optional": "-"
+    "optional": "-",
+    "registScreenDesc": "El formulario de registro tiene tres campos: Correo Electrónico, Contraseña y Contraseña (Confirmar). Ingrese su información y haga clic en el botón azul \"Registrar\".",
+    "registCompleteDesc": "La pantalla de completado muestra su ID único (un número de 9 dígitos). Guarde este ID - lo necesitará para acceder al sistema. Hay un botón para comenzar a usar el sistema.",
+    "adminButtonDesc": "Busque el botón color oliva \"Página de Admin\" en la parte superior de la pantalla del menú. Haga clic para acceder a las funciones de administración.",
+    "adminLoginDesc": "La pantalla de inicio de sesión tiene un campo de contraseña. Ingrese la contraseña que estableció durante el registro y haga clic en \"Iniciar Sesión\".",
+    "adminMenuDesc": "El menú de admin muestra secciones para Datos Maestros (descarga/subida), Configuración (cambios de correo, contraseña, nombre de empresa) y URLs para compartir con empleados.",
+    "downloadDesc": "Después de hacer clic en el botón de descarga, un archivo llamado \"sample-seat.xlsx\" se guardará en su computadora. Este archivo Excel contiene datos de muestra que puede editar.",
+    "viewSheetDesc": "La hoja \"view\" define la distribución de su oficina. Coloque IDs de asientos (como A01, B02) en celdas de Excel para coincidir con la disposición física de su oficina. Las posiciones de celda se convierten en el mapa visual de asientos.",
+    "seatSheetDesc": "La hoja \"seat\" contiene columnas: seatid (número de asiento), mid (código de empleado para asientos fijos) y notas opcionales (biko1-3). Deje mid vacío para asientos de hot desking.",
+    "memberSheetDesc": "La hoja \"member\" lista empleados con columnas: mid (código de empleado para sorteo), name (nombre), kana (para ordenar), phone (extensión) y notas opcionales (biko1-3).",
+    "uploadButtonDesc": "Encuentre el botón naranja \"Subir Maestro\" en el menú de admin. Haga clic para ir a la pantalla de subida.",
+    "fileSelectDesc": "La pantalla de subida tiene un botón \"Seleccionar Archivo\" y un botón \"Subir\". Haga clic en \"Seleccionar Archivo\" para elegir su archivo Excel editado, luego haga clic en \"Subir\" para procesarlo.",
+    "uploadResultDesc": "La pantalla de resultado muestra listas de asientos y empleados registrados. Verifique que sus datos se importaron correctamente. Los errores se mostrarán aquí.",
+    "menuReturnDesc": "Regrese al menú principal haciendo clic en el enlace \"Pantalla General Hot Desking\" en la sección URLs de admin, o use el botón atrás de su navegador.",
+    "seatMapResultDesc": "Haga clic en \"Ver Mapa de Asientos\" para verificar que su distribución se importó correctamente. El mapa de asientos debe mostrar todos los asientos de su archivo Excel en las posiciones que configuró."
   },
   "privacy": {
     "pageTitle": "Política de Privacidad",
