@@ -8,34 +8,41 @@
 	require 'PHPMailer/src/SMTP.php';
 
 	class mymail {
+		// Gmail SMTP設定
+		private $smtpHost = 'smtp.gmail.com';
+		private $smtpPort = 587;
+		private $smtpUsername = 'fwjg2507@gmail.com';
+		private $smtpPassword = 'qkcytybplqgkxasq';
+		private $adminEmail = 'fwjg2507@gmail.com';
+		private $adminName = 'HotDesk管理者';
+
 	    public function sendMail($to, $toname, $from, $fromname, $subject, $body) {
 
 			$mail = new PHPMailer(true);
 
-			$param = new param();
-			$mailaddress = $param->getParam($id,"MAIL");
-			$pass = $param->getParam($id,"PASSWORD");
-
-
 			try {
-				//認証情報
-				$host = '10.20.170.222';
-//				$username = 'fwjg2507@gmail.com'; // example@gmail.com
-//				$password = 'getThep0wer';
-
 				//メール設定
 				//$mail->SMTPDebug = 2; //デバッグ用
 				$mail->isSMTP();
-				$mail->SMTPAuth = false;
-				$mail->Host = $host;
-//				$mail->Username = $username;
-//				$mail->Password = $password;
-//				$mail->SMTPSecure = 'tls';
-				$mail->Port = 25;
+				$mail->SMTPAuth = true;
+				$mail->Host = $this->smtpHost;
+				$mail->Username = $this->smtpUsername;
+				$mail->Password = $this->smtpPassword;
+				$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+				$mail->Port = $this->smtpPort;
 				$mail->CharSet = "utf-8";
 				$mail->Encoding = "base64";
-				$mail->setFrom($from, $fromname);
+
+				// 送信者設定（Gmail SMTPでは認証アカウントと同じにする必要あり）
+				$mail->setFrom($this->adminEmail, $this->adminName);
+				$mail->addReplyTo($from, $fromname);
+
+				// 宛先設定
 				$mail->addAddress($to, $toname);
+
+				// BCC（管理者に控えを送信）
+				$mail->addBCC($this->adminEmail, $this->adminName);
+
 				$mail->Subject = $subject;
 				$mail->Body    = $body;
 
@@ -53,7 +60,5 @@
 
 	    }
 	}
-
-
 
 ?>
