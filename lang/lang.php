@@ -8,7 +8,7 @@ class Lang {
     private static $instance = null;
     private $currentLang = 'ja';
     private $translations = [];
-    private $supportedLangs = ['ja', 'en'];
+    private $supportedLangs = ['ja', 'en', 'zh', 'ko', 'es'];
 
     private function __construct() {
         $this->detectLanguage();
@@ -114,15 +114,30 @@ class Lang {
     }
 
     /**
+     * 言語ラベルを取得
+     */
+    private function getLangLabel($lang) {
+        $labels = [
+            'ja' => '日本語',
+            'en' => 'EN',
+            'zh' => '中文',
+            'ko' => '한국어',
+            'es' => 'ES'
+        ];
+        return $labels[$lang] ?? $lang;
+    }
+
+    /**
      * 言語切り替えボタンのHTMLを出力
      */
     public function renderSwitcher() {
-        $jaUrl = $this->buildLangUrl('ja');
-        $enUrl = $this->buildLangUrl('en');
-
         $html = '<div id="lang-switcher">';
-        $html .= '<a href="' . htmlspecialchars($jaUrl) . '" class="lang-btn ' . ($this->currentLang === 'ja' ? 'active' : '') . '">日本語</a>';
-        $html .= '<a href="' . htmlspecialchars($enUrl) . '" class="lang-btn ' . ($this->currentLang === 'en' ? 'active' : '') . '">EN</a>';
+        foreach ($this->supportedLangs as $lang) {
+            $url = $this->buildLangUrl($lang);
+            $label = $this->getLangLabel($lang);
+            $activeClass = $this->currentLang === $lang ? 'active' : '';
+            $html .= '<a href="' . htmlspecialchars($url) . '" class="lang-btn ' . $activeClass . '">' . $label . '</a>';
+        }
         $html .= '</div>';
 
         $html .= '<style>
@@ -133,6 +148,7 @@ class Lang {
                 z-index: 1001;
                 display: flex;
                 flex-direction: row;
+                flex-wrap: wrap;
                 gap: 5px;
                 background: white;
                 padding: 5px;
@@ -140,13 +156,14 @@ class Lang {
                 box-shadow: 0 2px 10px rgba(0,0,0,0.15);
                 height: auto !important;
                 width: auto !important;
+                max-width: 280px;
             }
             .lang-btn {
-                padding: 6px 12px;
+                padding: 6px 10px;
                 border: none;
                 border-radius: 15px;
                 cursor: pointer;
-                font-size: 12px;
+                font-size: 11px;
                 font-weight: 600;
                 background: #f0f0f0;
                 color: #666;
@@ -160,6 +177,15 @@ class Lang {
             .lang-btn.active {
                 background: #3498db;
                 color: white;
+            }
+            @media (max-width: 480px) {
+                #lang-switcher {
+                    max-width: 200px;
+                }
+                .lang-btn {
+                    padding: 5px 8px;
+                    font-size: 10px;
+                }
             }
         </style>';
 

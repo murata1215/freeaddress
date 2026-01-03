@@ -6,7 +6,14 @@
 const Lang = {
     currentLang: 'ja',
     translations: {},
-    supportedLangs: ['ja', 'en'],
+    supportedLangs: ['ja', 'en', 'zh', 'ko', 'es'],
+    langLabels: {
+        'ja': '日本語',
+        'en': 'EN',
+        'zh': '中文',
+        'ko': '한국어',
+        'es': 'ES'
+    },
 
     /**
      * 初期化
@@ -148,10 +155,15 @@ const Lang = {
         // スイッチャーを作成
         const switcher = document.createElement('div');
         switcher.id = 'lang-switcher';
-        switcher.innerHTML = `
-            <button class="lang-btn ${this.currentLang === 'ja' ? 'active' : ''}" data-lang="ja">日本語</button>
-            <button class="lang-btn ${this.currentLang === 'en' ? 'active' : ''}" data-lang="en">EN</button>
-        `;
+
+        // 動的にボタンを生成
+        let buttonsHtml = '';
+        this.supportedLangs.forEach(lang => {
+            const label = this.langLabels[lang] || lang;
+            const activeClass = this.currentLang === lang ? 'active' : '';
+            buttonsHtml += `<button class="lang-btn ${activeClass}" data-lang="${lang}">${label}</button>`;
+        });
+        switcher.innerHTML = buttonsHtml;
 
         // スタイルを追加
         const style = document.createElement('style');
@@ -162,18 +174,20 @@ const Lang = {
                 right: 20px;
                 z-index: 1001;
                 display: flex;
+                flex-wrap: wrap;
                 gap: 5px;
                 background: white;
                 padding: 5px;
                 border-radius: 20px;
                 box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+                max-width: 280px;
             }
             .lang-btn {
-                padding: 6px 12px;
+                padding: 6px 10px;
                 border: none;
                 border-radius: 15px;
                 cursor: pointer;
-                font-size: 12px;
+                font-size: 11px;
                 font-weight: 600;
                 background: #f0f0f0;
                 color: #666;
@@ -190,6 +204,11 @@ const Lang = {
                 #lang-switcher {
                     top: 10px;
                     right: 10px;
+                    max-width: 200px;
+                }
+                .lang-btn {
+                    padding: 5px 8px;
+                    font-size: 10px;
                 }
             }
         `;
