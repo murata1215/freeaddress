@@ -162,9 +162,10 @@ if(isset($_GET['pass2'])) {
 $dao = new db();
 $dao->connect();
 
-//メールアドレスがすでに使われているかをチェックする
+//メールアドレスがすでに使われているかをチェックする（SQLインジェクション対策）
+$mail_escaped = $dao->conn->real_escape_string($mail);
 $sql = "";
-$sql = $sql." SELECT ID FROM SETTEI WHERE PARAM='MAIL' AND VAL='".$mail."' ";
+$sql = $sql." SELECT ID FROM SETTEI WHERE PARAM='MAIL' AND VAL='".$mail_escaped."' ";
 $dao->select($sql);
 
 $exist_id = "";
@@ -214,8 +215,7 @@ if ($regist == true) {
 
 	echo "<p class='regist-info'>".__('regist.idNote')."</p>";
 
-	// 管理者ページURLをメールで送信（メール機能は現在無効）
-	/*
+	// 管理者ページURLをメールで送信（多言語対応）
 	$base_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'];
 	$script_path = dirname($_SERVER['SCRIPT_NAME']);
 	if ($script_path !== '/' && $script_path !== '\\') {
@@ -225,36 +225,36 @@ if ($regist == true) {
 	$general_url = $base_url . "/seat.php?id=" . $id_new;
 	$admin_url = $base_url . "/seat.php?id=" . $id_new . "&manage=true";
 
-	$mail_subject = "【FreeAddress】利用登録完了のお知らせ";
-	$mail_body = "FreeAddressへのご登録ありがとうございます。\n\n";
-	$mail_body .= "利用登録が完了しました。\n\n";
+	$mail_subject = __('regist.mailSubject');
+	$mail_body = __('regist.mailBody1') . "\n\n";
+	$mail_body .= __('regist.mailBody2') . "\n\n";
 	$mail_body .= "━━━━━━━━━━━━━━━━━━━━━━━━━━\n";
-	$mail_body .= "■ あなたのID\n";
+	$mail_body .= "■ " . __('regist.mailBodyYourId') . "\n";
 	$mail_body .= $id_new . "\n\n";
-	$mail_body .= "■ 一般用フリーアドレス画面\n";
+	$mail_body .= "■ " . __('regist.mailBodyGeneralUrl') . "\n";
 	$mail_body .= $general_url . "\n\n";
-	$mail_body .= "■ 管理者ページ\n";
+	$mail_body .= "■ " . __('regist.mailBodyAdminUrl') . "\n";
 	$mail_body .= $admin_url . "\n";
 	$mail_body .= "━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n";
-	$mail_body .= "※管理者ページのパスワードは、登録時に設定したパスワードです。\n";
-	$mail_body .= "※このメールは大切に保管してください。\n\n";
+	$mail_body .= __('regist.mailBodyNote1') . "\n";
+	$mail_body .= __('regist.mailBodyNote2') . "\n\n";
 	$mail_body .= "----\n";
-	$mail_body .= "FreeAddress - フリーアドレス座席管理システム\n";
+	$mail_body .= __('regist.mailBodyFooter') . "\n";
 
 	$mailer = new mymail();
 	$mail_result = $mailer->sendMail(
 		$mail,                          // 宛先メールアドレス
 		"",                             // 宛先名
-		"noreply@freeaddress.local",    // 送信元メールアドレス
-		"FreeAddress",                  // 送信元名
+		"noreply@freeaddress.local",    // Reply-Toアドレス
+		"FreeAddress",                  // Reply-To名
 		$mail_subject,                  // 件名
 		$mail_body                      // 本文
 	);
 
 	if ($mail_result) {
-		echo "<p class='regist-info' style='color: var(--success-color);'>📧 登録情報を " . htmlspecialchars($mail) . " に送信しました。</p>";
+		$emailSentMsg = str_replace('{email}', htmlspecialchars($mail), __('regist.emailSent'));
+		echo "<p class='regist-info' style='color: var(--success-color);'>📧 " . $emailSentMsg . "</p>";
 	}
-	*/
 
 	//生成したIDを id_new に格納してフレームワークのIDに格納する
 	echo "<input type='text' id='id_new' name='id_new' style='display:none' value='{$id_new}'>";

@@ -212,7 +212,17 @@
     "errorPasswordEmpty": "パスワードが入力されていません",
     "errorEmailExists": "入力されたメールアドレスはすでに利用されています",
     "errorRetry": "入力内容を確認して、もう一度お試しください。",
-    "backToFix": "戻って修正する"
+    "backToFix": "戻って修正する",
+    "emailSent": "登録情報を {email} に送信しました。",
+    "mailSubject": "【FreeAddress】利用登録完了のお知らせ",
+    "mailBody1": "FreeAddressへのご登録ありがとうございます。",
+    "mailBody2": "利用登録が完了しました。",
+    "mailBodyYourId": "あなたのID",
+    "mailBodyGeneralUrl": "一般用フリーアドレス画面",
+    "mailBodyAdminUrl": "管理者ページ",
+    "mailBodyNote1": "※管理者ページのパスワードは、登録時に設定したパスワードです。",
+    "mailBodyNote2": "※このメールは大切に保管してください。",
+    "mailBodyFooter": "FreeAddress - フリーアドレス座席管理システム"
   },
   "manage": {
     "title": "管理者ページ",

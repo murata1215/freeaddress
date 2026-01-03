@@ -218,7 +218,17 @@
     "errorPasswordEmpty": "비밀번호가 입력되지 않았습니다",
     "errorEmailExists": "이 이메일 주소는 이미 사용 중입니다",
     "errorRetry": "입력 내용을 확인하고 다시 시도하세요.",
-    "backToFix": "돌아가서 수정"
+    "backToFix": "돌아가서 수정",
+    "emailSent": "등록 정보가 {email}로 전송되었습니다.",
+    "mailSubject": "【핫데스킹】등록 완료 알림",
+    "mailBody1": "핫데스킹에 등록해 주셔서 감사합니다.",
+    "mailBody2": "등록이 완료되었습니다.",
+    "mailBodyYourId": "귀하의 ID",
+    "mailBodyGeneralUrl": "일반 핫데스킹 화면",
+    "mailBodyAdminUrl": "관리자 페이지",
+    "mailBodyNote1": "※관리자 페이지 비밀번호는 등록 시 설정한 비밀번호입니다.",
+    "mailBodyNote2": "※이 이메일을 소중히 보관하세요.",
+    "mailBodyFooter": "핫데스킹 - 핫데스킹 좌석 관리 시스템"
   },
   "manage": {
     "title": "관리자 페이지",

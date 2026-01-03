@@ -218,7 +218,17 @@
     "errorPasswordEmpty": "未输入密码",
     "errorEmailExists": "此电子邮件地址已被使用",
     "errorRetry": "请检查输入内容后重试。",
-    "backToFix": "返回修改"
+    "backToFix": "返回修改",
+    "emailSent": "注册信息已发送至 {email}。",
+    "mailSubject": "【共享工位】注册完成通知",
+    "mailBody1": "感谢您注册共享工位。",
+    "mailBody2": "您的注册已完成。",
+    "mailBodyYourId": "您的ID",
+    "mailBodyGeneralUrl": "通用共享工位界面",
+    "mailBodyAdminUrl": "管理页面",
+    "mailBodyNote1": "※管理页面密码是您在注册时设置的密码。",
+    "mailBodyNote2": "※请妥善保管此邮件。",
+    "mailBodyFooter": "共享工位 - 共享工位座位管理系统"
   },
   "manage": {
     "title": "管理页面",

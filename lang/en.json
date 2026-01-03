@@ -218,7 +218,17 @@
     "errorPasswordEmpty": "Password is not entered",
     "errorEmailExists": "This email address is already in use",
     "errorRetry": "Please check your input and try again.",
-    "backToFix": "Go back and fix"
+    "backToFix": "Go back and fix",
+    "emailSent": "Registration details sent to {email}.",
+    "mailSubject": "[HotDesking] Registration Complete",
+    "mailBody1": "Thank you for registering with HotDesking.",
+    "mailBody2": "Your registration is complete.",
+    "mailBodyYourId": "Your ID",
+    "mailBodyGeneralUrl": "General Hot Desking Screen",
+    "mailBodyAdminUrl": "Admin Page",
+    "mailBodyNote1": "* The admin page password is the one you set during registration.",
+    "mailBodyNote2": "* Please keep this email for your records.",
+    "mailBodyFooter": "HotDesking - Hot Desking Seat Management System"
   },
   "manage": {
     "title": "Admin Page",

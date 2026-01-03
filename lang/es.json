@@ -218,7 +218,17 @@
     "errorPasswordEmpty": "No se ingresó contraseña",
     "errorEmailExists": "Este correo electrónico ya está en uso",
     "errorRetry": "Por favor verifique su entrada e intente nuevamente.",
-    "backToFix": "Volver y corregir"
+    "backToFix": "Volver y corregir",
+    "emailSent": "Información de registro enviada a {email}.",
+    "mailSubject": "[Hot Desking] Registro Completado",
+    "mailBody1": "Gracias por registrarse en Hot Desking.",
+    "mailBody2": "Su registro está completo.",
+    "mailBodyYourId": "Su ID",
+    "mailBodyGeneralUrl": "Pantalla General Hot Desking",
+    "mailBodyAdminUrl": "Página de Admin",
+    "mailBodyNote1": "* La contraseña de la página de admin es la que estableció durante el registro.",
+    "mailBodyNote2": "* Por favor guarde este correo para sus registros.",
+    "mailBodyFooter": "Hot Desking - Sistema de Gestión de Asientos"
   },
   "manage": {
     "title": "Página de Admin",
