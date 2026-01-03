@@ -163,7 +163,7 @@ $dao = new db();
 $dao->connect();
 
 //メールアドレスがすでに使われているかをチェックする（SQLインジェクション対策）
-$mail_escaped = $dao->conn->real_escape_string($mail);
+$mail_escaped = $dao->escape($mail);
 $sql = "";
 $sql = $sql." SELECT ID FROM SETTEI WHERE PARAM='MAIL' AND VAL='".$mail_escaped."' ";
 $dao->select($sql);

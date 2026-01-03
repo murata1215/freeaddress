@@ -53,6 +53,10 @@ class db{
 	public function close(){
 		$this->mysqli->close();
 	}
+
+	public function escape($str){
+		return $this->mysqli->real_escape_string($str);
+	}
 }
 
 ?>
