@@ -132,6 +132,31 @@ freeaddress/
 composer install
 ```
 
+## メール送信設定
+
+### 設定ファイル
+メール送信にはGmail SMTPを使用。認証情報は`mail/mail_config.php`に設定（gitignore対象）。
+
+```php
+// mail/mail_config.php
+define('SMTP_HOST', 'smtp.gmail.com');
+define('SMTP_PORT', 587);
+define('SMTP_USERNAME', 'your-email@gmail.com');
+define('SMTP_PASSWORD', 'your-app-password');
+define('ADMIN_EMAIL', 'your-email@gmail.com');
+define('ADMIN_NAME', 'HotDesk管理者');
+```
+
+### セットアップ手順
+1. `mail/mail_config.sample.php`を`mail/mail_config.php`にコピー
+2. Gmailでアプリパスワードを生成（2段階認証が必要）
+3. `mail_config.php`に認証情報を設定
+
+### メール送信機能
+- `seat_regist2.php` - 利用登録完了メール（ID・URL通知）
+- BCCで管理者にも控えを送信
+- メール本文は5か国語対応
+
 ## Google AdSense
 
 ### 導入済みページ
@@ -165,6 +190,7 @@ composer install
 
 ## セキュリティ注意事項
 
-- SQLインジェクション対策が不十分な箇所あり（要改善）
+- SQLインジェクション対策: `$dao->escape($str)`を使用（database_mysql.php）
+- SMTP認証情報は`mail/mail_config.php`に分離（.gitignore対象）
 - パスワードは平文保存（要改善）
 - CSRFトークン未実装（要改善）
