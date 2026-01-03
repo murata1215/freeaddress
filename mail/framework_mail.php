@@ -7,14 +7,26 @@
 	require 'PHPMailer/src/PHPMailer.php';
 	require 'PHPMailer/src/SMTP.php';
 
+	// メール設定ファイルを読み込み
+	require_once __DIR__ . '/mail_config.php';
+
 	class mymail {
-		// Gmail SMTP設定
-		private $smtpHost = 'smtp.gmail.com';
-		private $smtpPort = 587;
-		private $smtpUsername = 'fwjg2507@gmail.com';
-		private $smtpPassword = 'qkcytybplqgkxasq';
-		private $adminEmail = 'fwjg2507@gmail.com';
-		private $adminName = 'HotDesk管理者';
+		// Gmail SMTP設定（mail_config.phpから読み込み）
+		private $smtpHost;
+		private $smtpPort;
+		private $smtpUsername;
+		private $smtpPassword;
+		private $adminEmail;
+		private $adminName;
+
+		public function __construct() {
+			$this->smtpHost = SMTP_HOST;
+			$this->smtpPort = SMTP_PORT;
+			$this->smtpUsername = SMTP_USERNAME;
+			$this->smtpPassword = SMTP_PASSWORD;
+			$this->adminEmail = ADMIN_EMAIL;
+			$this->adminName = ADMIN_NAME;
+		}
 
 	    public function sendMail($to, $toname, $from, $fromname, $subject, $body) {
 
